@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NationwideSoftware — Authored games by Jeon Yeon Jun</title>
+<meta name="description" content="NationwideSoftware is a solo studio that treats games as authored works. Creator Jeon Yeon Jun borrows the grammar of genre to carve human stories inside it.">
+
+<!-- Open Graph / social preview -->
+<meta property="og:title" content="NationwideSoftware">
+<meta property="og:description" content="A solo studio that treats games as authored works. Currently crafting Lucy's Nightmare.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Studio display face — SangSangShin Sunflower.
+     The .otf must sit in the same folder as index.html in the repo. */
+  @font-face{
+    font-family:"Sunflower";
+    src:url("sunflower.otf") format("opentype");
+    font-weight:normal;
+    font-display:swap;
+  }
+
+  :root{
+    /* Palette: a storybook that has started to rot.
+       Pastel nursery tones bruised by a wound-red and a deep ink. */
+    --ink:        #14101a;   /* near-black plum, the dark behind the tale */
+    --ink-soft:   #241b30;
+    --paper:      #f3 e9dc;
+    --paper:      #f3e9dc;   /* aged storybook cream */
+    --pastel:     #e9c6d4;   /* faded nursery pink */
+    --pastel-2:   #bcd0c7;   /* sickly mint */
+    --gold:       #d8a24a;   /* candle gold */
+    --wound:      #a11b2e;   /* the truth beneath: blood */
+    --wound-lit:  #d33b4a;
+    --mist:       rgba(243,233,220,0.62);
+
+    --f-display: "Sunflower", "Fraunces", Georgia, serif;
+    --f-accent: "Fraunces", Georgia, serif;
+    --f-body: "Space Grotesk", system-ui, sans-serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:var(--f-body);
+    line-height:1.65;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* thin candle-gold hairline that runs down the page like a seam */
+  .seam{
+    position:fixed; top:0; left:50%; width:1px; height:100%;
+    background:linear-gradient(var(--gold),transparent 40%,transparent 60%,var(--wound));
+    opacity:.14; z-index:0; pointer-events:none;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{ max-width:1080px; margin:0 auto; padding:0 28px; position:relative; z-index:2; }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed; top:0; left:0; width:100%; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:22px 32px;
+    mix-blend-mode:difference;
+  }
+  nav .mark{
+    font-family:var(--f-display); font-weight:900; font-size:1.05rem;
+    letter-spacing:.02em;
+  }
+  nav .mark span{ font-style:italic; font-weight:400; }
+  nav .nav-links{ display:flex; gap:26px; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; }
+  nav .nav-links a{ opacity:.8; transition:opacity .2s; }
+  nav .nav-links a:hover{ opacity:1; }
+  @media(max-width:640px){ nav .nav-links{ display:none; } }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    position:relative; padding:120px 0 80px;
+    background:
+      radial-gradient(120% 90% at 50% -10%, rgba(233,198,212,0.10), transparent 55%),
+      radial-gradient(80% 70% at 50% 120%, rgba(161,27,46,0.22), transparent 60%);
+  }
+  .eyebrow{
+    font-size:.78rem; letter-spacing:.34em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:34px; padding-left:4px;
+    opacity:0; transform:translateY(12px);
+    animation:rise .9s .1s forwards cubic-bezier(.2,.7,.2,1);
+  }
+  h1.studio{
+    font-family:var(--f-display);
+    font-weight:900;
+    font-size:clamp(3.4rem, 11vw, 8.2rem);
+    line-height:.92;
+    letter-spacing:-.02em;
+  }
+  h1.studio .l1,h1.studio .l2{ display:block; overflow:hidden; }
+  h1.studio .l1 span,h1.studio .l2 span{
+    display:block; transform:translateY(105%);
+    animation:reveal 1s forwards cubic-bezier(.16,.84,.3,1);
+  }
+  h1.studio .l1 span{ animation-delay:.25s; }
+  h1.studio .l2 span{ animation-delay:.4s; color:var(--pastel); }
+  h1.studio .l2 span em{ font-style:italic; color:var(--wound-lit); font-weight:400; }
+
+  .hero-line{
+    margin-top:38px; max-width:44ch;
+    font-size:clamp(1.02rem,1.6vw,1.24rem);
+    color:var(--mist);
+    opacity:0; transform:translateY(12px);
+    animation:rise 1s .8s forwards cubic-bezier(.2,.7,.2,1);
+  }
+  .hero-line strong{ color:var(--paper); font-weight:500; }
+
+  .scrollcue{
+    position:absolute; bottom:34px; left:50%; transform:translateX(-50%);
+    font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--mist);
+    opacity:0; animation:fade 1s 1.4s forwards;
+  }
+  .scrollcue::after{
+    content:""; display:block; width:1px; height:34px; margin:12px auto 0;
+    background:linear-gradient(var(--gold),transparent);
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section{ padding:120px 0; position:relative; }
+  .sec-eyebrow{
+    font-size:.74rem; letter-spacing:.3em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:26px;
+    display:flex; align-items:center; gap:14px;
+  }
+  .sec-eyebrow::before{ content:""; width:34px; height:1px; background:var(--wound); }
+
+  /* ---------- MANIFESTO ---------- */
+  .manifesto p{
+    font-family:var(--f-display);
+    font-size:clamp(1.5rem,3.4vw,2.5rem);
+    line-height:1.3; font-weight:400; max-width:20ch;
+    letter-spacing:-.01em;
+  }
+  .manifesto p em{ font-style:italic; color:var(--pastel); }
+  .manifesto .after{
+    margin-top:34px; font-family:var(--f-body);
+    font-size:1.05rem; color:var(--mist); max-width:52ch; line-height:1.7;
+  }
+
+  /* ---------- FEATURE GAME ---------- */
+  .game{
+    border-top:1px solid rgba(216,162,74,0.18);
+    background:linear-gradient(180deg, transparent, rgba(161,27,46,0.06));
+  }
+  .game-tag{ color:var(--pastel-2); }
+  .game h2{
+    font-family:var(--f-display); font-weight:900;
+    font-size:clamp(2.6rem,7vw,5.4rem); line-height:.98;
+    letter-spacing:-.02em; margin-bottom:8px;
+  }
+  .game h2 em{ font-style:italic; font-weight:400; color:var(--wound-lit); }
+  .game .subtitle{
+    font-size:.9rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--gold); margin-bottom:36px;
+  }
+  .game-grid{
+    display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:start;
+    margin-top:20px;
+  }
+  @media(max-width:800px){ .game-grid{ grid-template-columns:1fr; gap:38px; } }
+
+  .game-copy p{ color:var(--mist); margin-bottom:20px; font-size:1.04rem; }
+  .game-copy p .hl{ color:var(--paper); }
+
+  /* trailer slot */
+  .trailer{
+    aspect-ratio:16/9; width:100%;
+    border:1px solid rgba(216,162,74,0.28);
+    background:
+      repeating-linear-gradient(45deg, rgba(20,16,26,.9), rgba(20,16,26,.9) 12px, rgba(36,27,48,.9) 12px, rgba(36,27,48,.9) 24px);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; color:var(--mist); gap:10px; position:relative;
+  }
+  .trailer .play{
+    width:56px; height:56px; border-radius:50%; border:1px solid var(--gold);
+    display:flex; align-items:center; justify-content:center; color:var(--gold);
+  }
+  .trailer .play::after{ content:""; border-left:14px solid currentColor; border-top:9px solid transparent; border-bottom:9px solid transparent; margin-left:4px; }
+  .trailer small{ letter-spacing:.16em; text-transform:uppercase; font-size:.68rem; }
+
+  .facts{ margin-top:30px; display:flex; flex-direction:column; gap:0; }
+  .fact{
+    display:flex; justify-content:space-between; gap:20px;
+    padding:15px 0; border-top:1px solid rgba(243,233,220,0.10);
+    font-size:.92rem;
+  }
+  .fact:last-child{ border-bottom:1px solid rgba(243,233,220,0.10); }
+  .fact .k{ color:var(--gold); letter-spacing:.08em; text-transform:uppercase; font-size:.72rem; align-self:center; }
+  .fact .v{ text-align:right; color:var(--paper); }
+
+  .cta-row{ margin-top:40px; display:flex; flex-wrap:wrap; gap:14px; }
+  .btn{
+    font-family:var(--f-body); font-size:.86rem; letter-spacing:.06em;
+    padding:15px 30px; border:1px solid var(--paper); color:var(--paper);
+    text-transform:uppercase; transition:.24s; display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn.primary{ background:var(--wound); border-color:var(--wound); }
+  .btn.primary:hover{ background:var(--wound-lit); border-color:var(--wound-lit); }
+  .btn.ghost:hover{ background:var(--paper); color:var(--ink); }
+  .btn[data-soon]{ opacity:.5; cursor:default; }
+  .btn[data-soon]::after{ content:"soon"; font-size:.6rem; letter-spacing:.14em; opacity:.7; }
+
+  /* ---------- CREATOR ---------- */
+  .creator{ border-top:1px solid rgba(216,162,74,0.18); }
+  .creator-grid{ display:grid; grid-template-columns:.7fr 1.3fr; gap:50px; align-items:baseline; }
+  @media(max-width:800px){ .creator-grid{ grid-template-columns:1fr; gap:24px; } }
+  .creator h3{
+    font-family:var(--f-display); font-weight:400; font-style:italic;
+    font-size:clamp(2rem,4.5vw,3rem); line-height:1; color:var(--pastel);
+  }
+  .creator .role{ font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-top:14px; }
+  .creator-copy p{ color:var(--mist); margin-bottom:18px; font-size:1.05rem; line-height:1.7; }
+  .creator-copy p em{ color:var(--paper); font-style:italic; }
+
+  /* ---------- CONNECT ---------- */
+  .connect{ text-align:center; border-top:1px solid rgba(216,162,74,0.18); padding-bottom:90px; }
+  .connect h4{
+    font-family:var(--f-display); font-weight:900;
+    font-size:clamp(2rem,6vw,3.6rem); margin-bottom:18px; letter-spacing:-.01em;
+  }
+  .connect h4 em{ font-style:italic; font-weight:400; color:var(--wound-lit); }
+  .connect .sub{ color:var(--mist); max-width:40ch; margin:0 auto 44px; }
+  .links{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
+  .links a{
+    font-size:.82rem; letter-spacing:.1em; text-transform:uppercase;
+    padding:13px 26px; border:1px solid rgba(243,233,220,0.28); transition:.22s;
+  }
+  .links a:hover{ border-color:var(--gold); color:var(--gold); }
+  .links a[data-soon]{ opacity:.4; }
+  .links a[data-soon]::after{ content:" · soon"; font-size:.62rem; opacity:.7; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    text-align:center; padding:40px 0 60px; position:relative; z-index:2;
+    font-size:.76rem; letter-spacing:.06em; color:rgba(243,233,220,0.4);
+    border-top:1px solid rgba(243,233,220,0.08);
+  }
+  footer .sig{ font-family:var(--f-display); font-style:italic; color:var(--pastel); }
+
+  /* ---------- animations ---------- */
+  @keyframes reveal{ to{ transform:translateY(0); } }
+  @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
+  @keyframes fade{ to{ opacity:.8; } }
+
+  .reveal-on-scroll{ opacity:0; transform:translateY(24px); transition:opacity .8s, transform .8s; }
+  .reveal-on-scroll.in{ opacity:1; transform:translateY(0); }
+
+  @media(prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; }
+    h1.studio .l1 span,h1.studio .l2 span{ transform:none; }
+    .eyebrow,.hero-line,.scrollcue{ opacity:1; transform:none; }
+    .reveal-on-scroll{ opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+<div class="seam"></div>
+
+<nav>
+  <div class="mark">Nationwide<span>Software</span></div>
+  <div class="nav-links">
+    <a href="#studio">Studio</a>
+    <a href="#lucy">Lucy's Nightmare</a>
+    <a href="#creator">Creator</a>
+    <a href="#connect">Connect</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Nationwide Software — Independent Studio</div>
+    <h1 class="studio">
+      <span class="l1"><span>Fairy tales</span></span>
+      <span class="l2"><span>that <em>bleed.</em></span></span>
+    </h1>
+    <p class="hero-line">A solo studio that treats games as authored works. We borrow the grammar of genre — only to carve <strong>human stories</strong> inside it.</p>
+  </div>
+  <div class="scrollcue">Scroll</div>
+</header>
+
+<section class="studio" id="studio">
+  <div class="wrap manifesto">
+    <div class="sec-eyebrow reveal-on-scroll">What we make</div>
+    <p class="reveal-on-scroll">Beneath a charming surface, we hide the <em>darkest truths of people.</em></p>
+    <p class="after reveal-on-scroll">NationwideSoftware is the studio of a single author. Every line of code, every drawn frame, every turn of the story answers to one vision. We aren't interested in games that merely play well — we build games that mean something once the credits roll.</p>
+  </div>
+</section>
+
+<section class="game" id="lucy">
+  <div class="wrap">
+    <div class="sec-eyebrow game-tag reveal-on-scroll">Now in development — Second title</div>
+    <h2 class="reveal-on-scroll">Lucy's <em>Nightmare</em></h2>
+    <div class="subtitle reveal-on-scroll">A psychological horror platformer</div>
+
+    <div class="game-grid">
+      <div class="game-copy reveal-on-scroll">
+        <p><span class="hl">A fairy tale with two faces.</span> Lucy is trapped in a nightmare she cannot wake from, searching for the self she has lost. You'll leap through whimsical, monster-filled stages — but the moments where her truth surfaces wear an entirely different face.</p>
+        <p>Scattered diamonds hold the fragments of a reality she has forgotten. Gather them, and a carefully woven story peels the fairy tale back, one layer at a time — until the truth beneath proves crueler than any nightmare.</p>
+
+        <div class="facts">
+          <div class="fact"><span class="k">Genre</span><span class="v">Psychological Horror · 2D Platformer</span></div>
+          <div class="fact"><span class="k">Languages</span><span class="v">10 fully supported</span></div>
+          <div class="fact"><span class="k">Platforms</span><span class="v">Windows · macOS</span></div>
+          <div class="fact"><span class="k">Release</span><span class="v">2027 – 2028</span></div>
+        </div>
+
+        <div class="cta-row">
+          <!-- Replace href with your Steam page URL when live -->
+          <a class="btn primary" data-soon href="#" aria-disabled="true">Wishlist on Steam&nbsp;</a>
+          <a class="btn ghost" href="https://www.youtube.com/@nationwidesoftware" target="_blank" rel="noopener">Watch on YouTube</a>
+        </div>
+      </div>
+
+      <div class="reveal-on-scroll">
+        <!-- TRAILER: replace this whole block with a YouTube <iframe> once the trailer is up -->
+        <div class="trailer">
+          <div class="play" aria-hidden="true"></div>
+          <small>Trailer coming soon</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="creator" id="creator">
+  <div class="wrap">
+    <div class="sec-eyebrow reveal-on-scroll">The author</div>
+    <div class="creator-grid">
+      <div class="reveal-on-scroll">
+        <h3>Jeon<br>Yeon&nbsp;Jun</h3>
+        <div class="role">Director · Writer · Artist · Programmer</div>
+      </div>
+      <div class="creator-copy reveal-on-scroll">
+        <p>Jeon Yeon Jun writes, draws, and builds every part of the worlds under the NationwideSoftware name. The characters you meet are drawn <em>pixel by pixel, by hand.</em></p>
+        <p>The work is unafraid of hard subjects — guilt, obsession, the quiet cruelty people inflict without meaning to. Genre is the doorway; the story inside is the point.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="connect" id="connect">
+  <div class="wrap">
+    <div class="sec-eyebrow reveal-on-scroll" style="justify-content:center;">Follow the work</div>
+    <h4 class="reveal-on-scroll">The tale has <em>already begun.</em></h4>
+    <p class="sub reveal-on-scroll">Devlogs, trailers, and the road to release. If you love a well-told story, come along.</p>
+    <div class="links reveal-on-scroll">
+      <a href="https://www.youtube.com/@nationwidesoftware" target="_blank" rel="noopener">YouTube</a>
+      <!-- Fill these in once the accounts exist -->
+      <a href="#" data-soon aria-disabled="true">X / Twitter</a>
+      <a href="#" data-soon aria-disabled="true">Steam</a>
+      <a href="mailto:nationwidesoft.com@nationwidesoft.com">Contact</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>© <span id="yr"></span> NationwideSoftware · All rights reserved</div>
+  <div class="sig">a studio by Jeon Yeon Jun</div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{ threshold:.14 });
+  document.querySelectorAll('.reveal-on-scroll').forEach(el=>io.observe(el));
+
+  // block placeholder clicks
+  document.querySelectorAll('[data-soon]').forEach(a=>{
+    a.addEventListener('click',ev=>ev.preventDefault());
+  });
+</script>
+</body>
+</html>
