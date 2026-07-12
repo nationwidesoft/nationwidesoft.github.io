@@ -30,7 +30,6 @@
        Pastel nursery tones bruised by a wound-red and a deep ink. */
     --ink:        #14101a;   /* near-black plum, the dark behind the tale */
     --ink-soft:   #241b30;
-    --paper:      #f3 e9dc;
     --paper:      #f3e9dc;   /* aged storybook cream */
     --pastel:     #e9c6d4;   /* faded nursery pink */
     --pastel-2:   #bcd0c7;   /* sickly mint */
@@ -72,18 +71,19 @@
   nav{
     position:fixed; top:0; left:0; width:100%; z-index:50;
     display:flex; justify-content:space-between; align-items:center;
-    padding:22px 32px;
-    mix-blend-mode:difference;
+    padding:16px 32px;
+    background:linear-gradient(rgba(20,16,26,.86), rgba(20,16,26,0));
   }
-  nav .mark{
-    font-family:var(--f-display); font-weight:900; font-size:1.05rem;
-    letter-spacing:.02em;
+  /* BI mark — the JPG is white-on-black; screen blending drops the black
+     square so only the white signature remains on the page. */
+  nav .mark img{
+    height:46px; width:auto; display:block;
+    mix-blend-mode:screen;
   }
-  nav .mark span{ font-style:italic; font-weight:400; }
   nav .nav-links{ display:flex; gap:26px; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; }
   nav .nav-links a{ opacity:.8; transition:opacity .2s; }
   nav .nav-links a:hover{ opacity:1; }
-  @media(max-width:640px){ nav .nav-links{ display:none; } }
+  @media(max-width:720px){ nav .nav-links{ display:none; } }
 
   /* ---------- HERO ---------- */
   header.hero{
@@ -95,7 +95,7 @@
   }
   .eyebrow{
     font-size:.78rem; letter-spacing:.34em; text-transform:uppercase;
-    color:var(--gold); margin-bottom:34px; padding-left:4px;
+    color:var(--paper); margin-bottom:34px; padding-left:4px;
     opacity:0; transform:translateY(12px);
     animation:rise .9s .1s forwards cubic-bezier(.2,.7,.2,1);
   }
@@ -219,6 +219,42 @@
   .btn[data-soon]{ opacity:.5; cursor:default; }
   .btn[data-soon]::after{ content:"soon"; font-size:.6rem; letter-spacing:.14em; opacity:.7; }
 
+  /* ---------- SCREENSHOT GALLERY ---------- */
+  .shots{ margin-top:70px; }
+  .shots-main{
+    position:relative; aspect-ratio:16/9; width:100%;
+    border:1px solid rgba(216,162,74,0.28); background:#0d0a12;
+    overflow:hidden;
+  }
+  .shots-main img{ width:100%; height:100%; object-fit:contain; display:block; }
+  .shot-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    width:48px; height:72px; cursor:pointer;
+    background:rgba(20,16,26,0.72); color:var(--paper);
+    border:1px solid rgba(243,233,220,0.25);
+    font-size:1.7rem; line-height:1; font-family:var(--f-body);
+    transition:.2s; z-index:3;
+  }
+  .shot-nav:hover{ border-color:var(--gold); color:var(--gold); }
+  .shot-nav.prev{ left:0; border-left:none; }
+  .shot-nav.next{ right:0; border-right:none; }
+  .shot-count{
+    position:absolute; bottom:10px; right:12px; z-index:3;
+    font-size:.72rem; letter-spacing:.16em; color:var(--mist);
+    background:rgba(20,16,26,0.72); padding:4px 12px;
+    border:1px solid rgba(243,233,220,0.12);
+  }
+  .shot-strip{
+    display:flex; gap:10px; overflow-x:auto; margin-top:14px; padding-bottom:10px;
+    scrollbar-width:thin; scrollbar-color:rgba(216,162,74,.5) transparent;
+  }
+  .shot-strip img{
+    width:108px; aspect-ratio:16/9; object-fit:cover; flex:0 0 auto;
+    opacity:.42; cursor:pointer; border:1px solid transparent; transition:.2s;
+  }
+  .shot-strip img:hover{ opacity:.85; }
+  .shot-strip img.active{ opacity:1; border-color:var(--gold); }
+
   /* ---------- CREATOR ---------- */
   .creator{ border-top:1px solid rgba(216,162,74,0.18); }
   .creator-grid{ display:grid; grid-template-columns:.7fr 1.3fr; gap:50px; align-items:baseline; }
@@ -230,6 +266,25 @@
   .creator .role{ font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-top:14px; }
   .creator-copy p{ color:var(--mist); margin-bottom:18px; font-size:1.05rem; line-height:1.7; }
   .creator-copy p em{ color:var(--paper); font-style:italic; }
+
+  /* ---------- PHILOSOPHY ---------- */
+  .philosophy{ border-top:1px solid rgba(216,162,74,0.18); }
+  .philosophy h4{
+    font-family:var(--f-display); font-weight:900;
+    font-size:clamp(2.2rem,6vw,4rem); line-height:1; letter-spacing:-.01em;
+    margin-bottom:44px;
+  }
+  .philosophy h4 em{ font-style:italic; font-weight:400; color:var(--wound-lit); }
+  .philosophy .kr p{
+    color:var(--mist); max-width:62ch; margin-bottom:22px;
+    font-size:1.04rem; line-height:1.9; word-break:keep-all;
+  }
+  .philosophy .kr p.pull{
+    font-family:var(--f-display); font-size:clamp(1.25rem,2.6vw,1.8rem);
+    color:var(--pastel); line-height:1.55; max-width:34ch;
+    border-left:2px solid var(--wound); padding-left:24px; margin:38px 0;
+  }
+  .philosophy .kr p strong{ color:var(--paper); font-weight:500; }
 
   /* ---------- CONNECT ---------- */
   .connect{ text-align:center; border-top:1px solid rgba(216,162,74,0.18); padding-bottom:90px; }
@@ -276,16 +331,18 @@
 <div class="seam"></div>
 
 <nav>
-  <div class="mark">Nationwide<span>Software</span></div>
+  <!-- BI mark. NationwideSoft_BI_SQUARE.jpg must sit in the same folder as index.html -->
+  <div class="mark"><a href="#top" aria-label="Nationwide Software — home"><img src="NationwideSoft_BI_SQUARE.jpg" alt="Nationwide Software"></a></div>
   <div class="nav-links">
     <a href="#studio">Studio</a>
     <a href="#lucy">Lucy's Nightmare</a>
     <a href="#creator">Creator</a>
+    <a href="#philosophy">Philosophy</a>
     <a href="#connect">Connect</a>
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero" id="top">
   <div class="wrap">
     <div class="eyebrow">Nationwide Software — Independent Studio</div>
     <h1 class="studio">
@@ -309,34 +366,51 @@
   <div class="wrap">
     <div class="sec-eyebrow game-tag reveal-on-scroll">Now in development — Second title</div>
     <h2 class="reveal-on-scroll">Lucy's <em>Nightmare</em></h2>
-    <div class="subtitle reveal-on-scroll">A psychological horror platformer</div>
+    <div class="subtitle reveal-on-scroll">A twisted fairy tale. A psychological horror platformer.</div>
 
     <div class="game-grid">
       <div class="game-copy reveal-on-scroll">
-        <p><span class="hl">A fairy tale with two faces.</span> Lucy is trapped in a nightmare she cannot wake from, searching for the self she has lost. You'll leap through whimsical, monster-filled stages — but the moments where her truth surfaces wear an entirely different face.</p>
-        <p>Scattered diamonds hold the fragments of a reality she has forgotten. Gather them, and a carefully woven story peels the fairy tale back, one layer at a time — until the truth beneath proves crueler than any nightmare.</p>
+        <p><span class="hl">A fairy tale with two faces.</span> Lucy has forgotten who she is. Trapped in a nightmare that refuses to end, she runs, leaps, and fights through whimsical stages crowded with colorful monsters — charming on the surface, wrong underneath.</p>
+        <p>Scattered diamonds hold her stolen memories. Each one you recover plays back a fragment of the real world — and those fragments wear a very different face. One layer at a time, a meticulously plotted story peels the fairy tale back, until <span class="hl">the truth beneath proves crueler than any nightmare.</span></p>
+        <p>The free demo — the prologue through chapter one — is out now on Steam.</p>
 
         <div class="facts">
           <div class="fact"><span class="k">Genre</span><span class="v">Psychological Horror · 2D Platformer</span></div>
+          <div class="fact"><span class="k">Demo</span><span class="v">Free · Available now</span></div>
           <div class="fact"><span class="k">Languages</span><span class="v">10 fully supported</span></div>
           <div class="fact"><span class="k">Platforms</span><span class="v">Windows · macOS</span></div>
-          <div class="fact"><span class="k">Release</span><span class="v">2027 – 2028</span></div>
+          <div class="fact"><span class="k">Full release</span><span class="v">2027 – 2028</span></div>
         </div>
 
         <div class="cta-row">
-          <!-- Replace href with your Steam page URL when live -->
-          <a class="btn primary" data-soon href="#" aria-disabled="true">Wishlist on Steam&nbsp;</a>
+          <!-- Replace href with the Steam demo / store URLs when the page goes live, and remove data-soon -->
+          <a class="btn primary" data-soon href="#" aria-disabled="true">Play the Free Demo&nbsp;</a>
+          <a class="btn ghost" data-soon href="#" aria-disabled="true">Wishlist on Steam&nbsp;</a>
           <a class="btn ghost" href="https://www.youtube.com/@nationwidesoftware" target="_blank" rel="noopener">Watch on YouTube</a>
         </div>
       </div>
 
       <div class="reveal-on-scroll">
-        <!-- TRAILER: replace this whole block with a YouTube <iframe> once the trailer is up -->
+        <!-- TRAILER: replace this whole block with a YouTube <iframe> once the trailer is public -->
         <div class="trailer">
           <div class="play" aria-hidden="true"></div>
           <small>Trailer coming soon</small>
         </div>
       </div>
+    </div>
+
+    <!-- ---------- SCREENSHOTS ----------
+         Expects 40 images at screenshots/ss_01.jpg … screenshots/ss_40.jpg
+         (see the PowerShell rename script provided alongside this file) -->
+    <div class="shots reveal-on-scroll">
+      <div class="sec-eyebrow">Screenshots</div>
+      <div class="shots-main">
+        <img id="shotMain" src="screenshots/ss_01.jpg" alt="Lucy's Nightmare screenshot 1 of 40">
+        <button class="shot-nav prev" id="shotPrev" aria-label="Previous screenshot">&#8249;</button>
+        <button class="shot-nav next" id="shotNext" aria-label="Next screenshot">&#8250;</button>
+        <div class="shot-count"><span id="shotIdx">1</span> / <span id="shotTotal">40</span></div>
+      </div>
+      <div class="shot-strip" id="shotStrip" role="listbox" aria-label="Screenshot thumbnails"></div>
     </div>
   </div>
 </section>
@@ -357,6 +431,20 @@
   </div>
 </section>
 
+<section class="philosophy" id="philosophy">
+  <div class="wrap">
+    <div class="sec-eyebrow reveal-on-scroll">The studio's creed</div>
+    <h4 class="reveal-on-scroll">Let art <em>save us.</em></h4>
+    <div class="kr">
+      <p class="reveal-on-scroll">훌륭한 이야기는 사람을 구한다. 나는 그것을 경험으로 안다. 세상이 밉고 견디기 어려웠던 시절, 나를 붙잡아 준 것은 영화와 드라마, 게임과 만화 속의 매력적인 이야기들이었다. 이야기에 깊이 빠져 있는 동안만큼은, 어떤 근심도 나를 찾아내지 못했다.</p>
+      <p class="pull reveal-on-scroll">나 자신을 사랑하기 어려웠던 시절에도, 내가 만든 이야기는 사랑할 수 있었다.</p>
+      <p class="reveal-on-scroll">훌륭한 창작자들이 그렇게 내 삶을 구했듯, 나도 울림이 있는 이야기로 누군가의 시간을 구하고 싶다. 게임은 이야기꾼에게 주어진 가장 강력한 도구다. 소설가는 독자를 인물에 공감시키기 위해 수백 페이지를 쌓아 올리지만, 게임에서 플레이어는 캐릭터를 직접 움직이는 순간 이미 그 인물이 된다. 몰입이 기본값인 매체 — 그런데도 이야기 자체로 승부하는 게임은 아직 드물다.</p>
+      <p class="reveal-on-scroll">내가 추구하는 것은 <strong>장르에 충실하고, 치밀하게 짜였으며, 엔딩에 도달했을 때 깊은 울림과 생각할 거리를 남기는 이야기</strong>다. 거대 자본이 만드는 보편적으로 훌륭한 이야기는 이미 충분히 많다. 나는 그 이야기들이 다루지 않는 것 — 인간의 어두운 내면 — 을 정면으로 다룬다. 자기파괴와 중독을 다룬 『루시 나이트메어』, 그리고 인간의 뒤틀린 욕망과 구원을 다룰 차기작 『더 러브 돌』이 그 시작이다.</p>
+      <p class="reveal-on-scroll">내 이야기를 들어주는 모든 이에게, 진심으로 감사드린다.</p>
+    </div>
+  </div>
+</section>
+
 <section class="connect" id="connect">
   <div class="wrap">
     <div class="sec-eyebrow reveal-on-scroll" style="justify-content:center;">Follow the work</div>
@@ -367,7 +455,7 @@
       <!-- Fill these in once the accounts exist -->
       <a href="#" data-soon aria-disabled="true">X / Twitter</a>
       <a href="#" data-soon aria-disabled="true">Steam</a>
-      <a href="mailto:nationwidesoft.com@nationwidesoft.com">Contact</a>
+      <a href="mailto:contact@nationwidesoft.com">Contact</a>
     </div>
   </div>
 </section>
@@ -390,6 +478,64 @@
   document.querySelectorAll('[data-soon]').forEach(a=>{
     a.addEventListener('click',ev=>ev.preventDefault());
   });
+
+  /* ---------- screenshot gallery ---------- */
+  const SHOT_COUNT = 40;
+  const shotSrc = n => `screenshots/ss_${String(n).padStart(2,'0')}.jpg`;
+
+  const mainImg  = document.getElementById('shotMain');
+  const idxEl    = document.getElementById('shotIdx');
+  const totalEl  = document.getElementById('shotTotal');
+  const strip    = document.getElementById('shotStrip');
+  let current = 1;
+
+  totalEl.textContent = SHOT_COUNT;
+
+  // build thumbnail strip
+  for(let i=1; i<=SHOT_COUNT; i++){
+    const t = document.createElement('img');
+    t.src = shotSrc(i);
+    t.alt = `Screenshot ${i}`;
+    t.loading = 'lazy';
+    t.dataset.n = i;
+    if(i===1) t.classList.add('active');
+    t.addEventListener('click', ()=>showShot(i));
+    strip.appendChild(t);
+  }
+
+  function preload(n){
+    if(n<1 || n>SHOT_COUNT) return;
+    const img = new Image();
+    img.src = shotSrc(n);
+  }
+
+  function showShot(n){
+    current = ((n - 1 + SHOT_COUNT) % SHOT_COUNT) + 1;
+    mainImg.src = shotSrc(current);
+    mainImg.alt = `Lucy's Nightmare screenshot ${current} of ${SHOT_COUNT}`;
+    idxEl.textContent = current;
+    strip.querySelectorAll('img').forEach(t=>{
+      t.classList.toggle('active', Number(t.dataset.n)===current);
+    });
+    const active = strip.querySelector('img.active');
+    if(active) active.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
+    preload(current+1); preload(current-1);
+  }
+
+  document.getElementById('shotPrev').addEventListener('click', ()=>showShot(current-1));
+  document.getElementById('shotNext').addEventListener('click', ()=>showShot(current+1));
+
+  // arrow keys work when the gallery is on screen
+  let galleryVisible = false;
+  new IntersectionObserver(es=>{ es.forEach(e=>galleryVisible = e.isIntersecting); },{threshold:.2})
+    .observe(document.querySelector('.shots'));
+  window.addEventListener('keydown', e=>{
+    if(!galleryVisible) return;
+    if(e.key==='ArrowLeft')  showShot(current-1);
+    if(e.key==='ArrowRight') showShot(current+1);
+  });
+
+  preload(2);
 </script>
 </body>
 </html>
