@@ -26,17 +26,13 @@
   }
 
   :root{
-    /* Palette: a storybook that has started to rot.
-       Pastel nursery tones bruised by a wound-red and a deep ink. */
-    --ink:        #14101a;   /* near-black plum, the dark behind the tale */
+    /* Monochrome: ink dark + storybook cream. One color, many opacities. */
+    --ink:        #14101a;
     --ink-soft:   #241b30;
-    --paper:      #f3e9dc;   /* aged storybook cream */
-    --pastel:     #e9c6d4;   /* faded nursery pink */
-    --pastel-2:   #bcd0c7;   /* sickly mint */
-    --gold:       #d8a24a;   /* candle gold */
-    --wound:      #a11b2e;   /* the truth beneath: blood */
-    --wound-lit:  #d33b4a;
+    --paper:      #f3e9dc;
     --mist:       rgba(243,233,220,0.62);
+    --line:       rgba(243,233,220,0.22);
+    --line-soft:  rgba(243,233,220,0.10);
 
     --f-display: "Sunflower", "Fraunces", Georgia, serif;
     --f-accent: "Fraunces", Georgia, serif;
@@ -56,11 +52,11 @@
     -webkit-font-smoothing:antialiased;
   }
 
-  /* thin candle-gold hairline that runs down the page like a seam */
+  /* thin hairline that runs down the page like a seam */
   .seam{
     position:fixed; top:0; left:50%; width:1px; height:100%;
-    background:linear-gradient(var(--gold),transparent 40%,transparent 60%,var(--wound));
-    opacity:.14; z-index:0; pointer-events:none;
+    background:linear-gradient(var(--paper),transparent 40%,transparent 60%,var(--paper));
+    opacity:.10; z-index:0; pointer-events:none;
   }
 
   a{ color:inherit; text-decoration:none; }
@@ -71,52 +67,47 @@
   nav{
     position:fixed; top:0; left:0; width:100%; z-index:50;
     display:flex; justify-content:space-between; align-items:center;
-    padding:16px 32px;
-    background:linear-gradient(rgba(20,16,26,.86), rgba(20,16,26,0));
+    padding:14px 32px; gap:18px;
+    background:linear-gradient(rgba(20,16,26,.88), rgba(20,16,26,0));
   }
-  /* BI mark — the JPG is white-on-black; screen blending drops the black
-     square so only the white signature remains on the page. */
+  /* BI mark — white-on-black JPG; screen blending drops the black square. */
   nav .mark img{
-    height:46px; width:auto; display:block;
+    height:44px; width:auto; display:block;
     mix-blend-mode:screen;
   }
-  nav .nav-links{ display:flex; gap:26px; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; }
+  nav .nav-right{ display:flex; align-items:center; gap:22px; }
+  nav .nav-links{ display:flex; gap:24px; font-size:.82rem; letter-spacing:.08em; text-transform:uppercase; }
   nav .nav-links a{ opacity:.8; transition:opacity .2s; }
   nav .nav-links a:hover{ opacity:1; }
-  @media(max-width:720px){ nav .nav-links{ display:none; } }
+  nav select#langSel{
+    background:var(--ink-soft); color:var(--paper);
+    border:1px solid var(--line); padding:7px 10px;
+    font-family:var(--f-body); font-size:.8rem; letter-spacing:.04em;
+    cursor:pointer;
+  }
+  @media(max-width:820px){ nav .nav-links{ display:none; } }
 
   /* ---------- HERO ---------- */
   header.hero{
     min-height:100vh; display:flex; flex-direction:column; justify-content:center;
+    align-items:center; text-align:center;
     position:relative; padding:120px 0 80px;
-    background:
-      radial-gradient(120% 90% at 50% -10%, rgba(233,198,212,0.10), transparent 55%),
-      radial-gradient(80% 70% at 50% 120%, rgba(161,27,46,0.22), transparent 60%);
+    background:radial-gradient(90% 70% at 50% 50%, rgba(243,233,220,0.045), transparent 70%);
   }
   .eyebrow{
     font-size:.78rem; letter-spacing:.34em; text-transform:uppercase;
-    color:var(--paper); margin-bottom:34px; padding-left:4px;
+    color:var(--paper); margin-bottom:38px;
     opacity:0; transform:translateY(12px);
     animation:rise .9s .1s forwards cubic-bezier(.2,.7,.2,1);
   }
-  h1.studio{
-    font-family:var(--f-display);
-    font-weight:900;
-    font-size:clamp(3.4rem, 11vw, 8.2rem);
-    line-height:.92;
-    letter-spacing:-.02em;
+  .hero-logo{
+    width:min(560px, 82vw); height:auto; display:block;
+    mix-blend-mode:screen;
+    opacity:0; transform:translateY(16px);
+    animation:rise 1.1s .3s forwards cubic-bezier(.16,.84,.3,1);
   }
-  h1.studio .l1,h1.studio .l2{ display:block; overflow:hidden; }
-  h1.studio .l1 span,h1.studio .l2 span{
-    display:block; transform:translateY(105%);
-    animation:reveal 1s forwards cubic-bezier(.16,.84,.3,1);
-  }
-  h1.studio .l1 span{ animation-delay:.25s; }
-  h1.studio .l2 span{ animation-delay:.4s; color:var(--pastel); }
-  h1.studio .l2 span em{ font-style:italic; color:var(--wound-lit); font-weight:400; }
-
   .hero-line{
-    margin-top:38px; max-width:44ch;
+    margin-top:42px; max-width:46ch;
     font-size:clamp(1.02rem,1.6vw,1.24rem);
     color:var(--mist);
     opacity:0; transform:translateY(12px);
@@ -131,26 +122,26 @@
   }
   .scrollcue::after{
     content:""; display:block; width:1px; height:34px; margin:12px auto 0;
-    background:linear-gradient(var(--gold),transparent);
+    background:linear-gradient(var(--paper),transparent);
   }
 
   /* ---------- SECTION SHELL ---------- */
   section{ padding:120px 0; position:relative; }
   .sec-eyebrow{
     font-size:.74rem; letter-spacing:.3em; text-transform:uppercase;
-    color:var(--gold); margin-bottom:26px;
+    color:var(--paper); opacity:.85; margin-bottom:26px;
     display:flex; align-items:center; gap:14px;
   }
-  .sec-eyebrow::before{ content:""; width:34px; height:1px; background:var(--wound); }
+  .sec-eyebrow::before{ content:""; width:34px; height:1px; background:var(--line); }
 
   /* ---------- MANIFESTO ---------- */
   .manifesto p{
     font-family:var(--f-display);
     font-size:clamp(1.5rem,3.4vw,2.5rem);
-    line-height:1.3; font-weight:400; max-width:20ch;
+    line-height:1.3; font-weight:400; max-width:24ch;
     letter-spacing:-.01em;
   }
-  .manifesto p em{ font-style:italic; color:var(--pastel); }
+  .manifesto p em{ font-style:italic; color:var(--paper); }
   .manifesto .after{
     margin-top:34px; font-family:var(--f-body);
     font-size:1.05rem; color:var(--mist); max-width:52ch; line-height:1.7;
@@ -158,19 +149,18 @@
 
   /* ---------- FEATURE GAME ---------- */
   .game{
-    border-top:1px solid rgba(216,162,74,0.18);
-    background:linear-gradient(180deg, transparent, rgba(161,27,46,0.06));
+    border-top:1px solid var(--line-soft);
+    background:linear-gradient(180deg, transparent, rgba(243,233,220,0.03));
   }
-  .game-tag{ color:var(--pastel-2); }
   .game h2{
     font-family:var(--f-display); font-weight:900;
     font-size:clamp(2.6rem,7vw,5.4rem); line-height:.98;
     letter-spacing:-.02em; margin-bottom:8px;
   }
-  .game h2 em{ font-style:italic; font-weight:400; color:var(--wound-lit); }
+  .game h2 em{ font-style:italic; font-weight:400; color:var(--paper); }
   .game .subtitle{
     font-size:.9rem; letter-spacing:.14em; text-transform:uppercase;
-    color:var(--gold); margin-bottom:36px;
+    color:var(--mist); margin-bottom:36px;
   }
   .game-grid{
     display:grid; grid-template-columns:1.15fr .85fr; gap:56px; align-items:start;
@@ -184,15 +174,15 @@
   /* trailer slot */
   .trailer{
     aspect-ratio:16/9; width:100%;
-    border:1px solid rgba(216,162,74,0.28);
+    border:1px solid var(--line);
     background:
       repeating-linear-gradient(45deg, rgba(20,16,26,.9), rgba(20,16,26,.9) 12px, rgba(36,27,48,.9) 12px, rgba(36,27,48,.9) 24px);
     display:flex; flex-direction:column; align-items:center; justify-content:center;
     text-align:center; color:var(--mist); gap:10px; position:relative;
   }
   .trailer .play{
-    width:56px; height:56px; border-radius:50%; border:1px solid var(--gold);
-    display:flex; align-items:center; justify-content:center; color:var(--gold);
+    width:56px; height:56px; border-radius:50%; border:1px solid var(--paper);
+    display:flex; align-items:center; justify-content:center; color:var(--paper);
   }
   .trailer .play::after{ content:""; border-left:14px solid currentColor; border-top:9px solid transparent; border-bottom:9px solid transparent; margin-left:4px; }
   .trailer small{ letter-spacing:.16em; text-transform:uppercase; font-size:.68rem; }
@@ -200,11 +190,11 @@
   .facts{ margin-top:30px; display:flex; flex-direction:column; gap:0; }
   .fact{
     display:flex; justify-content:space-between; gap:20px;
-    padding:15px 0; border-top:1px solid rgba(243,233,220,0.10);
+    padding:15px 0; border-top:1px solid var(--line-soft);
     font-size:.92rem;
   }
-  .fact:last-child{ border-bottom:1px solid rgba(243,233,220,0.10); }
-  .fact .k{ color:var(--gold); letter-spacing:.08em; text-transform:uppercase; font-size:.72rem; align-self:center; }
+  .fact:last-child{ border-bottom:1px solid var(--line-soft); }
+  .fact .k{ color:var(--mist); letter-spacing:.08em; text-transform:uppercase; font-size:.72rem; align-self:center; }
   .fact .v{ text-align:right; color:var(--paper); }
 
   .cta-row{ margin-top:40px; display:flex; flex-wrap:wrap; gap:14px; }
@@ -213,8 +203,8 @@
     padding:15px 30px; border:1px solid var(--paper); color:var(--paper);
     text-transform:uppercase; transition:.24s; display:inline-flex; align-items:center; gap:10px;
   }
-  .btn.primary{ background:var(--wound); border-color:var(--wound); }
-  .btn.primary:hover{ background:var(--wound-lit); border-color:var(--wound-lit); }
+  .btn.primary{ background:var(--paper); border-color:var(--paper); color:var(--ink); }
+  .btn.primary:hover{ opacity:.85; }
   .btn.ghost:hover{ background:var(--paper); color:var(--ink); }
   .btn[data-soon]{ opacity:.5; cursor:default; }
   .btn[data-soon]::after{ content:"soon"; font-size:.6rem; letter-spacing:.14em; opacity:.7; }
@@ -223,7 +213,7 @@
   .shots{ margin-top:70px; }
   .shots-main{
     position:relative; aspect-ratio:16/9; width:100%;
-    border:1px solid rgba(216,162,74,0.28); background:#0d0a12;
+    border:1px solid var(--line); background:#0d0a12;
     overflow:hidden;
   }
   .shots-main img{ width:100%; height:100%; object-fit:contain; display:block; }
@@ -231,75 +221,75 @@
     position:absolute; top:50%; transform:translateY(-50%);
     width:48px; height:72px; cursor:pointer;
     background:rgba(20,16,26,0.72); color:var(--paper);
-    border:1px solid rgba(243,233,220,0.25);
+    border:1px solid var(--line);
     font-size:1.7rem; line-height:1; font-family:var(--f-body);
     transition:.2s; z-index:3;
   }
-  .shot-nav:hover{ border-color:var(--gold); color:var(--gold); }
+  .shot-nav:hover{ border-color:var(--paper); background:rgba(20,16,26,0.9); }
   .shot-nav.prev{ left:0; border-left:none; }
   .shot-nav.next{ right:0; border-right:none; }
   .shot-count{
     position:absolute; bottom:10px; right:12px; z-index:3;
     font-size:.72rem; letter-spacing:.16em; color:var(--mist);
     background:rgba(20,16,26,0.72); padding:4px 12px;
-    border:1px solid rgba(243,233,220,0.12);
+    border:1px solid var(--line-soft);
   }
   .shot-strip{
     display:flex; gap:10px; overflow-x:auto; margin-top:14px; padding-bottom:10px;
-    scrollbar-width:thin; scrollbar-color:rgba(216,162,74,.5) transparent;
+    scrollbar-width:thin; scrollbar-color:var(--line) transparent;
   }
   .shot-strip img{
     width:108px; aspect-ratio:16/9; object-fit:cover; flex:0 0 auto;
     opacity:.42; cursor:pointer; border:1px solid transparent; transition:.2s;
   }
   .shot-strip img:hover{ opacity:.85; }
-  .shot-strip img.active{ opacity:1; border-color:var(--gold); }
+  .shot-strip img.active{ opacity:1; border-color:var(--paper); }
 
   /* ---------- CREATOR ---------- */
-  .creator{ border-top:1px solid rgba(216,162,74,0.18); }
+  .creator{ border-top:1px solid var(--line-soft); }
   .creator-grid{ display:grid; grid-template-columns:.7fr 1.3fr; gap:50px; align-items:baseline; }
   @media(max-width:800px){ .creator-grid{ grid-template-columns:1fr; gap:24px; } }
   .creator h3{
     font-family:var(--f-display); font-weight:400; font-style:italic;
-    font-size:clamp(2rem,4.5vw,3rem); line-height:1; color:var(--pastel);
+    font-size:clamp(2rem,4.5vw,3rem); line-height:1; color:var(--paper);
   }
-  .creator .role{ font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--gold); margin-top:14px; }
+  .creator .role{ font-size:.72rem; letter-spacing:.24em; text-transform:uppercase; color:var(--mist); margin-top:14px; }
   .creator-copy p{ color:var(--mist); margin-bottom:18px; font-size:1.05rem; line-height:1.7; }
   .creator-copy p em{ color:var(--paper); font-style:italic; }
 
   /* ---------- PHILOSOPHY ---------- */
-  .philosophy{ border-top:1px solid rgba(216,162,74,0.18); }
+  .philosophy{ border-top:1px solid var(--line-soft); }
   .philosophy h4{
     font-family:var(--f-display); font-weight:900;
     font-size:clamp(2.2rem,6vw,4rem); line-height:1; letter-spacing:-.01em;
     margin-bottom:44px;
   }
-  .philosophy h4 em{ font-style:italic; font-weight:400; color:var(--wound-lit); }
+  .philosophy h4 em{ font-style:italic; font-weight:400; color:var(--paper); }
   .philosophy .kr p{
     color:var(--mist); max-width:62ch; margin-bottom:22px;
     font-size:1.04rem; line-height:1.9; word-break:keep-all;
   }
   .philosophy .kr p.pull{
     font-family:var(--f-display); font-size:clamp(1.25rem,2.6vw,1.8rem);
-    color:var(--pastel); line-height:1.55; max-width:34ch;
-    border-left:2px solid var(--wound); padding-left:24px; margin:38px 0;
+    color:var(--paper); line-height:1.55; max-width:34ch;
+    border-left:2px solid var(--line); padding-left:24px; margin:38px 0;
   }
   .philosophy .kr p strong{ color:var(--paper); font-weight:500; }
 
   /* ---------- CONNECT ---------- */
-  .connect{ text-align:center; border-top:1px solid rgba(216,162,74,0.18); padding-bottom:90px; }
+  .connect{ text-align:center; border-top:1px solid var(--line-soft); padding-bottom:90px; }
   .connect h4{
     font-family:var(--f-display); font-weight:900;
     font-size:clamp(2rem,6vw,3.6rem); margin-bottom:18px; letter-spacing:-.01em;
   }
-  .connect h4 em{ font-style:italic; font-weight:400; color:var(--wound-lit); }
+  .connect h4 em{ font-style:italic; font-weight:400; color:var(--paper); }
   .connect .sub{ color:var(--mist); max-width:40ch; margin:0 auto 44px; }
   .links{ display:flex; flex-wrap:wrap; gap:14px; justify-content:center; }
   .links a{
     font-size:.82rem; letter-spacing:.1em; text-transform:uppercase;
-    padding:13px 26px; border:1px solid rgba(243,233,220,0.28); transition:.22s;
+    padding:13px 26px; border:1px solid var(--line); transition:.22s;
   }
-  .links a:hover{ border-color:var(--gold); color:var(--gold); }
+  .links a:hover{ border-color:var(--paper); }
   .links a[data-soon]{ opacity:.4; }
   .links a[data-soon]::after{ content:" · soon"; font-size:.62rem; opacity:.7; }
 
@@ -309,10 +299,9 @@
     font-size:.76rem; letter-spacing:.06em; color:rgba(243,233,220,0.4);
     border-top:1px solid rgba(243,233,220,0.08);
   }
-  footer .sig{ font-family:var(--f-display); font-style:italic; color:var(--pastel); }
+  footer .sig{ font-family:var(--f-display); font-style:italic; color:var(--paper); opacity:.7; }
 
   /* ---------- animations ---------- */
-  @keyframes reveal{ to{ transform:translateY(0); } }
   @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
   @keyframes fade{ to{ opacity:.8; } }
 
@@ -321,8 +310,7 @@
 
   @media(prefers-reduced-motion:reduce){
     *{ animation:none !important; transition:none !important; }
-    h1.studio .l1 span,h1.studio .l2 span{ transform:none; }
-    .eyebrow,.hero-line,.scrollcue{ opacity:1; transform:none; }
+    .eyebrow,.hero-logo,.hero-line,.scrollcue{ opacity:1; transform:none; }
     .reveal-on-scroll{ opacity:1; transform:none; }
   }
 </style>
@@ -331,62 +319,72 @@
 <div class="seam"></div>
 
 <nav>
-  <!-- BI mark. NationwideSoft_BI_SQUARE.jpg must sit in the same folder as index.html -->
   <div class="mark"><a href="#top" aria-label="Nationwide Software — home"><img src="NationwideSoft_BI_SQUARE.jpg" alt="Nationwide Software"></a></div>
-  <div class="nav-links">
-    <a href="#studio">Studio</a>
-    <a href="#lucy">Lucy's Nightmare</a>
-    <a href="#creator">Creator</a>
-    <a href="#philosophy">Philosophy</a>
-    <a href="#connect">Connect</a>
+  <div class="nav-right">
+    <div class="nav-links">
+      <a href="#studio" data-i18n="nav.studio">Studio</a>
+      <a href="#lucy">Lucy's Nightmare</a>
+      <a href="#creator" data-i18n="nav.creator">Creator</a>
+      <a href="#philosophy" data-i18n="nav.philosophy">Philosophy</a>
+      <a href="#connect" data-i18n="nav.connect">Connect</a>
+    </div>
+    <select id="langSel" aria-label="Language">
+      <option value="en">English</option>
+      <option value="ko">한국어</option>
+      <option value="ja">日本語</option>
+      <option value="zh-CN">简体中文</option>
+      <option value="zh-TW">繁體中文</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <option value="ru">Русский</option>
+      <option value="es">Español</option>
+      <option value="pt">Português</option>
+    </select>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="eyebrow">Nationwide Software — Independent Studio</div>
-    <h1 class="studio">
-      <span class="l1"><span>Fairy tales</span></span>
-      <span class="l2"><span>that <em>bleed.</em></span></span>
-    </h1>
-    <p class="hero-line">A solo studio that treats games as authored works. We borrow the grammar of genre — only to carve <strong>human stories</strong> inside it.</p>
+    <div class="eyebrow" data-i18n="hero.eyebrow">Nationwide Software — Independent Studio</div>
+    <img class="hero-logo" src="NationwideSoft_BI_SQUARE.jpg" alt="Nationwide Software">
+    <p class="hero-line" data-i18n="hero.line">A solo studio that treats games as authored works. We borrow the grammar of genre — only to carve <strong>human stories</strong> inside it.</p>
   </div>
-  <div class="scrollcue">Scroll</div>
+  <div class="scrollcue" data-i18n="scroll">Scroll</div>
 </header>
 
 <section class="studio" id="studio">
   <div class="wrap manifesto">
-    <div class="sec-eyebrow reveal-on-scroll">What we make</div>
-    <p class="reveal-on-scroll">Beneath a charming surface, we hide the <em>darkest truths of people.</em></p>
-    <p class="after reveal-on-scroll">NationwideSoftware is the studio of a single author. Every line of code, every drawn frame, every turn of the story answers to one vision. We aren't interested in games that merely play well — we build games that mean something once the credits roll.</p>
+    <div class="sec-eyebrow reveal-on-scroll" data-i18n="studio.eyebrow">What we make</div>
+    <p class="reveal-on-scroll" data-i18n="studio.big">Beneath a charming surface, we hide the <em>darkest truths of people.</em></p>
+    <p class="after reveal-on-scroll" data-i18n="studio.after">NationwideSoftware is the studio of a single author. Every line of code, every drawn frame, every turn of the story answers to one vision. We aren't interested in games that merely play well — we build games that mean something once the credits roll.</p>
   </div>
 </section>
 
 <section class="game" id="lucy">
   <div class="wrap">
-    <div class="sec-eyebrow game-tag reveal-on-scroll">Now in development — Second title</div>
+    <div class="sec-eyebrow reveal-on-scroll" data-i18n="game.tag">Now in development — Second title</div>
     <h2 class="reveal-on-scroll">Lucy's <em>Nightmare</em></h2>
-    <div class="subtitle reveal-on-scroll">A twisted fairy tale. A psychological horror platformer.</div>
+    <div class="subtitle reveal-on-scroll" data-i18n="game.subtitle">A twisted fairy tale. A psychological horror platformer.</div>
 
     <div class="game-grid">
       <div class="game-copy reveal-on-scroll">
-        <p><span class="hl">A fairy tale with two faces.</span> Lucy has forgotten who she is. Trapped in a nightmare that refuses to end, she runs, leaps, and fights through whimsical stages crowded with colorful monsters — charming on the surface, wrong underneath.</p>
-        <p>Scattered diamonds hold her stolen memories. Each one you recover plays back a fragment of the real world — and those fragments wear a very different face. One layer at a time, a meticulously plotted story peels the fairy tale back, until <span class="hl">the truth beneath proves crueler than any nightmare.</span></p>
-        <p>The free demo — the prologue through chapter one — is out now on Steam.</p>
+        <p data-i18n="game.p1"><span class="hl">A fairy tale with two faces.</span> Lucy has forgotten who she is. Trapped in a nightmare that refuses to end, she runs, leaps, and fights through whimsical stages crowded with colorful monsters — charming on the surface, wrong underneath.</p>
+        <p data-i18n="game.p2">Scattered diamonds hold her stolen memories. Each one you recover plays back a fragment of the real world — and those fragments wear a very different face. One layer at a time, a meticulously plotted story peels the fairy tale back, until <span class="hl">the truth beneath proves crueler than any nightmare.</span></p>
+        <p data-i18n="game.p3">The free demo — the prologue through chapter one — is out now on Steam.</p>
 
         <div class="facts">
-          <div class="fact"><span class="k">Genre</span><span class="v">Psychological Horror · 2D Platformer</span></div>
-          <div class="fact"><span class="k">Demo</span><span class="v">Free · Available now</span></div>
-          <div class="fact"><span class="k">Languages</span><span class="v">10 fully supported</span></div>
-          <div class="fact"><span class="k">Platforms</span><span class="v">Windows · macOS</span></div>
-          <div class="fact"><span class="k">Full release</span><span class="v">2027 – 2028</span></div>
+          <div class="fact"><span class="k" data-i18n="fact.genre.k">Genre</span><span class="v" data-i18n="fact.genre.v">Psychological Horror · 2D Platformer</span></div>
+          <div class="fact"><span class="k" data-i18n="fact.demo.k">Demo</span><span class="v" data-i18n="fact.demo.v">Free · Available now</span></div>
+          <div class="fact"><span class="k" data-i18n="fact.lang.k">Languages</span><span class="v" data-i18n="fact.lang.v">10 fully supported</span></div>
+          <div class="fact"><span class="k" data-i18n="fact.plat.k">Platforms</span><span class="v">Windows · macOS</span></div>
+          <div class="fact"><span class="k" data-i18n="fact.rel.k">Full release</span><span class="v">2027 – 2028</span></div>
         </div>
 
         <div class="cta-row">
           <!-- Replace href with the Steam demo / store URLs when the page goes live, and remove data-soon -->
-          <a class="btn primary" data-soon href="#" aria-disabled="true">Play the Free Demo&nbsp;</a>
-          <a class="btn ghost" data-soon href="#" aria-disabled="true">Wishlist on Steam&nbsp;</a>
-          <a class="btn ghost" href="https://www.youtube.com/@nationwidesoftware" target="_blank" rel="noopener">Watch on YouTube</a>
+          <a class="btn primary" data-soon href="#" aria-disabled="true"><span data-i18n="btn.demo">Play the Free Demo</span>&nbsp;</a>
+          <a class="btn ghost" data-soon href="#" aria-disabled="true"><span data-i18n="btn.wish">Wishlist on Steam</span>&nbsp;</a>
+          <a class="btn ghost" href="https://www.youtube.com/@nationwidesoftware" target="_blank" rel="noopener"><span data-i18n="btn.yt">Watch on YouTube</span></a>
         </div>
       </div>
 
@@ -394,16 +392,14 @@
         <!-- TRAILER: replace this whole block with a YouTube <iframe> once the trailer is public -->
         <div class="trailer">
           <div class="play" aria-hidden="true"></div>
-          <small>Trailer coming soon</small>
+          <small data-i18n="trailer.soon">Trailer coming soon</small>
         </div>
       </div>
     </div>
 
-    <!-- ---------- SCREENSHOTS ----------
-         Expects 40 images at screenshots/ss_01.jpg … screenshots/ss_40.jpg
-         (see the PowerShell rename script provided alongside this file) -->
+    <!-- Screenshots: expects screenshots/ss_01.jpg … ss_40.jpg -->
     <div class="shots reveal-on-scroll">
-      <div class="sec-eyebrow">Screenshots</div>
+      <div class="sec-eyebrow" data-i18n="shots.eyebrow">Screenshots</div>
       <div class="shots-main">
         <img id="shotMain" src="screenshots/ss_01.jpg" alt="Lucy's Nightmare screenshot 1 of 40">
         <button class="shot-nav prev" id="shotPrev" aria-label="Previous screenshot">&#8249;</button>
@@ -417,15 +413,15 @@
 
 <section class="creator" id="creator">
   <div class="wrap">
-    <div class="sec-eyebrow reveal-on-scroll">The author</div>
+    <div class="sec-eyebrow reveal-on-scroll" data-i18n="creator.eyebrow">The author</div>
     <div class="creator-grid">
       <div class="reveal-on-scroll">
         <h3>Jeon<br>Yeon&nbsp;Jun</h3>
-        <div class="role">Director · Writer · Artist · Programmer</div>
+        <div class="role" data-i18n="creator.role">Director · Writer · Artist · Programmer</div>
       </div>
       <div class="creator-copy reveal-on-scroll">
-        <p>Jeon Yeon Jun writes, draws, and builds every part of the worlds under the NationwideSoftware name. The characters you meet are drawn <em>pixel by pixel, by hand.</em></p>
-        <p>The work is unafraid of hard subjects — guilt, obsession, the quiet cruelty people inflict without meaning to. Genre is the doorway; the story inside is the point.</p>
+        <p data-i18n="creator.p1">Jeon Yeon Jun writes, draws, and builds every part of the worlds under the NationwideSoftware name. The characters you meet are drawn <em>pixel by pixel, by hand.</em></p>
+        <p data-i18n="creator.p2">The work is unafraid of hard subjects — guilt, obsession, the quiet cruelty people inflict without meaning to. Genre is the doorway; the story inside is the point.</p>
       </div>
     </div>
   </div>
@@ -433,29 +429,29 @@
 
 <section class="philosophy" id="philosophy">
   <div class="wrap">
-    <div class="sec-eyebrow reveal-on-scroll">The studio's creed</div>
+    <div class="sec-eyebrow reveal-on-scroll" data-i18n="phil.eyebrow">The studio's creed</div>
     <h4 class="reveal-on-scroll">Let art <em>save us.</em></h4>
     <div class="kr">
-      <p class="reveal-on-scroll">훌륭한 이야기는 사람을 구한다. 나는 그것을 경험으로 안다. 세상이 밉고 견디기 어려웠던 시절, 나를 붙잡아 준 것은 영화와 드라마, 게임과 만화 속의 매력적인 이야기들이었다. 이야기에 깊이 빠져 있는 동안만큼은, 어떤 근심도 나를 찾아내지 못했다.</p>
-      <p class="pull reveal-on-scroll">나 자신을 사랑하기 어려웠던 시절에도, 내가 만든 이야기는 사랑할 수 있었다.</p>
-      <p class="reveal-on-scroll">훌륭한 창작자들이 그렇게 내 삶을 구했듯, 나도 울림이 있는 이야기로 누군가의 시간을 구하고 싶다. 게임은 이야기꾼에게 주어진 가장 강력한 도구다. 소설가는 독자를 인물에 공감시키기 위해 수백 페이지를 쌓아 올리지만, 게임에서 플레이어는 캐릭터를 직접 움직이는 순간 이미 그 인물이 된다. 몰입이 기본값인 매체 — 그런데도 이야기 자체로 승부하는 게임은 아직 드물다.</p>
-      <p class="reveal-on-scroll">내가 추구하는 것은 <strong>장르에 충실하고, 치밀하게 짜였으며, 엔딩에 도달했을 때 깊은 울림과 생각할 거리를 남기는 이야기</strong>다. 거대 자본이 만드는 보편적으로 훌륭한 이야기는 이미 충분히 많다. 나는 그 이야기들이 다루지 않는 것 — 인간의 어두운 내면 — 을 정면으로 다룬다. 자기파괴와 중독을 다룬 『루시 나이트메어』, 그리고 인간의 뒤틀린 욕망과 구원을 다룰 차기작 『더 러브 돌』이 그 시작이다.</p>
-      <p class="reveal-on-scroll">내 이야기를 들어주는 모든 이에게, 진심으로 감사드린다.</p>
+      <p class="reveal-on-scroll" data-i18n="phil.p1">A great story can save a person. I know this from experience. In the years when the world felt hateful and hard to bear, what held me together were the stories — in films, in shows, in games and comics. As long as I was deep inside a story, no worry could find me.</p>
+      <p class="pull reveal-on-scroll" data-i18n="phil.pull">Even in the days when I found it hard to love myself, I could love the stories I made.</p>
+      <p class="reveal-on-scroll" data-i18n="phil.p2">Just as great storytellers saved my life, I want to save someone's hours with a story that resonates. Games are the most powerful tool a storyteller has ever been given: a novelist stacks hundreds of pages to make you feel for a character, but the moment a player moves one, they already are that character. Immersion is the default — and yet games that stake everything on the story itself are still rare.</p>
+      <p class="reveal-on-scroll" data-i18n="phil.p3">What I pursue is a story faithful to its genre, meticulously plotted — one that leaves a deep resonance and something to think about when the ending arrives. The world already has plenty of universally great stories built on enormous budgets. I face what they leave untouched: the dark interior of human beings. <strong>Lucy's Nightmare</strong>, a tale of self-destruction and addiction, and the next work, <strong>The Love Doll</strong>, on twisted desire and salvation, are only the beginning.</p>
+      <p class="reveal-on-scroll" data-i18n="phil.p4">To everyone who listens to my stories — thank you, truly.</p>
     </div>
   </div>
 </section>
 
 <section class="connect" id="connect">
   <div class="wrap">
-    <div class="sec-eyebrow reveal-on-scroll" style="justify-content:center;">Follow the work</div>
-    <h4 class="reveal-on-scroll">The tale has <em>already begun.</em></h4>
-    <p class="sub reveal-on-scroll">Devlogs, trailers, and the road to release. If you love a well-told story, come along.</p>
+    <div class="sec-eyebrow reveal-on-scroll" style="justify-content:center;" data-i18n="connect.eyebrow">Follow the work</div>
+    <h4 class="reveal-on-scroll" data-i18n="connect.h">The tale has <em>already begun.</em></h4>
+    <p class="sub reveal-on-scroll" data-i18n="connect.sub">Devlogs, trailers, and the road to release. If you love a well-told story, come along.</p>
     <div class="links reveal-on-scroll">
       <a href="https://www.youtube.com/@nationwidesoftware" target="_blank" rel="noopener">YouTube</a>
       <!-- Fill these in once the accounts exist -->
       <a href="#" data-soon aria-disabled="true">X / Twitter</a>
       <a href="#" data-soon aria-disabled="true">Steam</a>
-      <a href="mailto:contact@nationwidesoft.com">Contact</a>
+      <a href="mailto:nationwidesoft.com@nationwidesoft.com" data-i18n="connect.contact">Contact</a>
     </div>
   </div>
 </section>
@@ -482,16 +478,12 @@
   /* ---------- screenshot gallery ---------- */
   const SHOT_COUNT = 40;
   const shotSrc = n => `screenshots/ss_${String(n).padStart(2,'0')}.jpg`;
-
-  const mainImg  = document.getElementById('shotMain');
-  const idxEl    = document.getElementById('shotIdx');
-  const totalEl  = document.getElementById('shotTotal');
-  const strip    = document.getElementById('shotStrip');
+  const mainImg = document.getElementById('shotMain');
+  const idxEl = document.getElementById('shotIdx');
+  const strip = document.getElementById('shotStrip');
   let current = 1;
+  document.getElementById('shotTotal').textContent = SHOT_COUNT;
 
-  totalEl.textContent = SHOT_COUNT;
-
-  // build thumbnail strip
   for(let i=1; i<=SHOT_COUNT; i++){
     const t = document.createElement('img');
     t.src = shotSrc(i);
@@ -502,40 +494,402 @@
     t.addEventListener('click', ()=>showShot(i));
     strip.appendChild(t);
   }
-
-  function preload(n){
-    if(n<1 || n>SHOT_COUNT) return;
-    const img = new Image();
-    img.src = shotSrc(n);
-  }
-
+  function preload(n){ if(n>=1 && n<=SHOT_COUNT){ const im=new Image(); im.src=shotSrc(n); } }
   function showShot(n){
     current = ((n - 1 + SHOT_COUNT) % SHOT_COUNT) + 1;
     mainImg.src = shotSrc(current);
     mainImg.alt = `Lucy's Nightmare screenshot ${current} of ${SHOT_COUNT}`;
     idxEl.textContent = current;
-    strip.querySelectorAll('img').forEach(t=>{
-      t.classList.toggle('active', Number(t.dataset.n)===current);
-    });
+    strip.querySelectorAll('img').forEach(t=>t.classList.toggle('active', Number(t.dataset.n)===current));
     const active = strip.querySelector('img.active');
     if(active) active.scrollIntoView({behavior:'smooth', inline:'center', block:'nearest'});
     preload(current+1); preload(current-1);
   }
-
   document.getElementById('shotPrev').addEventListener('click', ()=>showShot(current-1));
   document.getElementById('shotNext').addEventListener('click', ()=>showShot(current+1));
-
-  // arrow keys work when the gallery is on screen
   let galleryVisible = false;
   new IntersectionObserver(es=>{ es.forEach(e=>galleryVisible = e.isIntersecting); },{threshold:.2})
     .observe(document.querySelector('.shots'));
   window.addEventListener('keydown', e=>{
     if(!galleryVisible) return;
-    if(e.key==='ArrowLeft')  showShot(current-1);
+    if(e.key==='ArrowLeft') showShot(current-1);
     if(e.key==='ArrowRight') showShot(current+1);
   });
-
   preload(2);
+
+  /* ---------- i18n ---------- */
+  const I18N = {
+  en:{
+    "nav.studio":"Studio","nav.creator":"Creator","nav.philosophy":"Philosophy","nav.connect":"Connect",
+    "hero.eyebrow":"Nationwide Software — Independent Studio",
+    "hero.line":"A solo studio that treats games as authored works. We borrow the grammar of genre — only to carve <strong>human stories</strong> inside it.",
+    "scroll":"Scroll",
+    "studio.eyebrow":"What we make",
+    "studio.big":"Beneath a charming surface, we hide the <em>darkest truths of people.</em>",
+    "studio.after":"NationwideSoftware is the studio of a single author. Every line of code, every drawn frame, every turn of the story answers to one vision. We aren't interested in games that merely play well — we build games that mean something once the credits roll.",
+    "game.tag":"Now in development — Second title",
+    "game.subtitle":"A twisted fairy tale. A psychological horror platformer.",
+    "game.p1":"<span class=\"hl\">A fairy tale with two faces.</span> Lucy has forgotten who she is. Trapped in a nightmare that refuses to end, she runs, leaps, and fights through whimsical stages crowded with colorful monsters — charming on the surface, wrong underneath.",
+    "game.p2":"Scattered diamonds hold her stolen memories. Each one you recover plays back a fragment of the real world — and those fragments wear a very different face. One layer at a time, a meticulously plotted story peels the fairy tale back, until <span class=\"hl\">the truth beneath proves crueler than any nightmare.</span>",
+    "game.p3":"The free demo — the prologue through chapter one — is out now on Steam.",
+    "fact.genre.k":"Genre","fact.genre.v":"Psychological Horror · 2D Platformer",
+    "fact.demo.k":"Demo","fact.demo.v":"Free · Available now",
+    "fact.lang.k":"Languages","fact.lang.v":"10 fully supported",
+    "fact.plat.k":"Platforms","fact.rel.k":"Full release",
+    "btn.demo":"Play the Free Demo","btn.wish":"Wishlist on Steam","btn.yt":"Watch on YouTube",
+    "trailer.soon":"Trailer coming soon",
+    "shots.eyebrow":"Screenshots",
+    "creator.eyebrow":"The author","creator.role":"Director · Writer · Artist · Programmer",
+    "creator.p1":"Jeon Yeon Jun writes, draws, and builds every part of the worlds under the NationwideSoftware name. The characters you meet are drawn <em>pixel by pixel, by hand.</em>",
+    "creator.p2":"The work is unafraid of hard subjects — guilt, obsession, the quiet cruelty people inflict without meaning to. Genre is the doorway; the story inside is the point.",
+    "phil.eyebrow":"The studio's creed",
+    "phil.p1":"A great story can save a person. I know this from experience. In the years when the world felt hateful and hard to bear, what held me together were the stories — in films, in shows, in games and comics. As long as I was deep inside a story, no worry could find me.",
+    "phil.pull":"Even in the days when I found it hard to love myself, I could love the stories I made.",
+    "phil.p2":"Just as great storytellers saved my life, I want to save someone's hours with a story that resonates. Games are the most powerful tool a storyteller has ever been given: a novelist stacks hundreds of pages to make you feel for a character, but the moment a player moves one, they already are that character. Immersion is the default — and yet games that stake everything on the story itself are still rare.",
+    "phil.p3":"What I pursue is a story faithful to its genre, meticulously plotted — one that leaves a deep resonance and something to think about when the ending arrives. The world already has plenty of universally great stories built on enormous budgets. I face what they leave untouched: the dark interior of human beings. <strong>Lucy's Nightmare</strong>, a tale of self-destruction and addiction, and the next work, <strong>The Love Doll</strong>, on twisted desire and salvation, are only the beginning.",
+    "phil.p4":"To everyone who listens to my stories — thank you, truly.",
+    "connect.eyebrow":"Follow the work",
+    "connect.h":"The tale has <em>already begun.</em>",
+    "connect.sub":"Devlogs, trailers, and the road to release. If you love a well-told story, come along.",
+    "connect.contact":"Contact"
+  },
+  ko:{
+    "nav.studio":"스튜디오","nav.creator":"작가","nav.philosophy":"철학","nav.connect":"연결",
+    "hero.eyebrow":"Nationwide Software — 독립 스튜디오",
+    "hero.line":"게임을 작가의 작품으로 대하는 1인 스튜디오. 우리는 장르의 문법을 빌려, 그 안에 <strong>인간의 이야기</strong>를 새깁니다.",
+    "scroll":"스크롤",
+    "studio.eyebrow":"우리가 만드는 것",
+    "studio.big":"사랑스러운 표면 아래, <em>인간의 가장 어두운 진실</em>을 숨깁니다.",
+    "studio.after":"NationwideSoftware는 한 사람의 작가가 이끄는 스튜디오입니다. 모든 코드 한 줄, 모든 그림 한 장, 이야기의 모든 전환이 하나의 비전을 따릅니다. 우리는 그저 잘 굴러가는 게임이 아니라, 크레딧이 올라간 뒤에도 의미가 남는 게임을 만듭니다.",
+    "game.tag":"개발 중 — 두 번째 작품",
+    "game.subtitle":"뒤틀린 동화. 심리 공포 플랫포머.",
+    "game.p1":"<span class=\"hl\">두 개의 얼굴을 가진 동화.</span> 루시는 자신이 누구인지 잊었습니다. 끝나지 않는 악몽에 갇힌 채, 알록달록한 몬스터들이 가득한 아기자기한 스테이지를 달리고, 뛰어넘고, 싸워 나갑니다 — 표면은 사랑스럽지만, 그 아래는 어딘가 잘못되어 있습니다.",
+    "game.p2":"흩어진 다이아몬드에는 빼앗긴 기억이 담겨 있습니다. 하나를 되찾을 때마다 현실의 조각이 재생됩니다 — 그리고 그 조각들은 전혀 다른 얼굴을 하고 있습니다. 치밀하게 설계된 이야기가 동화를 한 겹씩 벗겨내고, 마침내 <span class=\"hl\">그 아래의 진실은 어떤 악몽보다도 잔혹합니다.</span>",
+    "game.p3":"프롤로그부터 챕터 1까지 담은 무료 데모가 지금 스팀에 공개되어 있습니다.",
+    "fact.genre.k":"장르","fact.genre.v":"심리 공포 · 2D 플랫포머",
+    "fact.demo.k":"데모","fact.demo.v":"무료 · 공개 중",
+    "fact.lang.k":"지원 언어","fact.lang.v":"10개 언어 완전 지원",
+    "fact.plat.k":"플랫폼","fact.rel.k":"정식 출시",
+    "btn.demo":"무료 데모 플레이","btn.wish":"스팀 위시리스트 추가","btn.yt":"유튜브에서 보기",
+    "trailer.soon":"트레일러 공개 예정",
+    "shots.eyebrow":"스크린샷",
+    "creator.eyebrow":"작가","creator.role":"디렉터 · 작가 · 아티스트 · 프로그래머",
+    "creator.p1":"전연준은 NationwideSoftware라는 이름 아래 세계의 모든 부분을 직접 쓰고, 그리고, 만듭니다. 여러분이 만나는 캐릭터들은 <em>한 픽셀씩, 손으로</em> 그려졌습니다.",
+    "creator.p2":"이 작업은 어려운 주제를 두려워하지 않습니다 — 죄책감, 집착, 사람들이 악의 없이 가하는 조용한 잔인함. 장르는 입구일 뿐, 그 안의 이야기가 본질입니다.",
+    "phil.eyebrow":"스튜디오의 신조",
+    "phil.p1":"훌륭한 이야기는 사람을 구한다. 나는 그것을 경험으로 안다. 세상이 밉고 견디기 어려웠던 시절, 나를 붙잡아 준 것은 영화와 드라마, 게임과 만화 속의 매력적인 이야기들이었다. 이야기에 깊이 빠져 있는 동안만큼은, 어떤 근심도 나를 찾아내지 못했다.",
+    "phil.pull":"나 자신을 사랑하기 어려웠던 시절에도, 내가 만든 이야기는 사랑할 수 있었다.",
+    "phil.p2":"훌륭한 창작자들이 그렇게 내 삶을 구했듯, 나도 울림이 있는 이야기로 누군가의 시간을 구하고 싶다. 게임은 이야기꾼에게 주어진 가장 강력한 도구다. 소설가는 독자를 인물에 공감시키기 위해 수백 페이지를 쌓아 올리지만, 게임에서 플레이어는 캐릭터를 직접 움직이는 순간 이미 그 인물이 된다. 몰입이 기본값인 매체 — 그런데도 이야기 자체로 승부하는 게임은 아직 드물다.",
+    "phil.p3":"내가 추구하는 것은 <strong>장르에 충실하고, 치밀하게 짜였으며, 엔딩에 도달했을 때 깊은 울림과 생각할 거리를 남기는 이야기</strong>다. 거대 자본이 만드는 보편적으로 훌륭한 이야기는 이미 충분히 많다. 나는 그 이야기들이 다루지 않는 것 — 인간의 어두운 내면 — 을 정면으로 다룬다. 자기파괴와 중독을 다룬 『루시 나이트메어』, 그리고 인간의 뒤틀린 욕망과 구원을 다룰 차기작 『더 러브 돌』이 그 시작이다.",
+    "phil.p4":"내 이야기를 들어주는 모든 이에게, 진심으로 감사드린다.",
+    "connect.eyebrow":"작업을 따라오세요",
+    "connect.h":"동화는 <em>이미 시작되었습니다.</em>",
+    "connect.sub":"데브로그, 트레일러, 그리고 출시까지의 여정. 잘 짜인 이야기를 사랑한다면, 함께 오세요.",
+    "connect.contact":"문의"
+  },
+  ja:{
+    "nav.studio":"スタジオ","nav.creator":"作家","nav.philosophy":"理念","nav.connect":"つながる",
+    "hero.eyebrow":"Nationwide Software — インディペンデントスタジオ",
+    "hero.line":"ゲームを作家の作品として扱うソロスタジオ。ジャンルの文法を借りて、その内側に<strong>人間の物語</strong>を刻みます。",
+    "scroll":"スクロール",
+    "studio.eyebrow":"私たちがつくるもの",
+    "studio.big":"愛らしい表面の下に、<em>人間の最も暗い真実</em>を隠します。",
+    "studio.after":"NationwideSoftwareは、一人の作家によるスタジオです。すべてのコード、すべての描かれたフレーム、物語のすべての転換がひとつのビジョンに従います。ただ良く遊べるゲームではなく、クレジットが流れた後に意味が残るゲームをつくります。",
+    "game.tag":"開発中 — 二作目",
+    "game.subtitle":"歪んだおとぎ話。心理ホラー・プラットフォーマー。",
+    "game.p1":"<span class=\"hl\">二つの顔を持つおとぎ話。</span> ルーシーは自分が誰なのかを忘れてしまった。終わらない悪夢に囚われたまま、色とりどりのモンスターがひしめく愛らしいステージを走り、跳び、戦い抜く——表面は可愛らしく、その下はどこか間違っている。",
+    "game.p2":"散らばったダイヤには奪われた記憶が宿る。ひとつ取り戻すたびに現実の断片が再生される——その断片はまるで違う顔をしている。緻密に組まれた物語がおとぎ話を一枚ずつ剥がしてゆき、やがて<span class=\"hl\">その下の真実は、どんな悪夢よりも残酷だ。</span>",
+    "game.p3":"プロローグから第1章までを収めた無料デモが、Steamで公開中です。",
+    "fact.genre.k":"ジャンル","fact.genre.v":"心理ホラー · 2Dプラットフォーマー",
+    "fact.demo.k":"デモ","fact.demo.v":"無料 · 配信中",
+    "fact.lang.k":"対応言語","fact.lang.v":"10言語に完全対応",
+    "fact.plat.k":"プラットフォーム","fact.rel.k":"正式リリース",
+    "btn.demo":"無料デモをプレイ","btn.wish":"Steamでウィッシュリスト","btn.yt":"YouTubeで見る",
+    "trailer.soon":"トレーラー近日公開",
+    "shots.eyebrow":"スクリーンショット",
+    "creator.eyebrow":"作家","creator.role":"ディレクター · ライター · アーティスト · プログラマー",
+    "creator.p1":"Jeon Yeon Junは、NationwideSoftwareの名の下にある世界のすべてを自ら書き、描き、組み上げます。出会うキャラクターたちは<em>1ピクセルずつ、手で</em>描かれています。",
+    "creator.p2":"この仕事は難しい主題を恐れません——罪悪感、執着、悪意なく人が与える静かな残酷さ。ジャンルは入口にすぎず、その中の物語こそが本質です。",
+    "phil.eyebrow":"スタジオの信条",
+    "phil.p1":"優れた物語は人を救う。私はそれを経験として知っている。世界が憎く、耐えがたかった時期、私を支えてくれたのは映画やドラマ、ゲームや漫画の中の魅力的な物語だった。物語に深く浸っている間だけは、どんな不安も私を見つけられなかった。",
+    "phil.pull":"自分を愛することが難しかった頃でさえ、自分の作った物語は愛することができた。",
+    "phil.p2":"優れた創作者たちが私の人生を救ってくれたように、私も響く物語で誰かの時間を救いたい。ゲームは物語の作り手に与えられた最も強力な道具だ。小説家は読者を人物に共感させるために何百ページも積み上げるが、ゲームではプレイヤーがキャラクターを動かした瞬間、すでにその人物になっている。没入が初期値の媒体——それでも、物語そのもので勝負するゲームはまだ少ない。",
+    "phil.p3":"私が追い求めるのは、<strong>ジャンルに忠実で、緻密に組み上げられ、エンディングに辿り着いたとき深い余韻と考える種を残す物語</strong>だ。巨大資本が生む普遍的に優れた物語はすでに十分にある。私はそれらが扱わないもの——人間の暗い内面——に正面から向き合う。自己破壊と依存を描く『Lucy's Nightmare』、そして人間の歪んだ欲望と救いを描く次回作『The Love Doll』は、その始まりに過ぎない。",
+    "phil.p4":"私の物語に耳を傾けてくれるすべての人へ、心から感謝を。",
+    "connect.eyebrow":"制作を追いかける",
+    "connect.h":"物語は<em>すでに始まっている。</em>",
+    "connect.sub":"開発日誌、トレーラー、そしてリリースまでの道のり。よく練られた物語が好きなら、ぜひご一緒に。",
+    "connect.contact":"お問い合わせ"
+  },
+  "zh-CN":{
+    "nav.studio":"工作室","nav.creator":"作者","nav.philosophy":"理念","nav.connect":"联系",
+    "hero.eyebrow":"Nationwide Software — 独立工作室",
+    "hero.line":"一间将游戏视为作者作品的独立工作室。我们借用类型的语法，只为在其中刻下<strong>人的故事</strong>。",
+    "scroll":"滚动",
+    "studio.eyebrow":"我们的创作",
+    "studio.big":"在可爱的表象之下，藏着<em>人性最黑暗的真相。</em>",
+    "studio.after":"NationwideSoftware 是一位作者独立运营的工作室。每一行代码、每一帧画面、故事的每一次转折，都服从于同一个愿景。我们感兴趣的不是\u201c好玩就够了\u201d的游戏，而是片尾字幕滚动之后仍有意义留下的游戏。",
+    "game.tag":"开发中 — 第二部作品",
+    "game.subtitle":"扭曲的童话。心理恐怖平台游戏。",
+    "game.p1":"<span class=\"hl\">拥有两副面孔的童话。</span> 露西忘记了自己是谁。被困在无法醒来的噩梦中，她在挤满彩色怪物的可爱关卡里奔跑、跳跃、战斗——表面迷人，底下却透着不对劲。",
+    "game.p2":"散落的钻石封存着被夺走的记忆。每找回一颗，就会播放一段现实的碎片——而那些碎片有着截然不同的面孔。缜密编织的故事将童话一层层剥开，直到<span class=\"hl\">底下的真相比任何噩梦都更残酷。</span>",
+    "game.p3":"收录序章至第一章的免费试玩版现已登陆 Steam。",
+    "fact.genre.k":"类型","fact.genre.v":"心理恐怖 · 2D平台",
+    "fact.demo.k":"试玩版","fact.demo.v":"免费 · 现已推出",
+    "fact.lang.k":"支持语言","fact.lang.v":"完整支持10种语言",
+    "fact.plat.k":"平台","fact.rel.k":"正式发售",
+    "btn.demo":"游玩免费试玩版","btn.wish":"加入 Steam 愿望单","btn.yt":"在 YouTube 观看",
+    "trailer.soon":"预告片即将公开",
+    "shots.eyebrow":"游戏截图",
+    "creator.eyebrow":"作者","creator.role":"导演 · 编剧 · 美术 · 程序",
+    "creator.p1":"Jeon Yeon Jun 亲手书写、绘制并构建 NationwideSoftware 名下世界的每一个部分。你遇到的角色，都是<em>逐像素、亲手</em>绘制的。",
+    "creator.p2":"这些作品不惧怕沉重的主题——罪疚、执念、人们无意间施加的安静的残忍。类型只是入口，里面的故事才是本体。",
+    "phil.eyebrow":"工作室的信条",
+    "phil.p1":"出色的故事能拯救一个人。我对此深有体会。在那些憎恨世界、难以支撑的日子里，是电影、剧集、游戏与漫画中的动人故事支撑着我。只要深深沉浸在故事里，任何忧虑都找不到我。",
+    "phil.pull":"即使在难以爱自己的日子里，我也能爱我所创造的故事。",
+    "phil.p2":"正如伟大的创作者曾拯救了我的人生，我也想用有回响的故事去拯救某个人的时间。游戏是讲故事的人所能拥有的最强大的工具：小说家要堆叠数百页才能让读者与人物共情，而在游戏中，玩家操纵角色的那一刻，就已经成为了那个角色。沉浸是这个媒介的默认值——然而以故事本身取胜的游戏仍然稀少。",
+    "phil.p3":"我所追求的，是<strong>忠于类型、结构缜密、抵达结局时留下深刻回响与思考余地的故事</strong>。由巨额资本打造的、普遍意义上出色的故事已经足够多了。我要直面它们不去触碰的东西——人性幽暗的内面。讲述自我毁灭与成瘾的《Lucy's Nightmare》，以及探讨人类扭曲欲望与救赎的下一部作品《The Love Doll》，只是一个开始。",
+    "phil.p4":"向每一位倾听我的故事的人，致以真诚的感谢。",
+    "connect.eyebrow":"关注创作",
+    "connect.h":"童话<em>已经开始。</em>",
+    "connect.sub":"开发日志、预告片，以及通往发售的路。如果你热爱讲得好的故事，欢迎同行。",
+    "connect.contact":"联系"
+  },
+  "zh-TW":{
+    "nav.studio":"工作室","nav.creator":"作者","nav.philosophy":"理念","nav.connect":"聯絡",
+    "hero.eyebrow":"Nationwide Software — 獨立工作室",
+    "hero.line":"一間將遊戲視為作者作品的獨立工作室。我們借用類型的語法，只為在其中刻下<strong>人的故事</strong>。",
+    "scroll":"捲動",
+    "studio.eyebrow":"我們的創作",
+    "studio.big":"在可愛的表象之下，藏著<em>人性最黑暗的真相。</em>",
+    "studio.after":"NationwideSoftware 是一位作者獨立經營的工作室。每一行程式碼、每一幀畫面、故事的每一次轉折，都服從於同一個願景。我們感興趣的不是「好玩就夠了」的遊戲，而是片尾字幕滾動之後仍有意義留下的遊戲。",
+    "game.tag":"開發中 — 第二部作品",
+    "game.subtitle":"扭曲的童話。心理恐怖平台遊戲。",
+    "game.p1":"<span class=\"hl\">擁有兩副面孔的童話。</span> 露西忘記了自己是誰。被困在無法醒來的噩夢中，她在擠滿彩色怪物的可愛關卡裡奔跑、跳躍、戰鬥——表面迷人，底下卻透著不對勁。",
+    "game.p2":"散落的鑽石封存著被奪走的記憶。每找回一顆，就會播放一段現實的碎片——而那些碎片有著截然不同的面孔。縝密編織的故事將童話一層層剝開，直到<span class=\"hl\">底下的真相比任何噩夢都更殘酷。</span>",
+    "game.p3":"收錄序章至第一章的免費試玩版現已登陸 Steam。",
+    "fact.genre.k":"類型","fact.genre.v":"心理恐怖 · 2D平台",
+    "fact.demo.k":"試玩版","fact.demo.v":"免費 · 現已推出",
+    "fact.lang.k":"支援語言","fact.lang.v":"完整支援10種語言",
+    "fact.plat.k":"平台","fact.rel.k":"正式發售",
+    "btn.demo":"遊玩免費試玩版","btn.wish":"加入 Steam 願望清單","btn.yt":"在 YouTube 觀看",
+    "trailer.soon":"預告片即將公開",
+    "shots.eyebrow":"遊戲截圖",
+    "creator.eyebrow":"作者","creator.role":"導演 · 編劇 · 美術 · 程式",
+    "creator.p1":"Jeon Yeon Jun 親手書寫、繪製並構建 NationwideSoftware 名下世界的每一個部分。你遇到的角色，都是<em>逐像素、親手</em>繪製的。",
+    "creator.p2":"這些作品不懼怕沉重的主題——罪疚、執念、人們無意間施加的安靜的殘忍。類型只是入口，裡面的故事才是本體。",
+    "phil.eyebrow":"工作室的信條",
+    "phil.p1":"出色的故事能拯救一個人。我對此深有體會。在那些憎恨世界、難以支撐的日子裡，是電影、劇集、遊戲與漫畫中的動人故事支撐著我。只要深深沉浸在故事裡，任何憂慮都找不到我。",
+    "phil.pull":"即使在難以愛自己的日子裡，我也能愛我所創造的故事。",
+    "phil.p2":"正如偉大的創作者曾拯救了我的人生，我也想用有迴響的故事去拯救某個人的時間。遊戲是說故事的人所能擁有的最強大的工具：小說家要堆疊數百頁才能讓讀者與人物共情，而在遊戲中，玩家操縱角色的那一刻，就已經成為了那個角色。沉浸是這個媒介的預設值——然而以故事本身取勝的遊戲仍然稀少。",
+    "phil.p3":"我所追求的，是<strong>忠於類型、結構縝密、抵達結局時留下深刻迴響與思考餘地的故事</strong>。由巨額資本打造的、普遍意義上出色的故事已經足夠多了。我要直面它們不去觸碰的東西——人性幽暗的內面。講述自我毀滅與成癮的《Lucy's Nightmare》，以及探討人類扭曲慾望與救贖的下一部作品《The Love Doll》，只是一個開始。",
+    "phil.p4":"向每一位傾聽我的故事的人，致上真誠的感謝。",
+    "connect.eyebrow":"關注創作",
+    "connect.h":"童話<em>已經開始。</em>",
+    "connect.sub":"開發日誌、預告片，以及通往發售的路。如果你熱愛講得好的故事，歡迎同行。",
+    "connect.contact":"聯絡"
+  },
+  de:{
+    "nav.studio":"Studio","nav.creator":"Autor","nav.philosophy":"Philosophie","nav.connect":"Kontakt",
+    "hero.eyebrow":"Nationwide Software — Unabhängiges Studio",
+    "hero.line":"Ein Solo-Studio, das Spiele als Autorenwerke begreift. Wir leihen uns die Grammatik des Genres — nur um <strong>menschliche Geschichten</strong> hineinzuschneiden.",
+    "scroll":"Scrollen",
+    "studio.eyebrow":"Was wir machen",
+    "studio.big":"Unter einer charmanten Oberfläche verbergen wir die <em>dunkelsten Wahrheiten des Menschen.</em>",
+    "studio.after":"NationwideSoftware ist das Studio eines einzelnen Autors. Jede Zeile Code, jedes gezeichnete Bild, jede Wendung der Geschichte folgt einer Vision. Uns interessieren keine Spiele, die sich nur gut spielen — wir bauen Spiele, die etwas bedeuten, wenn der Abspann läuft.",
+    "game.tag":"In Entwicklung — Zweiter Titel",
+    "game.subtitle":"Ein verdrehtes Märchen. Ein Psychohorror-Platformer.",
+    "game.p1":"<span class=\"hl\">Ein Märchen mit zwei Gesichtern.</span> Lucy hat vergessen, wer sie ist. Gefangen in einem Albtraum, der nicht enden will, rennt, springt und kämpft sie durch verspielte Level voller bunter Monster — bezaubernd an der Oberfläche, falsch darunter.",
+    "game.p2":"Verstreute Diamanten bewahren ihre gestohlenen Erinnerungen. Jeder, den du birgst, spielt ein Fragment der wirklichen Welt ab — und diese Fragmente tragen ein ganz anderes Gesicht. Schicht um Schicht schält eine präzise gebaute Geschichte das Märchen ab, bis <span class=\"hl\">die Wahrheit darunter grausamer ist als jeder Albtraum.</span>",
+    "game.p3":"Die kostenlose Demo — vom Prolog bis Kapitel eins — ist jetzt auf Steam verfügbar.",
+    "fact.genre.k":"Genre","fact.genre.v":"Psychohorror · 2D-Platformer",
+    "fact.demo.k":"Demo","fact.demo.v":"Kostenlos · Jetzt verfügbar",
+    "fact.lang.k":"Sprachen","fact.lang.v":"10 vollständig unterstützt",
+    "fact.plat.k":"Plattformen","fact.rel.k":"Vollversion",
+    "btn.demo":"Demo kostenlos spielen","btn.wish":"Auf Steam wünschen","btn.yt":"Auf YouTube ansehen",
+    "trailer.soon":"Trailer folgt in Kürze",
+    "shots.eyebrow":"Screenshots",
+    "creator.eyebrow":"Der Autor","creator.role":"Regie · Autor · Grafik · Programmierung",
+    "creator.p1":"Jeon Yeon Jun schreibt, zeichnet und baut jeden Teil der Welten unter dem Namen NationwideSoftware. Die Figuren, denen du begegnest, sind <em>Pixel für Pixel von Hand</em> gezeichnet.",
+    "creator.p2":"Die Arbeit scheut keine schweren Themen — Schuld, Obsession, die stille Grausamkeit, die Menschen ohne Absicht zufügen. Das Genre ist die Tür; die Geschichte dahinter ist der Punkt.",
+    "phil.eyebrow":"Das Credo des Studios",
+    "phil.p1":"Eine große Geschichte kann einen Menschen retten. Ich weiß das aus Erfahrung. In den Jahren, in denen mir die Welt verhasst und kaum zu ertragen schien, hielten mich die Geschichten — in Filmen, Serien, Spielen und Comics. Solange ich tief in einer Geschichte versunken war, fand mich keine Sorge.",
+    "phil.pull":"Selbst an den Tagen, an denen es mir schwerfiel, mich selbst zu lieben, konnte ich die Geschichten lieben, die ich schuf.",
+    "phil.p2":"So wie große Erzähler mein Leben gerettet haben, möchte ich mit einer Geschichte, die nachhallt, die Stunden eines anderen retten. Das Spiel ist das mächtigste Werkzeug, das einem Erzähler je gegeben wurde: Ein Romancier schichtet hunderte Seiten auf, damit man mit einer Figur fühlt — doch in dem Moment, in dem ein Spieler sie steuert, ist er diese Figur bereits. Immersion ist hier der Ausgangszustand. Und doch sind Spiele, die alles auf die Geschichte selbst setzen, noch immer selten.",
+    "phil.p3":"Was ich anstrebe, ist eine Geschichte, <strong>die ihrem Genre treu bleibt, präzise gebaut ist und am Ende einen tiefen Nachhall und etwas zum Nachdenken hinterlässt.</strong> Universell großartige Geschichten mit riesigen Budgets gibt es bereits genug. Ich stelle mich dem, was sie unberührt lassen — dem dunklen Inneren des Menschen. <strong>Lucy's Nightmare</strong> über Selbstzerstörung und Sucht und das nächste Werk <strong>The Love Doll</strong> über verzerrtes Begehren und Erlösung sind erst der Anfang.",
+    "phil.p4":"Allen, die meinen Geschichten zuhören — von Herzen Dank.",
+    "connect.eyebrow":"Der Arbeit folgen",
+    "connect.h":"Das Märchen hat <em>bereits begonnen.</em>",
+    "connect.sub":"Devlogs, Trailer und der Weg zum Release. Wer gut erzählte Geschichten liebt, ist willkommen.",
+    "connect.contact":"Kontakt"
+  },
+  fr:{
+    "nav.studio":"Studio","nav.creator":"Auteur","nav.philosophy":"Philosophie","nav.connect":"Contact",
+    "hero.eyebrow":"Nationwide Software — Studio indépendant",
+    "hero.line":"Un studio solo qui traite le jeu comme une œuvre d'auteur. Nous empruntons la grammaire du genre — pour y graver des <strong>histoires humaines</strong>.",
+    "scroll":"Défiler",
+    "studio.eyebrow":"Ce que nous créons",
+    "studio.big":"Sous une surface charmante, nous cachons les <em>vérités les plus sombres de l'humain.</em>",
+    "studio.after":"NationwideSoftware est le studio d'un seul auteur. Chaque ligne de code, chaque image dessinée, chaque tournant du récit répond à une seule vision. Nous ne cherchons pas des jeux qui se jouent bien — nous faisons des jeux qui signifient quelque chose une fois le générique passé.",
+    "game.tag":"En développement — Deuxième titre",
+    "game.subtitle":"Un conte de fées tordu. Un platformer d'horreur psychologique.",
+    "game.p1":"<span class=\"hl\">Un conte à deux visages.</span> Lucy a oublié qui elle est. Prisonnière d'un cauchemar sans fin, elle court, saute et se bat à travers des niveaux fantasques peuplés de monstres colorés — charmants en surface, faux en dessous.",
+    "game.p2":"Les diamants éparpillés renferment ses souvenirs volés. Chacun que vous récupérez rejoue un fragment du monde réel — et ces fragments portent un tout autre visage. Couche après couche, un récit minutieusement tissé dépouille le conte, jusqu'à ce que <span class=\"hl\">la vérité en dessous se révèle plus cruelle que n'importe quel cauchemar.</span>",
+    "game.p3":"La démo gratuite — du prologue au chapitre un — est disponible dès maintenant sur Steam.",
+    "fact.genre.k":"Genre","fact.genre.v":"Horreur psychologique · Platformer 2D",
+    "fact.demo.k":"Démo","fact.demo.v":"Gratuite · Disponible",
+    "fact.lang.k":"Langues","fact.lang.v":"10 langues prises en charge",
+    "fact.plat.k":"Plateformes","fact.rel.k":"Sortie complète",
+    "btn.demo":"Jouer à la démo gratuite","btn.wish":"Wishlist sur Steam","btn.yt":"Voir sur YouTube",
+    "trailer.soon":"Trailer bientôt disponible",
+    "shots.eyebrow":"Captures d'écran",
+    "creator.eyebrow":"L'auteur","creator.role":"Réalisation · Écriture · Art · Programmation",
+    "creator.p1":"Jeon Yeon Jun écrit, dessine et construit chaque partie des mondes portant le nom NationwideSoftware. Les personnages que vous rencontrez sont dessinés <em>pixel par pixel, à la main.</em>",
+    "creator.p2":"L'œuvre ne craint pas les sujets difficiles — la culpabilité, l'obsession, la cruauté silencieuse que l'on inflige sans le vouloir. Le genre est la porte ; l'histoire à l'intérieur est l'essentiel.",
+    "phil.eyebrow":"Le credo du studio",
+    "phil.p1":"Une grande histoire peut sauver quelqu'un. Je le sais d'expérience. Dans les années où le monde me semblait haïssable et difficile à supporter, ce sont les histoires — des films, des séries, des jeux, des bandes dessinées — qui m'ont tenu. Tant que j'étais plongé au fond d'une histoire, aucun tourment ne me trouvait.",
+    "phil.pull":"Même aux jours où il m'était difficile de m'aimer, je pouvais aimer les histoires que je créais.",
+    "phil.p2":"Comme de grands conteurs ont sauvé ma vie, je veux à mon tour sauver les heures de quelqu'un avec une histoire qui résonne. Le jeu vidéo est l'outil le plus puissant jamais donné à un conteur : le romancier empile des centaines de pages pour faire aimer un personnage, mais à l'instant où le joueur le dirige, il est déjà ce personnage. L'immersion y est l'état par défaut — et pourtant, les jeux qui misent tout sur l'histoire restent rares.",
+    "phil.p3":"Ce que je poursuis, c'est une histoire <strong>fidèle à son genre, minutieusement construite, qui laisse à la fin une résonance profonde et matière à réfléchir.</strong> Les grandes histoires universelles portées par d'énormes budgets existent déjà en abondance. Moi, j'affronte ce qu'elles laissent intact — la part sombre de l'être humain. <strong>Lucy's Nightmare</strong>, sur l'autodestruction et l'addiction, puis la prochaine œuvre, <strong>The Love Doll</strong>, sur le désir déformé et le salut, n'en sont que le commencement.",
+    "phil.p4":"À tous ceux qui écoutent mes histoires — merci, sincèrement.",
+    "connect.eyebrow":"Suivre le travail",
+    "connect.h":"Le conte a <em>déjà commencé.</em>",
+    "connect.sub":"Devlogs, trailers et la route vers la sortie. Si vous aimez les histoires bien racontées, suivez-nous.",
+    "connect.contact":"Contact"
+  },
+  ru:{
+    "nav.studio":"Студия","nav.creator":"Автор","nav.philosophy":"Философия","nav.connect":"Связь",
+    "hero.eyebrow":"Nationwide Software — Независимая студия",
+    "hero.line":"Сольная студия, для которой игра — авторское произведение. Мы заимствуем грамматику жанра, чтобы вырезать внутри неё <strong>человеческие истории</strong>.",
+    "scroll":"Прокрутка",
+    "studio.eyebrow":"Что мы создаём",
+    "studio.big":"Под очаровательной поверхностью мы прячем <em>самые тёмные истины человека.</em>",
+    "studio.after":"NationwideSoftware — студия одного автора. Каждая строка кода, каждый нарисованный кадр, каждый поворот истории подчинены одному видению. Нам неинтересны игры, в которые просто приятно играть, — мы делаем игры, которые что-то значат, когда идут титры.",
+    "game.tag":"В разработке — вторая игра",
+    "game.subtitle":"Искажённая сказка. Психологический хоррор-платформер.",
+    "game.p1":"<span class=\"hl\">Сказка с двумя лицами.</span> Люси забыла, кто она. Запертая в кошмаре, который не кончается, она бежит, прыгает и сражается в причудливых уровнях, полных пёстрых монстров, — очаровательных снаружи и неправильных внутри.",
+    "game.p2":"В рассыпанных алмазах заключены её украденные воспоминания. Каждый найденный проигрывает фрагмент реального мира — и у этих фрагментов совсем другое лицо. Слой за слоем тщательно выстроенная история снимает со сказки оболочку, пока <span class=\"hl\">правда под ней не окажется страшнее любого кошмара.</span>",
+    "game.p3":"Бесплатная демоверсия — от пролога до первой главы — уже доступна в Steam.",
+    "fact.genre.k":"Жанр","fact.genre.v":"Психологический хоррор · 2D-платформер",
+    "fact.demo.k":"Демо","fact.demo.v":"Бесплатно · Уже доступна",
+    "fact.lang.k":"Языки","fact.lang.v":"Полная поддержка 10 языков",
+    "fact.plat.k":"Платформы","fact.rel.k":"Полный релиз",
+    "btn.demo":"Играть в бесплатную демо","btn.wish":"В список желаемого Steam","btn.yt":"Смотреть на YouTube",
+    "trailer.soon":"Трейлер скоро",
+    "shots.eyebrow":"Скриншоты",
+    "creator.eyebrow":"Автор","creator.role":"Режиссёр · Сценарист · Художник · Программист",
+    "creator.p1":"Чон Ён Джун сам пишет, рисует и собирает каждую часть миров под именем NationwideSoftware. Персонажи, которых вы встретите, нарисованы <em>пиксель за пикселем, вручную.</em>",
+    "creator.p2":"Эта работа не боится трудных тем — вины, одержимости, тихой жестокости, которую люди причиняют не желая того. Жанр — лишь дверь; суть — история за ней.",
+    "phil.eyebrow":"Кредо студии",
+    "phil.p1":"Великая история способна спасти человека. Я знаю это по себе. В те годы, когда мир казался ненавистным и невыносимым, меня держали истории — из фильмов, сериалов, игр и комиксов. Пока я был глубоко внутри истории, ни одна тревога не могла меня найти.",
+    "phil.pull":"Даже в те дни, когда мне было трудно любить себя, я мог любить истории, которые создавал.",
+    "phil.p2":"Как великие рассказчики спасли мою жизнь, так и я хочу спасти чьи-то часы историей, которая отзывается. Игра — самый мощный инструмент, когда-либо данный рассказчику: романист выстраивает сотни страниц, чтобы читатель сопереживал герою, а в игре игрок становится персонажем в тот миг, когда начинает им управлять. Погружение здесь — состояние по умолчанию. И всё же игр, которые ставят всё на саму историю, по-прежнему мало.",
+    "phil.p3":"Я стремлюсь к истории, <strong>верной своему жанру, выстроенной точно и оставляющей в финале глубокий отклик и повод для размышлений.</strong> Универсально великих историй, созданных на огромные бюджеты, уже достаточно. Я обращаюсь к тому, чего они не касаются, — к тёмной стороне человеческой души. <strong>Lucy's Nightmare</strong> — о саморазрушении и зависимости, а следующая работа, <strong>The Love Doll</strong>, — об искажённом желании и спасении. Это только начало.",
+    "phil.p4":"Всем, кто слушает мои истории, — искренняя благодарность.",
+    "connect.eyebrow":"Следите за работой",
+    "connect.h":"Сказка <em>уже началась.</em>",
+    "connect.sub":"Девлоги, трейлеры и путь к релизу. Если вы любите хорошо рассказанные истории — присоединяйтесь.",
+    "connect.contact":"Контакт"
+  },
+  es:{
+    "nav.studio":"Estudio","nav.creator":"Autor","nav.philosophy":"Filosofía","nav.connect":"Conecta",
+    "hero.eyebrow":"Nationwide Software — Estudio independiente",
+    "hero.line":"Un estudio en solitario que trata los juegos como obras de autor. Tomamos prestada la gramática del género — solo para tallar dentro <strong>historias humanas</strong>.",
+    "scroll":"Desplázate",
+    "studio.eyebrow":"Lo que hacemos",
+    "studio.big":"Bajo una superficie encantadora, escondemos las <em>verdades más oscuras del ser humano.</em>",
+    "studio.after":"NationwideSoftware es el estudio de un solo autor. Cada línea de código, cada fotograma dibujado, cada giro de la historia responde a una única visión. No nos interesan los juegos que simplemente se juegan bien: hacemos juegos que significan algo cuando aparecen los créditos.",
+    "game.tag":"En desarrollo — Segundo título",
+    "game.subtitle":"Un cuento de hadas retorcido. Un plataformas de terror psicológico.",
+    "game.p1":"<span class=\"hl\">Un cuento con dos caras.</span> Lucy ha olvidado quién es. Atrapada en una pesadilla que se niega a terminar, corre, salta y lucha por niveles caprichosos llenos de monstruos coloridos: encantadores en la superficie, con algo que anda mal debajo.",
+    "game.p2":"Los diamantes dispersos guardan sus recuerdos robados. Cada uno que recuperas reproduce un fragmento del mundo real — y esos fragmentos tienen un rostro muy distinto. Capa a capa, una historia tramada con precisión va desnudando el cuento, hasta que <span class=\"hl\">la verdad de debajo resulta más cruel que cualquier pesadilla.</span>",
+    "game.p3":"La demo gratuita — del prólogo al capítulo uno — ya está disponible en Steam.",
+    "fact.genre.k":"Género","fact.genre.v":"Terror psicológico · Plataformas 2D",
+    "fact.demo.k":"Demo","fact.demo.v":"Gratis · Ya disponible",
+    "fact.lang.k":"Idiomas","fact.lang.v":"10 totalmente compatibles",
+    "fact.plat.k":"Plataformas","fact.rel.k":"Lanzamiento completo",
+    "btn.demo":"Jugar la demo gratis","btn.wish":"Lista de deseados de Steam","btn.yt":"Ver en YouTube",
+    "trailer.soon":"Tráiler próximamente",
+    "shots.eyebrow":"Capturas",
+    "creator.eyebrow":"El autor","creator.role":"Dirección · Guion · Arte · Programación",
+    "creator.p1":"Jeon Yeon Jun escribe, dibuja y construye cada parte de los mundos bajo el nombre NationwideSoftware. Los personajes que encuentras están dibujados <em>píxel a píxel, a mano.</em>",
+    "creator.p2":"La obra no teme los temas difíciles: la culpa, la obsesión, la crueldad silenciosa que la gente inflige sin querer. El género es la puerta; la historia de dentro es lo esencial.",
+    "phil.eyebrow":"El credo del estudio",
+    "phil.p1":"Una gran historia puede salvar a una persona. Lo sé por experiencia. En los años en que el mundo me resultaba odioso y difícil de soportar, me sostuvieron las historias: las del cine, las series, los juegos y los cómics. Mientras estaba inmerso en una historia, ninguna angustia podía encontrarme.",
+    "phil.pull":"Incluso en los días en que me costaba amarme a mí mismo, podía amar las historias que creaba.",
+    "phil.p2":"Así como grandes narradores salvaron mi vida, yo quiero salvar las horas de alguien con una historia que resuene. El videojuego es la herramienta más poderosa jamás dada a un narrador: el novelista apila cientos de páginas para que sientas por un personaje, pero en el instante en que el jugador lo mueve, ya es ese personaje. La inmersión es el estado por defecto — y aun así, los juegos que lo apuestan todo a la historia siguen siendo escasos.",
+    "phil.p3":"Lo que persigo es una historia <strong>fiel a su género, tramada con precisión, que al llegar al final deje una resonancia profunda y algo en qué pensar.</strong> Historias universalmente magníficas hechas con presupuestos enormes ya sobran. Yo enfrento lo que ellas no tocan: el interior oscuro del ser humano. <strong>Lucy's Nightmare</strong>, sobre la autodestrucción y la adicción, y la próxima obra, <strong>The Love Doll</strong>, sobre el deseo retorcido y la salvación, son solo el comienzo.",
+    "phil.p4":"A todos los que escuchan mis historias: gracias, de corazón.",
+    "connect.eyebrow":"Sigue el trabajo",
+    "connect.h":"El cuento <em>ya ha comenzado.</em>",
+    "connect.sub":"Devlogs, tráileres y el camino hacia el lanzamiento. Si amas una historia bien contada, acompáñanos.",
+    "connect.contact":"Contacto"
+  },
+  pt:{
+    "nav.studio":"Estúdio","nav.creator":"Autor","nav.philosophy":"Filosofia","nav.connect":"Conecte",
+    "hero.eyebrow":"Nationwide Software — Estúdio independente",
+    "hero.line":"Um estúdio solo que trata jogos como obras autorais. Emprestamos a gramática do gênero — apenas para esculpir dentro dela <strong>histórias humanas</strong>.",
+    "scroll":"Role",
+    "studio.eyebrow":"O que fazemos",
+    "studio.big":"Sob uma superfície encantadora, escondemos as <em>verdades mais sombrias do ser humano.</em>",
+    "studio.after":"NationwideSoftware é o estúdio de um único autor. Cada linha de código, cada quadro desenhado, cada virada da história responde a uma só visão. Não nos interessam jogos que apenas jogam bem — fazemos jogos que significam algo quando os créditos sobem.",
+    "game.tag":"Em desenvolvimento — Segundo título",
+    "game.subtitle":"Um conto de fadas distorcido. Um jogo de plataforma de terror psicológico.",
+    "game.p1":"<span class=\"hl\">Um conto de fadas com duas faces.</span> Lucy esqueceu quem é. Presa num pesadelo que se recusa a acabar, ela corre, salta e luta por fases lúdicas repletas de monstros coloridos — encantadoras na superfície, erradas por baixo.",
+    "game.p2":"Os diamantes espalhados guardam suas memórias roubadas. Cada um que você recupera reproduz um fragmento do mundo real — e esses fragmentos têm um rosto muito diferente. Camada por camada, uma história meticulosamente tramada vai despindo o conto de fadas, até que <span class=\"hl\">a verdade por baixo se mostre mais cruel que qualquer pesadelo.</span>",
+    "game.p3":"A demo gratuita — do prólogo ao capítulo um — já está disponível na Steam.",
+    "fact.genre.k":"Gênero","fact.genre.v":"Terror psicológico · Plataforma 2D",
+    "fact.demo.k":"Demo","fact.demo.v":"Grátis · Já disponível",
+    "fact.lang.k":"Idiomas","fact.lang.v":"10 totalmente suportados",
+    "fact.plat.k":"Plataformas","fact.rel.k":"Lançamento completo",
+    "btn.demo":"Jogar a demo grátis","btn.wish":"Lista de desejos na Steam","btn.yt":"Assistir no YouTube",
+    "trailer.soon":"Trailer em breve",
+    "shots.eyebrow":"Capturas de tela",
+    "creator.eyebrow":"O autor","creator.role":"Direção · Roteiro · Arte · Programação",
+    "creator.p1":"Jeon Yeon Jun escreve, desenha e constrói cada parte dos mundos sob o nome NationwideSoftware. Os personagens que você encontra são desenhados <em>pixel por pixel, à mão.</em>",
+    "creator.p2":"A obra não teme assuntos difíceis — culpa, obsessão, a crueldade silenciosa que as pessoas infligem sem querer. O gênero é a porta; a história lá dentro é o que importa.",
+    "phil.eyebrow":"O credo do estúdio",
+    "phil.p1":"Uma grande história pode salvar uma pessoa. Eu sei disso por experiência. Nos anos em que o mundo me parecia odioso e difícil de suportar, foram as histórias — dos filmes, das séries, dos jogos e dos quadrinhos — que me seguraram. Enquanto eu estava mergulhado numa história, nenhuma angústia conseguia me encontrar.",
+    "phil.pull":"Mesmo nos dias em que era difícil me amar, eu conseguia amar as histórias que criava.",
+    "phil.p2":"Assim como grandes contadores de histórias salvaram a minha vida, quero salvar as horas de alguém com uma história que ressoe. O jogo é a ferramenta mais poderosa já dada a um contador de histórias: o romancista empilha centenas de páginas para fazer você sentir por um personagem, mas no instante em que o jogador o controla, ele já é aquele personagem. A imersão é o estado padrão — e ainda assim, jogos que apostam tudo na própria história continuam raros.",
+    "phil.p3":"O que persigo é uma história <strong>fiel ao seu gênero, tramada com precisão, que ao chegar ao fim deixe uma ressonância profunda e algo em que pensar.</strong> Histórias universalmente excelentes feitas com orçamentos enormes já existem de sobra. Eu encaro o que elas não tocam: o interior sombrio do ser humano. <strong>Lucy's Nightmare</strong>, sobre autodestruição e vício, e a próxima obra, <strong>The Love Doll</strong>, sobre o desejo distorcido e a salvação, são apenas o começo.",
+    "phil.p4":"A todos que escutam as minhas histórias — obrigado, de coração.",
+    "connect.eyebrow":"Acompanhe o trabalho",
+    "connect.h":"O conto <em>já começou.</em>",
+    "connect.sub":"Devlogs, trailers e o caminho até o lançamento. Se você ama uma história bem contada, venha junto.",
+    "connect.contact":"Contato"
+  }
+  };
+
+  const langSel = document.getElementById('langSel');
+  function setLang(lang){
+    const dict = I18N[lang] || I18N.en;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const key = el.getAttribute('data-i18n');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.documentElement.lang = lang;
+    langSel.value = lang;
+    try{ localStorage.setItem('nws-lang', lang); }catch(e){}
+  }
+  langSel.addEventListener('change', ()=>setLang(langSel.value));
+
+  (function initLang(){
+    let saved = null;
+    try{ saved = localStorage.getItem('nws-lang'); }catch(e){}
+    if(saved && I18N[saved]){ setLang(saved); return; }
+    const nav = (navigator.language || 'en');
+    const map = [
+      ['ko','ko'],['ja','ja'],
+      ['zh-TW','zh-TW'],['zh-HK','zh-TW'],['zh-Hant','zh-TW'],
+      ['zh','zh-CN'],
+      ['de','de'],['fr','fr'],['ru','ru'],['es','es'],['pt','pt']
+    ];
+    for(const [prefix, code] of map){
+      if(nav.toLowerCase().startsWith(prefix.toLowerCase())){ setLang(code); return; }
+    }
+    setLang('en');
+  })();
 </script>
 </body>
 </html>
