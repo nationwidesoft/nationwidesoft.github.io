@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NationwideSoftware — Authored games by Jeon Yeon Jun</title>
-<meta name="description" content="NationwideSoftware is a solo studio that treats games as authored works. Creator Jeon Yeon Jun borrows the grammar of genre to carve human stories inside it.">
+<meta name="description" content="NationwideSoftware is the studio of a single author, Jeon Yeon Jun. It borrows the grammar of genre to build stories that unsettle and compel. Currently making Lucy's Nightmare.">
 
 <!-- Open Graph / social preview -->
 <meta property="og:title" content="NationwideSoftware">
-<meta property="og:description" content="A solo studio that treats games as authored works. Currently crafting Lucy's Nightmare.">
+<meta property="og:description" content="A solo studio that treats games as authored works. The ending comes first. Currently making Lucy's Nightmare.">
 <meta property="og:type" content="website">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -142,10 +142,16 @@
     letter-spacing:-.01em;
   }
   .manifesto p em{ font-style:italic; color:var(--paper); }
+  .manifesto .sub{
+    margin-top:20px; font-family:var(--f-accent); font-style:italic;
+    font-size:clamp(1.04rem,1.7vw,1.34rem); color:var(--mist);
+    max-width:34ch; line-height:1.45;
+  }
   .manifesto .after{
     margin-top:34px; font-family:var(--f-body);
     font-size:1.05rem; color:var(--mist); max-width:52ch; line-height:1.7;
   }
+  .manifesto .after + .after{ margin-top:20px; }
 
   /* ---------- FEATURE GAME ---------- */
   .game{
@@ -186,6 +192,8 @@
   }
   .trailer .play::after{ content:""; border-left:14px solid currentColor; border-top:9px solid transparent; border-bottom:9px solid transparent; margin-left:4px; }
   .trailer small{ letter-spacing:.16em; text-transform:uppercase; font-size:.68rem; }
+  .trailer.has-video{ background:var(--ink-soft); padding:0; }
+  .trailer.has-video iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; display:block; }
 
   .facts{ margin-top:30px; display:flex; flex-direction:column; gap:0; }
   .fact{
@@ -347,23 +355,26 @@
   <div class="wrap">
     <div class="eyebrow" data-i18n="hero.eyebrow">Nationwide Software — Independent Studio</div>
     <img class="hero-logo" src="NationwideSoft_BI_SQUARE.png" alt="Nationwide Software">
-    <p class="hero-line" data-i18n="hero.line">A solo studio that treats games as authored works. We borrow the grammar of genre — only to carve <strong>human stories</strong> inside it.</p>
+    <p class="hero-line" data-i18n="hero.line">A solo studio that treats games as authored works. It borrows the grammar of genre to build <strong>stories that unsettle and compel</strong>.</p>
   </div>
   <div class="scrollcue" data-i18n="scroll">Scroll</div>
 </header>
 
 <section class="studio" id="studio">
   <div class="wrap manifesto">
-    <div class="sec-eyebrow reveal-on-scroll" data-i18n="studio.eyebrow">What we make</div>
-    <p class="reveal-on-scroll" data-i18n="studio.big">Beneath a charming surface, we hide the <em>darkest truths of people.</em></p>
-    <p class="after reveal-on-scroll" data-i18n="studio.after">NationwideSoftware is the studio of a single author. Every line of code, every drawn frame, every turn of the story answers to one vision. We aren't interested in games that merely play well — we build games that mean something once the credits roll.</p>
+    <div class="sec-eyebrow reveal-on-scroll" data-i18n="studio.eyebrow">What the author makes</div>
+    <p class="reveal-on-scroll" data-i18n="studio.big">The ending comes first — <em>everything else is built backwards.</em></p>
+    <p class="sub reveal-on-scroll" data-i18n="studio.sub">Resonance is not an accident. It is designed.</p>
+    <p class="after reveal-on-scroll" data-i18n="studio.after">NationwideSoftware is the studio of a single author. Every line of code, every drawn frame, every line of dialogue answers to one vision: a story worth staying for.</p>
+    <p class="after reveal-on-scroll" data-i18n="studio.p2">Japan has a genre called iyamisu — a compound of iya (&ldquo;unpleasant&rdquo;) and mystery: a mystery that leaves you feeling worse than when you began. Like Kanae Minato's Confessions, these stories wrap society's infected places and the floor of human nature inside the pleasures of genre, and keep you reading to the last page. That is what I make.</p>
+    <p class="after reveal-on-scroll" data-i18n="studio.p3">The work always begins at the end. I don't draw the first scene until the last frame is decided. The charge and the afterglow of watching everything planted in the opening and the middle come due in the finale — I believe that is the greatest pleasure a story can give a person.</p>
   </div>
 </section>
 
 <section class="game" id="lucy">
   <div class="wrap">
-    <div class="sec-eyebrow reveal-on-scroll" data-i18n="game.tag">Now in development — Second title</div>
-    <h2 class="reveal-on-scroll">Lucy's <em>Nightmare</em></h2>
+    <div class="sec-eyebrow reveal-on-scroll" data-i18n="game.tag">In development — First title (2024 &ndash; 2028)</div>
+    <h2 class="reveal-on-scroll">Lucy's Nightmare</h2>
     <div class="subtitle reveal-on-scroll" data-i18n="game.subtitle">A twisted fairy tale. A psychological horror platformer.</div>
 
     <div class="game-grid">
@@ -381,19 +392,30 @@
         </div>
 
         <div class="cta-row">
-          <!-- Replace href with the Steam demo / store URLs when the page goes live, and remove data-soon -->
-          <a class="btn primary" data-soon href="#" aria-disabled="true"><span data-i18n="btn.demo">Play the Free Demo</span>&nbsp;</a>
-          <a class="btn ghost" data-soon href="#" aria-disabled="true"><span data-i18n="btn.wish">Wishlist on Steam</span>&nbsp;</a>
+          <a class="btn primary" href="https://store.steampowered.com/app/4901470/Lucys_Nightmare/" target="_blank" rel="noopener"><span data-i18n="btn.wish">Wishlist on Steam</span></a>
+          <!-- Demo: drop data-soon and swap the href for the Steam demo URL once the demo app is released -->
+          <a class="btn ghost" data-soon href="#" aria-disabled="true"><span data-i18n="btn.demo">Play the Free Demo</span>&nbsp;</a>
           <a class="btn ghost" href="https://www.youtube.com/@nationwidesoftware" target="_blank" rel="noopener"><span data-i18n="btn.yt">Watch on YouTube</span></a>
         </div>
       </div>
 
       <div class="reveal-on-scroll">
-        <!-- TRAILER: replace this whole block with a YouTube <iframe> once the trailer is public -->
+        <!-- TRAILER — currently an UNLISTED YouTube video. Publishing this page publishes the trailer.
+             To hold it back, comment out the <div class="trailer has-video"> block and uncomment the placeholder below. -->
+        <div class="trailer has-video">
+          <iframe src="https://www.youtube-nocookie.com/embed/PguWPxA51Lk"
+                  title="Lucy's Nightmare — Official Trailer"
+                  loading="lazy"
+                  allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
+        </div>
+        <!--
         <div class="trailer">
           <div class="play" aria-hidden="true"></div>
           <small data-i18n="trailer.soon">Trailer coming soon</small>
         </div>
+        -->
       </div>
     </div>
 
@@ -421,7 +443,8 @@
       </div>
       <div class="creator-copy reveal-on-scroll">
         <p data-i18n="creator.p1">Jeon Yeon Jun writes, draws, and builds every part of the worlds under the NationwideSoftware name. The characters you meet are drawn <em>pixel by pixel, by hand.</em></p>
-        <p data-i18n="creator.p2">The work is unafraid of hard subjects — guilt, obsession, the quiet cruelty people inflict without meaning to. Genre is the doorway; the story inside is the point.</p>
+        <p data-i18n="creator.p2">Genre is the doorway. What makes you open it is the grammar of horror and thriller; what waits inside is addiction and self-loathing, responsibility and repression, and the quiet cruelty people inflict without meaning to.</p>
+        <p data-i18n="creator.p3">The dialogue and the characters carry the fingerprints of everything I've passed through. Films and series, stage plays and comics, old console games — more homages are hidden in there than I can count. One day I intend to pull them out, one by one, in a developer commentary.</p>
       </div>
     </div>
   </div>
@@ -430,27 +453,28 @@
 <section class="philosophy" id="philosophy">
   <div class="wrap">
     <div class="sec-eyebrow reveal-on-scroll" data-i18n="phil.eyebrow">The studio's creed</div>
-    <h4 class="reveal-on-scroll">Let art <em>save us.</em></h4>
+    <h4 class="reveal-on-scroll">Let art save us.</h4>
     <div class="kr">
       <p class="reveal-on-scroll" data-i18n="phil.p1">A great story can save a person. I know this from experience. In the years when the world felt hateful and hard to bear, what held me together were the stories — in films, in shows, in games and comics. As long as I was deep inside a story, no worry could find me.</p>
-      <p class="pull reveal-on-scroll" data-i18n="phil.pull">Even in the days when I found it hard to love myself, I could love the stories I made.</p>
-      <p class="reveal-on-scroll" data-i18n="phil.p2">Just as great storytellers saved my life, I want to save someone's hours with a story that resonates. Games are the most powerful tool a storyteller has ever been given: a novelist stacks hundreds of pages to make you feel for a character, but the moment a player moves one, they already are that character. Immersion is the default — and yet games that stake everything on the story itself are still rare.</p>
-      <p class="reveal-on-scroll" data-i18n="phil.p3">What I pursue is a story faithful to its genre, meticulously plotted — one that leaves a deep resonance and something to think about when the ending arrives. The world already has plenty of universally great stories built on enormous budgets. I face what they leave untouched: the dark interior of human beings. <strong>Lucy's Nightmare</strong>, a tale of self-destruction and addiction, and the next work, <strong>The Love Doll</strong>, on twisted desire and salvation, are only the beginning.</p>
-      <p class="reveal-on-scroll" data-i18n="phil.p4">To everyone who listens to my stories — thank you, truly.</p>
+      <p class="pull reveal-on-scroll" data-i18n="phil.pull">Loving myself is still hard. But I can love the stories I made.</p>
+      <p class="reveal-on-scroll" data-i18n="phil.p2">Just as great storytellers saved my life, I want to save someone's hours with a story that resonates. Games are the most powerful tool a storyteller has ever been given. A novelist labours over every event and every line to stack hundreds of pages before you finally feel for a character. In a game, the moment the player moves one, they already are that character. <strong>Not empathy — identification.</strong> Immersion is the default here, and yet games that stake everything on the story itself are still rare.</p>
+      <p class="reveal-on-scroll" data-i18n="phil.p3">What I pursue is a story faithful to its genre, meticulously plotted, one that leaves a deep resonance and something to think about when the ending arrives. I build the ending first. I don't take people aboard without knowing where I am taking them.</p>
+      <p class="reveal-on-scroll" data-i18n="phil.p3b">Stories that satisfy everyone are already being made in abundance on enormous budgets. I face what they leave untouched: the dark interior of human beings. <strong>Lucy's Nightmare</strong>, on self-destruction and addiction, and the next work, <strong>The Love Doll</strong>, on twisted desire and salvation, are where it starts.</p>
+      <p class="reveal-on-scroll" data-i18n="phil.p4">What saved me were stories other people made. Now I hope a story I made will do that for someone else.</p>
     </div>
   </div>
 </section>
 
 <section class="connect" id="connect">
   <div class="wrap">
-    <div class="sec-eyebrow reveal-on-scroll" style="justify-content:center;" data-i18n="connect.eyebrow">Follow the work</div>
-    <h4 class="reveal-on-scroll" data-i18n="connect.h">The tale has <em>already begun.</em></h4>
-    <p class="sub reveal-on-scroll" data-i18n="connect.sub">Devlogs, trailers, and the road to release. If you love a well-told story, come along.</p>
+    <div class="sec-eyebrow reveal-on-scroll" style="justify-content:center;" data-i18n="connect.eyebrow">The rest of the story</div>
+    <h4 class="reveal-on-scroll" data-i18n="connect.h">The ending is <em>already written.</em></h4>
+    <p class="sub reveal-on-scroll" data-i18n="connect.sub">Devlogs, trailers, and the road to full release. If you want to arrive first, add it to your Steam wishlist.</p>
     <div class="links reveal-on-scroll">
+      <a href="https://store.steampowered.com/app/4901470/Lucys_Nightmare/" target="_blank" rel="noopener">Steam</a>
       <a href="https://www.youtube.com/@nationwidesoftware" target="_blank" rel="noopener">YouTube</a>
       <!-- Fill these in once the accounts exist -->
       <a href="#" data-soon aria-disabled="true">X / Twitter</a>
-      <a href="#" data-soon aria-disabled="true">Steam</a>
       <a href="mailto:nationwidesoft.com@nationwidesoft.com" data-i18n="connect.contact">Contact</a>
     </div>
   </div>
@@ -519,346 +543,496 @@
 
   /* ---------- i18n ---------- */
   const I18N = {
-  en:{
-    "nav.studio":"Studio","nav.creator":"Creator","nav.philosophy":"Philosophy","nav.connect":"Connect",
-    "hero.eyebrow":"Nationwide Software — Independent Studio",
-    "hero.line":"A solo studio that treats games as authored works. We borrow the grammar of genre — only to carve <strong>human stories</strong> inside it.",
-    "scroll":"Scroll",
-    "studio.eyebrow":"What we make",
-    "studio.big":"Beneath a charming surface, we hide the <em>darkest truths of people.</em>",
-    "studio.after":"NationwideSoftware is the studio of a single author. Every line of code, every drawn frame, every turn of the story answers to one vision. We aren't interested in games that merely play well — we build games that mean something once the credits roll.",
-    "game.tag":"Now in development — Second title",
-    "game.subtitle":"A twisted fairy tale. A psychological horror platformer.",
-    "game.p1":"<span class=\"hl\">A fairy tale with two faces.</span> Lucy has forgotten who she is. Trapped in a nightmare that refuses to end, she runs, leaps, and fights through whimsical stages crowded with colorful monsters — charming on the surface, wrong underneath.",
-    "game.p2":"Scattered diamonds hold her stolen memories. Each one you recover plays back a fragment of the real world — and those fragments wear a very different face. One layer at a time, a meticulously plotted story peels the fairy tale back, until <span class=\"hl\">the truth beneath proves crueler than any nightmare.</span>",
-    "game.p3":"The free demo — the prologue through chapter one — is out now on Steam.",
-    "fact.genre.k":"Genre","fact.genre.v":"Psychological Horror · 2D Platformer",
-    "fact.demo.k":"Demo","fact.demo.v":"Free · Available now",
-    "fact.lang.k":"Languages","fact.lang.v":"10 fully supported",
-    "fact.plat.k":"Platforms","fact.rel.k":"Full release",
-    "btn.demo":"Play the Free Demo","btn.wish":"Wishlist on Steam","btn.yt":"Watch on YouTube",
-    "trailer.soon":"Trailer coming soon",
-    "shots.eyebrow":"Screenshots",
-    "creator.eyebrow":"The author","creator.role":"Director · Writer · Artist · Programmer",
-    "creator.p1":"Jeon Yeon Jun writes, draws, and builds every part of the worlds under the NationwideSoftware name. The characters you meet are drawn <em>pixel by pixel, by hand.</em>",
-    "creator.p2":"The work is unafraid of hard subjects — guilt, obsession, the quiet cruelty people inflict without meaning to. Genre is the doorway; the story inside is the point.",
-    "phil.eyebrow":"The studio's creed",
-    "phil.p1":"A great story can save a person. I know this from experience. In the years when the world felt hateful and hard to bear, what held me together were the stories — in films, in shows, in games and comics. As long as I was deep inside a story, no worry could find me.",
-    "phil.pull":"Even in the days when I found it hard to love myself, I could love the stories I made.",
-    "phil.p2":"Just as great storytellers saved my life, I want to save someone's hours with a story that resonates. Games are the most powerful tool a storyteller has ever been given: a novelist stacks hundreds of pages to make you feel for a character, but the moment a player moves one, they already are that character. Immersion is the default — and yet games that stake everything on the story itself are still rare.",
-    "phil.p3":"What I pursue is a story faithful to its genre, meticulously plotted — one that leaves a deep resonance and something to think about when the ending arrives. The world already has plenty of universally great stories built on enormous budgets. I face what they leave untouched: the dark interior of human beings. <strong>Lucy's Nightmare</strong>, a tale of self-destruction and addiction, and the next work, <strong>The Love Doll</strong>, on twisted desire and salvation, are only the beginning.",
-    "phil.p4":"To everyone who listens to my stories — thank you, truly.",
-    "connect.eyebrow":"Follow the work",
-    "connect.h":"The tale has <em>already begun.</em>",
-    "connect.sub":"Devlogs, trailers, and the road to release. If you love a well-told story, come along.",
-    "connect.contact":"Contact"
-  },
-  ko:{
-    "nav.studio":"스튜디오","nav.creator":"작가","nav.philosophy":"철학","nav.connect":"연결",
-    "hero.eyebrow":"Nationwide Software — 독립 스튜디오",
-    "hero.line":"게임을 작가의 작품으로 대하는 1인 스튜디오. 우리는 장르의 문법을 빌려, 그 안에 <strong>인간의 이야기</strong>를 새깁니다.",
-    "scroll":"스크롤",
-    "studio.eyebrow":"우리가 만드는 것",
-    "studio.big":"사랑스러운 표면 아래, <em>인간의 가장 어두운 진실</em>을 숨깁니다.",
-    "studio.after":"NationwideSoftware는 한 사람의 작가가 이끄는 스튜디오입니다. 모든 코드 한 줄, 모든 그림 한 장, 이야기의 모든 전환이 하나의 비전을 따릅니다. 우리는 그저 잘 굴러가는 게임이 아니라, 크레딧이 올라간 뒤에도 의미가 남는 게임을 만듭니다.",
-    "game.tag":"개발 중 — 두 번째 작품",
-    "game.subtitle":"뒤틀린 동화. 심리 공포 플랫포머.",
-    "game.p1":"<span class=\"hl\">두 개의 얼굴을 가진 동화.</span> 루시는 자신이 누구인지 잊었습니다. 끝나지 않는 악몽에 갇힌 채, 알록달록한 몬스터들이 가득한 아기자기한 스테이지를 달리고, 뛰어넘고, 싸워 나갑니다 — 표면은 사랑스럽지만, 그 아래는 어딘가 잘못되어 있습니다.",
-    "game.p2":"흩어진 다이아몬드에는 빼앗긴 기억이 담겨 있습니다. 하나를 되찾을 때마다 현실의 조각이 재생됩니다 — 그리고 그 조각들은 전혀 다른 얼굴을 하고 있습니다. 치밀하게 설계된 이야기가 동화를 한 겹씩 벗겨내고, 마침내 <span class=\"hl\">그 아래의 진실은 어떤 악몽보다도 잔혹합니다.</span>",
-    "game.p3":"프롤로그부터 챕터 1까지 담은 무료 데모가 지금 스팀에 공개되어 있습니다.",
-    "fact.genre.k":"장르","fact.genre.v":"심리 공포 · 2D 플랫포머",
-    "fact.demo.k":"데모","fact.demo.v":"무료 · 공개 중",
-    "fact.lang.k":"지원 언어","fact.lang.v":"10개 언어 완전 지원",
-    "fact.plat.k":"플랫폼","fact.rel.k":"정식 출시",
-    "btn.demo":"무료 데모 플레이","btn.wish":"스팀 위시리스트 추가","btn.yt":"유튜브에서 보기",
-    "trailer.soon":"트레일러 공개 예정",
-    "shots.eyebrow":"스크린샷",
-    "creator.eyebrow":"작가","creator.role":"디렉터 · 작가 · 아티스트 · 프로그래머",
-    "creator.p1":"전연준은 NationwideSoftware라는 이름 아래 세계의 모든 부분을 직접 쓰고, 그리고, 만듭니다. 여러분이 만나는 캐릭터들은 <em>한 픽셀씩, 손으로</em> 그려졌습니다.",
-    "creator.p2":"이 작업은 어려운 주제를 두려워하지 않습니다 — 죄책감, 집착, 사람들이 악의 없이 가하는 조용한 잔인함. 장르는 입구일 뿐, 그 안의 이야기가 본질입니다.",
-    "phil.eyebrow":"스튜디오의 신조",
-    "phil.p1":"훌륭한 이야기는 사람을 구한다. 나는 그것을 경험으로 안다. 세상이 밉고 견디기 어려웠던 시절, 나를 붙잡아 준 것은 영화와 드라마, 게임과 만화 속의 매력적인 이야기들이었다. 이야기에 깊이 빠져 있는 동안만큼은, 어떤 근심도 나를 찾아내지 못했다.",
-    "phil.pull":"나 자신을 사랑하기 어려웠던 시절에도, 내가 만든 이야기는 사랑할 수 있었다.",
-    "phil.p2":"훌륭한 창작자들이 그렇게 내 삶을 구했듯, 나도 울림이 있는 이야기로 누군가의 시간을 구하고 싶다. 게임은 이야기꾼에게 주어진 가장 강력한 도구다. 소설가는 독자를 인물에 공감시키기 위해 수백 페이지를 쌓아 올리지만, 게임에서 플레이어는 캐릭터를 직접 움직이는 순간 이미 그 인물이 된다. 몰입이 기본값인 매체 — 그런데도 이야기 자체로 승부하는 게임은 아직 드물다.",
-    "phil.p3":"내가 추구하는 것은 <strong>장르에 충실하고, 치밀하게 짜였으며, 엔딩에 도달했을 때 깊은 울림과 생각할 거리를 남기는 이야기</strong>다. 거대 자본이 만드는 보편적으로 훌륭한 이야기는 이미 충분히 많다. 나는 그 이야기들이 다루지 않는 것 — 인간의 어두운 내면 — 을 정면으로 다룬다. 자기파괴와 중독을 다룬 『루시 나이트메어』, 그리고 인간의 뒤틀린 욕망과 구원을 다룰 차기작 『더 러브 돌』이 그 시작이다.",
-    "phil.p4":"내 이야기를 들어주는 모든 이에게, 진심으로 감사드린다.",
-    "connect.eyebrow":"작업을 따라오세요",
-    "connect.h":"동화는 <em>이미 시작되었습니다.</em>",
-    "connect.sub":"데브로그, 트레일러, 그리고 출시까지의 여정. 잘 짜인 이야기를 사랑한다면, 함께 오세요.",
-    "connect.contact":"문의"
-  },
-  ja:{
-    "nav.studio":"スタジオ","nav.creator":"作家","nav.philosophy":"理念","nav.connect":"つながる",
-    "hero.eyebrow":"Nationwide Software — インディペンデントスタジオ",
-    "hero.line":"ゲームを作家の作品として扱うソロスタジオ。ジャンルの文法を借りて、その内側に<strong>人間の物語</strong>を刻みます。",
-    "scroll":"スクロール",
-    "studio.eyebrow":"私たちがつくるもの",
-    "studio.big":"愛らしい表面の下に、<em>人間の最も暗い真実</em>を隠します。",
-    "studio.after":"NationwideSoftwareは、一人の作家によるスタジオです。すべてのコード、すべての描かれたフレーム、物語のすべての転換がひとつのビジョンに従います。ただ良く遊べるゲームではなく、クレジットが流れた後に意味が残るゲームをつくります。",
-    "game.tag":"開発中 — 二作目",
-    "game.subtitle":"歪んだおとぎ話。心理ホラー・プラットフォーマー。",
-    "game.p1":"<span class=\"hl\">二つの顔を持つおとぎ話。</span> ルーシーは自分が誰なのかを忘れてしまった。終わらない悪夢に囚われたまま、色とりどりのモンスターがひしめく愛らしいステージを走り、跳び、戦い抜く——表面は可愛らしく、その下はどこか間違っている。",
-    "game.p2":"散らばったダイヤには奪われた記憶が宿る。ひとつ取り戻すたびに現実の断片が再生される——その断片はまるで違う顔をしている。緻密に組まれた物語がおとぎ話を一枚ずつ剥がしてゆき、やがて<span class=\"hl\">その下の真実は、どんな悪夢よりも残酷だ。</span>",
-    "game.p3":"プロローグから第1章までを収めた無料デモが、Steamで公開中です。",
-    "fact.genre.k":"ジャンル","fact.genre.v":"心理ホラー · 2Dプラットフォーマー",
-    "fact.demo.k":"デモ","fact.demo.v":"無料 · 配信中",
-    "fact.lang.k":"対応言語","fact.lang.v":"10言語に完全対応",
-    "fact.plat.k":"プラットフォーム","fact.rel.k":"正式リリース",
-    "btn.demo":"無料デモをプレイ","btn.wish":"Steamでウィッシュリスト","btn.yt":"YouTubeで見る",
-    "trailer.soon":"トレーラー近日公開",
-    "shots.eyebrow":"スクリーンショット",
-    "creator.eyebrow":"作家","creator.role":"ディレクター · ライター · アーティスト · プログラマー",
-    "creator.p1":"Jeon Yeon Junは、NationwideSoftwareの名の下にある世界のすべてを自ら書き、描き、組み上げます。出会うキャラクターたちは<em>1ピクセルずつ、手で</em>描かれています。",
-    "creator.p2":"この仕事は難しい主題を恐れません——罪悪感、執着、悪意なく人が与える静かな残酷さ。ジャンルは入口にすぎず、その中の物語こそが本質です。",
-    "phil.eyebrow":"スタジオの信条",
-    "phil.p1":"優れた物語は人を救う。私はそれを経験として知っている。世界が憎く、耐えがたかった時期、私を支えてくれたのは映画やドラマ、ゲームや漫画の中の魅力的な物語だった。物語に深く浸っている間だけは、どんな不安も私を見つけられなかった。",
-    "phil.pull":"自分を愛することが難しかった頃でさえ、自分の作った物語は愛することができた。",
-    "phil.p2":"優れた創作者たちが私の人生を救ってくれたように、私も響く物語で誰かの時間を救いたい。ゲームは物語の作り手に与えられた最も強力な道具だ。小説家は読者を人物に共感させるために何百ページも積み上げるが、ゲームではプレイヤーがキャラクターを動かした瞬間、すでにその人物になっている。没入が初期値の媒体——それでも、物語そのもので勝負するゲームはまだ少ない。",
-    "phil.p3":"私が追い求めるのは、<strong>ジャンルに忠実で、緻密に組み上げられ、エンディングに辿り着いたとき深い余韻と考える種を残す物語</strong>だ。巨大資本が生む普遍的に優れた物語はすでに十分にある。私はそれらが扱わないもの——人間の暗い内面——に正面から向き合う。自己破壊と依存を描く『Lucy's Nightmare』、そして人間の歪んだ欲望と救いを描く次回作『The Love Doll』は、その始まりに過ぎない。",
-    "phil.p4":"私の物語に耳を傾けてくれるすべての人へ、心から感謝を。",
-    "connect.eyebrow":"制作を追いかける",
-    "connect.h":"物語は<em>すでに始まっている。</em>",
-    "connect.sub":"開発日誌、トレーラー、そしてリリースまでの道のり。よく練られた物語が好きなら、ぜひご一緒に。",
-    "connect.contact":"お問い合わせ"
-  },
-  "zh-CN":{
-    "nav.studio":"工作室","nav.creator":"作者","nav.philosophy":"理念","nav.connect":"联系",
-    "hero.eyebrow":"Nationwide Software — 独立工作室",
-    "hero.line":"一间将游戏视为作者作品的独立工作室。我们借用类型的语法，只为在其中刻下<strong>人的故事</strong>。",
-    "scroll":"滚动",
-    "studio.eyebrow":"我们的创作",
-    "studio.big":"在可爱的表象之下，藏着<em>人性最黑暗的真相。</em>",
-    "studio.after":"NationwideSoftware 是一位作者独立运营的工作室。每一行代码、每一帧画面、故事的每一次转折，都服从于同一个愿景。我们感兴趣的不是\u201c好玩就够了\u201d的游戏，而是片尾字幕滚动之后仍有意义留下的游戏。",
-    "game.tag":"开发中 — 第二部作品",
-    "game.subtitle":"扭曲的童话。心理恐怖平台游戏。",
-    "game.p1":"<span class=\"hl\">拥有两副面孔的童话。</span> 露西忘记了自己是谁。被困在无法醒来的噩梦中，她在挤满彩色怪物的可爱关卡里奔跑、跳跃、战斗——表面迷人，底下却透着不对劲。",
-    "game.p2":"散落的钻石封存着被夺走的记忆。每找回一颗，就会播放一段现实的碎片——而那些碎片有着截然不同的面孔。缜密编织的故事将童话一层层剥开，直到<span class=\"hl\">底下的真相比任何噩梦都更残酷。</span>",
-    "game.p3":"收录序章至第一章的免费试玩版现已登陆 Steam。",
-    "fact.genre.k":"类型","fact.genre.v":"心理恐怖 · 2D平台",
-    "fact.demo.k":"试玩版","fact.demo.v":"免费 · 现已推出",
-    "fact.lang.k":"支持语言","fact.lang.v":"完整支持10种语言",
-    "fact.plat.k":"平台","fact.rel.k":"正式发售",
-    "btn.demo":"游玩免费试玩版","btn.wish":"加入 Steam 愿望单","btn.yt":"在 YouTube 观看",
-    "trailer.soon":"预告片即将公开",
-    "shots.eyebrow":"游戏截图",
-    "creator.eyebrow":"作者","creator.role":"导演 · 编剧 · 美术 · 程序",
-    "creator.p1":"Jeon Yeon Jun 亲手书写、绘制并构建 NationwideSoftware 名下世界的每一个部分。你遇到的角色，都是<em>逐像素、亲手</em>绘制的。",
-    "creator.p2":"这些作品不惧怕沉重的主题——罪疚、执念、人们无意间施加的安静的残忍。类型只是入口，里面的故事才是本体。",
-    "phil.eyebrow":"工作室的信条",
-    "phil.p1":"出色的故事能拯救一个人。我对此深有体会。在那些憎恨世界、难以支撑的日子里，是电影、剧集、游戏与漫画中的动人故事支撑着我。只要深深沉浸在故事里，任何忧虑都找不到我。",
-    "phil.pull":"即使在难以爱自己的日子里，我也能爱我所创造的故事。",
-    "phil.p2":"正如伟大的创作者曾拯救了我的人生，我也想用有回响的故事去拯救某个人的时间。游戏是讲故事的人所能拥有的最强大的工具：小说家要堆叠数百页才能让读者与人物共情，而在游戏中，玩家操纵角色的那一刻，就已经成为了那个角色。沉浸是这个媒介的默认值——然而以故事本身取胜的游戏仍然稀少。",
-    "phil.p3":"我所追求的，是<strong>忠于类型、结构缜密、抵达结局时留下深刻回响与思考余地的故事</strong>。由巨额资本打造的、普遍意义上出色的故事已经足够多了。我要直面它们不去触碰的东西——人性幽暗的内面。讲述自我毁灭与成瘾的《Lucy's Nightmare》，以及探讨人类扭曲欲望与救赎的下一部作品《The Love Doll》，只是一个开始。",
-    "phil.p4":"向每一位倾听我的故事的人，致以真诚的感谢。",
-    "connect.eyebrow":"关注创作",
-    "connect.h":"童话<em>已经开始。</em>",
-    "connect.sub":"开发日志、预告片，以及通往发售的路。如果你热爱讲得好的故事，欢迎同行。",
-    "connect.contact":"联系"
-  },
-  "zh-TW":{
-    "nav.studio":"工作室","nav.creator":"作者","nav.philosophy":"理念","nav.connect":"聯絡",
-    "hero.eyebrow":"Nationwide Software — 獨立工作室",
-    "hero.line":"一間將遊戲視為作者作品的獨立工作室。我們借用類型的語法，只為在其中刻下<strong>人的故事</strong>。",
-    "scroll":"捲動",
-    "studio.eyebrow":"我們的創作",
-    "studio.big":"在可愛的表象之下，藏著<em>人性最黑暗的真相。</em>",
-    "studio.after":"NationwideSoftware 是一位作者獨立經營的工作室。每一行程式碼、每一幀畫面、故事的每一次轉折，都服從於同一個願景。我們感興趣的不是「好玩就夠了」的遊戲，而是片尾字幕滾動之後仍有意義留下的遊戲。",
-    "game.tag":"開發中 — 第二部作品",
-    "game.subtitle":"扭曲的童話。心理恐怖平台遊戲。",
-    "game.p1":"<span class=\"hl\">擁有兩副面孔的童話。</span> 露西忘記了自己是誰。被困在無法醒來的噩夢中，她在擠滿彩色怪物的可愛關卡裡奔跑、跳躍、戰鬥——表面迷人，底下卻透著不對勁。",
-    "game.p2":"散落的鑽石封存著被奪走的記憶。每找回一顆，就會播放一段現實的碎片——而那些碎片有著截然不同的面孔。縝密編織的故事將童話一層層剝開，直到<span class=\"hl\">底下的真相比任何噩夢都更殘酷。</span>",
-    "game.p3":"收錄序章至第一章的免費試玩版現已登陸 Steam。",
-    "fact.genre.k":"類型","fact.genre.v":"心理恐怖 · 2D平台",
-    "fact.demo.k":"試玩版","fact.demo.v":"免費 · 現已推出",
-    "fact.lang.k":"支援語言","fact.lang.v":"完整支援10種語言",
-    "fact.plat.k":"平台","fact.rel.k":"正式發售",
-    "btn.demo":"遊玩免費試玩版","btn.wish":"加入 Steam 願望清單","btn.yt":"在 YouTube 觀看",
-    "trailer.soon":"預告片即將公開",
-    "shots.eyebrow":"遊戲截圖",
-    "creator.eyebrow":"作者","creator.role":"導演 · 編劇 · 美術 · 程式",
-    "creator.p1":"Jeon Yeon Jun 親手書寫、繪製並構建 NationwideSoftware 名下世界的每一個部分。你遇到的角色，都是<em>逐像素、親手</em>繪製的。",
-    "creator.p2":"這些作品不懼怕沉重的主題——罪疚、執念、人們無意間施加的安靜的殘忍。類型只是入口，裡面的故事才是本體。",
-    "phil.eyebrow":"工作室的信條",
-    "phil.p1":"出色的故事能拯救一個人。我對此深有體會。在那些憎恨世界、難以支撐的日子裡，是電影、劇集、遊戲與漫畫中的動人故事支撐著我。只要深深沉浸在故事裡，任何憂慮都找不到我。",
-    "phil.pull":"即使在難以愛自己的日子裡，我也能愛我所創造的故事。",
-    "phil.p2":"正如偉大的創作者曾拯救了我的人生，我也想用有迴響的故事去拯救某個人的時間。遊戲是說故事的人所能擁有的最強大的工具：小說家要堆疊數百頁才能讓讀者與人物共情，而在遊戲中，玩家操縱角色的那一刻，就已經成為了那個角色。沉浸是這個媒介的預設值——然而以故事本身取勝的遊戲仍然稀少。",
-    "phil.p3":"我所追求的，是<strong>忠於類型、結構縝密、抵達結局時留下深刻迴響與思考餘地的故事</strong>。由巨額資本打造的、普遍意義上出色的故事已經足夠多了。我要直面它們不去觸碰的東西——人性幽暗的內面。講述自我毀滅與成癮的《Lucy's Nightmare》，以及探討人類扭曲慾望與救贖的下一部作品《The Love Doll》，只是一個開始。",
-    "phil.p4":"向每一位傾聽我的故事的人，致上真誠的感謝。",
-    "connect.eyebrow":"關注創作",
-    "connect.h":"童話<em>已經開始。</em>",
-    "connect.sub":"開發日誌、預告片，以及通往發售的路。如果你熱愛講得好的故事，歡迎同行。",
-    "connect.contact":"聯絡"
-  },
-  de:{
-    "nav.studio":"Studio","nav.creator":"Autor","nav.philosophy":"Philosophie","nav.connect":"Kontakt",
-    "hero.eyebrow":"Nationwide Software — Unabhängiges Studio",
-    "hero.line":"Ein Solo-Studio, das Spiele als Autorenwerke begreift. Wir leihen uns die Grammatik des Genres — nur um <strong>menschliche Geschichten</strong> hineinzuschneiden.",
-    "scroll":"Scrollen",
-    "studio.eyebrow":"Was wir machen",
-    "studio.big":"Unter einer charmanten Oberfläche verbergen wir die <em>dunkelsten Wahrheiten des Menschen.</em>",
-    "studio.after":"NationwideSoftware ist das Studio eines einzelnen Autors. Jede Zeile Code, jedes gezeichnete Bild, jede Wendung der Geschichte folgt einer Vision. Uns interessieren keine Spiele, die sich nur gut spielen — wir bauen Spiele, die etwas bedeuten, wenn der Abspann läuft.",
-    "game.tag":"In Entwicklung — Zweiter Titel",
-    "game.subtitle":"Ein verdrehtes Märchen. Ein Psychohorror-Platformer.",
-    "game.p1":"<span class=\"hl\">Ein Märchen mit zwei Gesichtern.</span> Lucy hat vergessen, wer sie ist. Gefangen in einem Albtraum, der nicht enden will, rennt, springt und kämpft sie durch verspielte Level voller bunter Monster — bezaubernd an der Oberfläche, falsch darunter.",
-    "game.p2":"Verstreute Diamanten bewahren ihre gestohlenen Erinnerungen. Jeder, den du birgst, spielt ein Fragment der wirklichen Welt ab — und diese Fragmente tragen ein ganz anderes Gesicht. Schicht um Schicht schält eine präzise gebaute Geschichte das Märchen ab, bis <span class=\"hl\">die Wahrheit darunter grausamer ist als jeder Albtraum.</span>",
-    "game.p3":"Die kostenlose Demo — vom Prolog bis Kapitel eins — ist jetzt auf Steam verfügbar.",
-    "fact.genre.k":"Genre","fact.genre.v":"Psychohorror · 2D-Platformer",
-    "fact.demo.k":"Demo","fact.demo.v":"Kostenlos · Jetzt verfügbar",
-    "fact.lang.k":"Sprachen","fact.lang.v":"10 vollständig unterstützt",
-    "fact.plat.k":"Plattformen","fact.rel.k":"Vollversion",
-    "btn.demo":"Demo kostenlos spielen","btn.wish":"Auf Steam wünschen","btn.yt":"Auf YouTube ansehen",
-    "trailer.soon":"Trailer folgt in Kürze",
-    "shots.eyebrow":"Screenshots",
-    "creator.eyebrow":"Der Autor","creator.role":"Regie · Autor · Grafik · Programmierung",
-    "creator.p1":"Jeon Yeon Jun schreibt, zeichnet und baut jeden Teil der Welten unter dem Namen NationwideSoftware. Die Figuren, denen du begegnest, sind <em>Pixel für Pixel von Hand</em> gezeichnet.",
-    "creator.p2":"Die Arbeit scheut keine schweren Themen — Schuld, Obsession, die stille Grausamkeit, die Menschen ohne Absicht zufügen. Das Genre ist die Tür; die Geschichte dahinter ist der Punkt.",
-    "phil.eyebrow":"Das Credo des Studios",
-    "phil.p1":"Eine große Geschichte kann einen Menschen retten. Ich weiß das aus Erfahrung. In den Jahren, in denen mir die Welt verhasst und kaum zu ertragen schien, hielten mich die Geschichten — in Filmen, Serien, Spielen und Comics. Solange ich tief in einer Geschichte versunken war, fand mich keine Sorge.",
-    "phil.pull":"Selbst an den Tagen, an denen es mir schwerfiel, mich selbst zu lieben, konnte ich die Geschichten lieben, die ich schuf.",
-    "phil.p2":"So wie große Erzähler mein Leben gerettet haben, möchte ich mit einer Geschichte, die nachhallt, die Stunden eines anderen retten. Das Spiel ist das mächtigste Werkzeug, das einem Erzähler je gegeben wurde: Ein Romancier schichtet hunderte Seiten auf, damit man mit einer Figur fühlt — doch in dem Moment, in dem ein Spieler sie steuert, ist er diese Figur bereits. Immersion ist hier der Ausgangszustand. Und doch sind Spiele, die alles auf die Geschichte selbst setzen, noch immer selten.",
-    "phil.p3":"Was ich anstrebe, ist eine Geschichte, <strong>die ihrem Genre treu bleibt, präzise gebaut ist und am Ende einen tiefen Nachhall und etwas zum Nachdenken hinterlässt.</strong> Universell großartige Geschichten mit riesigen Budgets gibt es bereits genug. Ich stelle mich dem, was sie unberührt lassen — dem dunklen Inneren des Menschen. <strong>Lucy's Nightmare</strong> über Selbstzerstörung und Sucht und das nächste Werk <strong>The Love Doll</strong> über verzerrtes Begehren und Erlösung sind erst der Anfang.",
-    "phil.p4":"Allen, die meinen Geschichten zuhören — von Herzen Dank.",
-    "connect.eyebrow":"Der Arbeit folgen",
-    "connect.h":"Das Märchen hat <em>bereits begonnen.</em>",
-    "connect.sub":"Devlogs, Trailer und der Weg zum Release. Wer gut erzählte Geschichten liebt, ist willkommen.",
-    "connect.contact":"Kontakt"
-  },
-  fr:{
-    "nav.studio":"Studio","nav.creator":"Auteur","nav.philosophy":"Philosophie","nav.connect":"Contact",
-    "hero.eyebrow":"Nationwide Software — Studio indépendant",
-    "hero.line":"Un studio solo qui traite le jeu comme une œuvre d'auteur. Nous empruntons la grammaire du genre — pour y graver des <strong>histoires humaines</strong>.",
-    "scroll":"Défiler",
-    "studio.eyebrow":"Ce que nous créons",
-    "studio.big":"Sous une surface charmante, nous cachons les <em>vérités les plus sombres de l'humain.</em>",
-    "studio.after":"NationwideSoftware est le studio d'un seul auteur. Chaque ligne de code, chaque image dessinée, chaque tournant du récit répond à une seule vision. Nous ne cherchons pas des jeux qui se jouent bien — nous faisons des jeux qui signifient quelque chose une fois le générique passé.",
-    "game.tag":"En développement — Deuxième titre",
-    "game.subtitle":"Un conte de fées tordu. Un platformer d'horreur psychologique.",
-    "game.p1":"<span class=\"hl\">Un conte à deux visages.</span> Lucy a oublié qui elle est. Prisonnière d'un cauchemar sans fin, elle court, saute et se bat à travers des niveaux fantasques peuplés de monstres colorés — charmants en surface, faux en dessous.",
-    "game.p2":"Les diamants éparpillés renferment ses souvenirs volés. Chacun que vous récupérez rejoue un fragment du monde réel — et ces fragments portent un tout autre visage. Couche après couche, un récit minutieusement tissé dépouille le conte, jusqu'à ce que <span class=\"hl\">la vérité en dessous se révèle plus cruelle que n'importe quel cauchemar.</span>",
-    "game.p3":"La démo gratuite — du prologue au chapitre un — est disponible dès maintenant sur Steam.",
-    "fact.genre.k":"Genre","fact.genre.v":"Horreur psychologique · Platformer 2D",
-    "fact.demo.k":"Démo","fact.demo.v":"Gratuite · Disponible",
-    "fact.lang.k":"Langues","fact.lang.v":"10 langues prises en charge",
-    "fact.plat.k":"Plateformes","fact.rel.k":"Sortie complète",
-    "btn.demo":"Jouer à la démo gratuite","btn.wish":"Wishlist sur Steam","btn.yt":"Voir sur YouTube",
-    "trailer.soon":"Trailer bientôt disponible",
-    "shots.eyebrow":"Captures d'écran",
-    "creator.eyebrow":"L'auteur","creator.role":"Réalisation · Écriture · Art · Programmation",
-    "creator.p1":"Jeon Yeon Jun écrit, dessine et construit chaque partie des mondes portant le nom NationwideSoftware. Les personnages que vous rencontrez sont dessinés <em>pixel par pixel, à la main.</em>",
-    "creator.p2":"L'œuvre ne craint pas les sujets difficiles — la culpabilité, l'obsession, la cruauté silencieuse que l'on inflige sans le vouloir. Le genre est la porte ; l'histoire à l'intérieur est l'essentiel.",
-    "phil.eyebrow":"Le credo du studio",
-    "phil.p1":"Une grande histoire peut sauver quelqu'un. Je le sais d'expérience. Dans les années où le monde me semblait haïssable et difficile à supporter, ce sont les histoires — des films, des séries, des jeux, des bandes dessinées — qui m'ont tenu. Tant que j'étais plongé au fond d'une histoire, aucun tourment ne me trouvait.",
-    "phil.pull":"Même aux jours où il m'était difficile de m'aimer, je pouvais aimer les histoires que je créais.",
-    "phil.p2":"Comme de grands conteurs ont sauvé ma vie, je veux à mon tour sauver les heures de quelqu'un avec une histoire qui résonne. Le jeu vidéo est l'outil le plus puissant jamais donné à un conteur : le romancier empile des centaines de pages pour faire aimer un personnage, mais à l'instant où le joueur le dirige, il est déjà ce personnage. L'immersion y est l'état par défaut — et pourtant, les jeux qui misent tout sur l'histoire restent rares.",
-    "phil.p3":"Ce que je poursuis, c'est une histoire <strong>fidèle à son genre, minutieusement construite, qui laisse à la fin une résonance profonde et matière à réfléchir.</strong> Les grandes histoires universelles portées par d'énormes budgets existent déjà en abondance. Moi, j'affronte ce qu'elles laissent intact — la part sombre de l'être humain. <strong>Lucy's Nightmare</strong>, sur l'autodestruction et l'addiction, puis la prochaine œuvre, <strong>The Love Doll</strong>, sur le désir déformé et le salut, n'en sont que le commencement.",
-    "phil.p4":"À tous ceux qui écoutent mes histoires — merci, sincèrement.",
-    "connect.eyebrow":"Suivre le travail",
-    "connect.h":"Le conte a <em>déjà commencé.</em>",
-    "connect.sub":"Devlogs, trailers et la route vers la sortie. Si vous aimez les histoires bien racontées, suivez-nous.",
-    "connect.contact":"Contact"
-  },
-  ru:{
-    "nav.studio":"Студия","nav.creator":"Автор","nav.philosophy":"Философия","nav.connect":"Связь",
-    "hero.eyebrow":"Nationwide Software — Независимая студия",
-    "hero.line":"Сольная студия, для которой игра — авторское произведение. Мы заимствуем грамматику жанра, чтобы вырезать внутри неё <strong>человеческие истории</strong>.",
-    "scroll":"Прокрутка",
-    "studio.eyebrow":"Что мы создаём",
-    "studio.big":"Под очаровательной поверхностью мы прячем <em>самые тёмные истины человека.</em>",
-    "studio.after":"NationwideSoftware — студия одного автора. Каждая строка кода, каждый нарисованный кадр, каждый поворот истории подчинены одному видению. Нам неинтересны игры, в которые просто приятно играть, — мы делаем игры, которые что-то значат, когда идут титры.",
-    "game.tag":"В разработке — вторая игра",
-    "game.subtitle":"Искажённая сказка. Психологический хоррор-платформер.",
-    "game.p1":"<span class=\"hl\">Сказка с двумя лицами.</span> Люси забыла, кто она. Запертая в кошмаре, который не кончается, она бежит, прыгает и сражается в причудливых уровнях, полных пёстрых монстров, — очаровательных снаружи и неправильных внутри.",
-    "game.p2":"В рассыпанных алмазах заключены её украденные воспоминания. Каждый найденный проигрывает фрагмент реального мира — и у этих фрагментов совсем другое лицо. Слой за слоем тщательно выстроенная история снимает со сказки оболочку, пока <span class=\"hl\">правда под ней не окажется страшнее любого кошмара.</span>",
-    "game.p3":"Бесплатная демоверсия — от пролога до первой главы — уже доступна в Steam.",
-    "fact.genre.k":"Жанр","fact.genre.v":"Психологический хоррор · 2D-платформер",
-    "fact.demo.k":"Демо","fact.demo.v":"Бесплатно · Уже доступна",
-    "fact.lang.k":"Языки","fact.lang.v":"Полная поддержка 10 языков",
-    "fact.plat.k":"Платформы","fact.rel.k":"Полный релиз",
-    "btn.demo":"Играть в бесплатную демо","btn.wish":"В список желаемого Steam","btn.yt":"Смотреть на YouTube",
-    "trailer.soon":"Трейлер скоро",
-    "shots.eyebrow":"Скриншоты",
-    "creator.eyebrow":"Автор","creator.role":"Режиссёр · Сценарист · Художник · Программист",
-    "creator.p1":"Чон Ён Джун сам пишет, рисует и собирает каждую часть миров под именем NationwideSoftware. Персонажи, которых вы встретите, нарисованы <em>пиксель за пикселем, вручную.</em>",
-    "creator.p2":"Эта работа не боится трудных тем — вины, одержимости, тихой жестокости, которую люди причиняют не желая того. Жанр — лишь дверь; суть — история за ней.",
-    "phil.eyebrow":"Кредо студии",
-    "phil.p1":"Великая история способна спасти человека. Я знаю это по себе. В те годы, когда мир казался ненавистным и невыносимым, меня держали истории — из фильмов, сериалов, игр и комиксов. Пока я был глубоко внутри истории, ни одна тревога не могла меня найти.",
-    "phil.pull":"Даже в те дни, когда мне было трудно любить себя, я мог любить истории, которые создавал.",
-    "phil.p2":"Как великие рассказчики спасли мою жизнь, так и я хочу спасти чьи-то часы историей, которая отзывается. Игра — самый мощный инструмент, когда-либо данный рассказчику: романист выстраивает сотни страниц, чтобы читатель сопереживал герою, а в игре игрок становится персонажем в тот миг, когда начинает им управлять. Погружение здесь — состояние по умолчанию. И всё же игр, которые ставят всё на саму историю, по-прежнему мало.",
-    "phil.p3":"Я стремлюсь к истории, <strong>верной своему жанру, выстроенной точно и оставляющей в финале глубокий отклик и повод для размышлений.</strong> Универсально великих историй, созданных на огромные бюджеты, уже достаточно. Я обращаюсь к тому, чего они не касаются, — к тёмной стороне человеческой души. <strong>Lucy's Nightmare</strong> — о саморазрушении и зависимости, а следующая работа, <strong>The Love Doll</strong>, — об искажённом желании и спасении. Это только начало.",
-    "phil.p4":"Всем, кто слушает мои истории, — искренняя благодарность.",
-    "connect.eyebrow":"Следите за работой",
-    "connect.h":"Сказка <em>уже началась.</em>",
-    "connect.sub":"Девлоги, трейлеры и путь к релизу. Если вы любите хорошо рассказанные истории — присоединяйтесь.",
-    "connect.contact":"Контакт"
-  },
-  es:{
-    "nav.studio":"Estudio","nav.creator":"Autor","nav.philosophy":"Filosofía","nav.connect":"Conecta",
-    "hero.eyebrow":"Nationwide Software — Estudio independiente",
-    "hero.line":"Un estudio en solitario que trata los juegos como obras de autor. Tomamos prestada la gramática del género — solo para tallar dentro <strong>historias humanas</strong>.",
-    "scroll":"Desplázate",
-    "studio.eyebrow":"Lo que hacemos",
-    "studio.big":"Bajo una superficie encantadora, escondemos las <em>verdades más oscuras del ser humano.</em>",
-    "studio.after":"NationwideSoftware es el estudio de un solo autor. Cada línea de código, cada fotograma dibujado, cada giro de la historia responde a una única visión. No nos interesan los juegos que simplemente se juegan bien: hacemos juegos que significan algo cuando aparecen los créditos.",
-    "game.tag":"En desarrollo — Segundo título",
-    "game.subtitle":"Un cuento de hadas retorcido. Un plataformas de terror psicológico.",
-    "game.p1":"<span class=\"hl\">Un cuento con dos caras.</span> Lucy ha olvidado quién es. Atrapada en una pesadilla que se niega a terminar, corre, salta y lucha por niveles caprichosos llenos de monstruos coloridos: encantadores en la superficie, con algo que anda mal debajo.",
-    "game.p2":"Los diamantes dispersos guardan sus recuerdos robados. Cada uno que recuperas reproduce un fragmento del mundo real — y esos fragmentos tienen un rostro muy distinto. Capa a capa, una historia tramada con precisión va desnudando el cuento, hasta que <span class=\"hl\">la verdad de debajo resulta más cruel que cualquier pesadilla.</span>",
-    "game.p3":"La demo gratuita — del prólogo al capítulo uno — ya está disponible en Steam.",
-    "fact.genre.k":"Género","fact.genre.v":"Terror psicológico · Plataformas 2D",
-    "fact.demo.k":"Demo","fact.demo.v":"Gratis · Ya disponible",
-    "fact.lang.k":"Idiomas","fact.lang.v":"10 totalmente compatibles",
-    "fact.plat.k":"Plataformas","fact.rel.k":"Lanzamiento completo",
-    "btn.demo":"Jugar la demo gratis","btn.wish":"Lista de deseados de Steam","btn.yt":"Ver en YouTube",
-    "trailer.soon":"Tráiler próximamente",
-    "shots.eyebrow":"Capturas",
-    "creator.eyebrow":"El autor","creator.role":"Dirección · Guion · Arte · Programación",
-    "creator.p1":"Jeon Yeon Jun escribe, dibuja y construye cada parte de los mundos bajo el nombre NationwideSoftware. Los personajes que encuentras están dibujados <em>píxel a píxel, a mano.</em>",
-    "creator.p2":"La obra no teme los temas difíciles: la culpa, la obsesión, la crueldad silenciosa que la gente inflige sin querer. El género es la puerta; la historia de dentro es lo esencial.",
-    "phil.eyebrow":"El credo del estudio",
-    "phil.p1":"Una gran historia puede salvar a una persona. Lo sé por experiencia. En los años en que el mundo me resultaba odioso y difícil de soportar, me sostuvieron las historias: las del cine, las series, los juegos y los cómics. Mientras estaba inmerso en una historia, ninguna angustia podía encontrarme.",
-    "phil.pull":"Incluso en los días en que me costaba amarme a mí mismo, podía amar las historias que creaba.",
-    "phil.p2":"Así como grandes narradores salvaron mi vida, yo quiero salvar las horas de alguien con una historia que resuene. El videojuego es la herramienta más poderosa jamás dada a un narrador: el novelista apila cientos de páginas para que sientas por un personaje, pero en el instante en que el jugador lo mueve, ya es ese personaje. La inmersión es el estado por defecto — y aun así, los juegos que lo apuestan todo a la historia siguen siendo escasos.",
-    "phil.p3":"Lo que persigo es una historia <strong>fiel a su género, tramada con precisión, que al llegar al final deje una resonancia profunda y algo en qué pensar.</strong> Historias universalmente magníficas hechas con presupuestos enormes ya sobran. Yo enfrento lo que ellas no tocan: el interior oscuro del ser humano. <strong>Lucy's Nightmare</strong>, sobre la autodestrucción y la adicción, y la próxima obra, <strong>The Love Doll</strong>, sobre el deseo retorcido y la salvación, son solo el comienzo.",
-    "phil.p4":"A todos los que escuchan mis historias: gracias, de corazón.",
-    "connect.eyebrow":"Sigue el trabajo",
-    "connect.h":"El cuento <em>ya ha comenzado.</em>",
-    "connect.sub":"Devlogs, tráileres y el camino hacia el lanzamiento. Si amas una historia bien contada, acompáñanos.",
-    "connect.contact":"Contacto"
-  },
-  pt:{
-    "nav.studio":"Estúdio","nav.creator":"Autor","nav.philosophy":"Filosofia","nav.connect":"Conecte",
-    "hero.eyebrow":"Nationwide Software — Estúdio independente",
-    "hero.line":"Um estúdio solo que trata jogos como obras autorais. Emprestamos a gramática do gênero — apenas para esculpir dentro dela <strong>histórias humanas</strong>.",
-    "scroll":"Role",
-    "studio.eyebrow":"O que fazemos",
-    "studio.big":"Sob uma superfície encantadora, escondemos as <em>verdades mais sombrias do ser humano.</em>",
-    "studio.after":"NationwideSoftware é o estúdio de um único autor. Cada linha de código, cada quadro desenhado, cada virada da história responde a uma só visão. Não nos interessam jogos que apenas jogam bem — fazemos jogos que significam algo quando os créditos sobem.",
-    "game.tag":"Em desenvolvimento — Segundo título",
-    "game.subtitle":"Um conto de fadas distorcido. Um jogo de plataforma de terror psicológico.",
-    "game.p1":"<span class=\"hl\">Um conto de fadas com duas faces.</span> Lucy esqueceu quem é. Presa num pesadelo que se recusa a acabar, ela corre, salta e luta por fases lúdicas repletas de monstros coloridos — encantadoras na superfície, erradas por baixo.",
-    "game.p2":"Os diamantes espalhados guardam suas memórias roubadas. Cada um que você recupera reproduz um fragmento do mundo real — e esses fragmentos têm um rosto muito diferente. Camada por camada, uma história meticulosamente tramada vai despindo o conto de fadas, até que <span class=\"hl\">a verdade por baixo se mostre mais cruel que qualquer pesadelo.</span>",
-    "game.p3":"A demo gratuita — do prólogo ao capítulo um — já está disponível na Steam.",
-    "fact.genre.k":"Gênero","fact.genre.v":"Terror psicológico · Plataforma 2D",
-    "fact.demo.k":"Demo","fact.demo.v":"Grátis · Já disponível",
-    "fact.lang.k":"Idiomas","fact.lang.v":"10 totalmente suportados",
-    "fact.plat.k":"Plataformas","fact.rel.k":"Lançamento completo",
-    "btn.demo":"Jogar a demo grátis","btn.wish":"Lista de desejos na Steam","btn.yt":"Assistir no YouTube",
-    "trailer.soon":"Trailer em breve",
-    "shots.eyebrow":"Capturas de tela",
-    "creator.eyebrow":"O autor","creator.role":"Direção · Roteiro · Arte · Programação",
-    "creator.p1":"Jeon Yeon Jun escreve, desenha e constrói cada parte dos mundos sob o nome NationwideSoftware. Os personagens que você encontra são desenhados <em>pixel por pixel, à mão.</em>",
-    "creator.p2":"A obra não teme assuntos difíceis — culpa, obsessão, a crueldade silenciosa que as pessoas infligem sem querer. O gênero é a porta; a história lá dentro é o que importa.",
-    "phil.eyebrow":"O credo do estúdio",
-    "phil.p1":"Uma grande história pode salvar uma pessoa. Eu sei disso por experiência. Nos anos em que o mundo me parecia odioso e difícil de suportar, foram as histórias — dos filmes, das séries, dos jogos e dos quadrinhos — que me seguraram. Enquanto eu estava mergulhado numa história, nenhuma angústia conseguia me encontrar.",
-    "phil.pull":"Mesmo nos dias em que era difícil me amar, eu conseguia amar as histórias que criava.",
-    "phil.p2":"Assim como grandes contadores de histórias salvaram a minha vida, quero salvar as horas de alguém com uma história que ressoe. O jogo é a ferramenta mais poderosa já dada a um contador de histórias: o romancista empilha centenas de páginas para fazer você sentir por um personagem, mas no instante em que o jogador o controla, ele já é aquele personagem. A imersão é o estado padrão — e ainda assim, jogos que apostam tudo na própria história continuam raros.",
-    "phil.p3":"O que persigo é uma história <strong>fiel ao seu gênero, tramada com precisão, que ao chegar ao fim deixe uma ressonância profunda e algo em que pensar.</strong> Histórias universalmente excelentes feitas com orçamentos enormes já existem de sobra. Eu encaro o que elas não tocam: o interior sombrio do ser humano. <strong>Lucy's Nightmare</strong>, sobre autodestruição e vício, e a próxima obra, <strong>The Love Doll</strong>, sobre o desejo distorcido e a salvação, são apenas o começo.",
-    "phil.p4":"A todos que escutam as minhas histórias — obrigado, de coração.",
-    "connect.eyebrow":"Acompanhe o trabalho",
-    "connect.h":"O conto <em>já começou.</em>",
-    "connect.sub":"Devlogs, trailers e o caminho até o lançamento. Se você ama uma história bem contada, venha junto.",
-    "connect.contact":"Contato"
-  }
+    "en": {
+      "nav.studio": "Studio",
+      "nav.creator": "Creator",
+      "nav.philosophy": "Philosophy",
+      "nav.connect": "Connect",
+      "hero.eyebrow": "Nationwide Software — Independent Studio",
+      "hero.line": "A solo studio that treats games as authored works. It borrows the grammar of genre to build <strong>stories that unsettle and compel</strong>.",
+      "scroll": "Scroll",
+      "studio.eyebrow": "What the author makes",
+      "studio.big": "The ending comes first — <em>everything else is built backwards.</em>",
+      "studio.sub": "Resonance is not an accident. It is designed.",
+      "studio.after": "NationwideSoftware is the studio of a single author. Every line of code, every drawn frame, every line of dialogue answers to one vision: a story worth staying for.",
+      "studio.p2": "Japan has a genre called iyamisu — a compound of iya (“unpleasant”) and mystery: a mystery that leaves you feeling worse than when you began. Like Kanae Minato's Confessions, these stories wrap society's infected places and the floor of human nature inside the pleasures of genre, and keep you reading to the last page. That is what I make.",
+      "studio.p3": "The work always begins at the end. I don't draw the first scene until the last frame is decided. The charge and the afterglow of watching everything planted in the opening and the middle come due in the finale — I believe that is the greatest pleasure a story can give a person.",
+      "game.tag": "In development — First title (2024 – 2028)",
+      "game.subtitle": "A twisted fairy tale. A psychological horror platformer.",
+      "game.p1": "<span class=\"hl\">A fairy tale with two faces.</span> Lucy has forgotten who she is. Trapped in a nightmare that refuses to end, she runs, leaps, and fights through whimsical stages crowded with colorful monsters — charming on the surface, wrong underneath.",
+      "game.p2": "Scattered diamonds hold her stolen memories. Each one you recover plays back a fragment of the real world — and those fragments wear a very different face. One layer at a time, a meticulously plotted story peels the fairy tale back, until <span class=\"hl\">the truth beneath proves crueler than any nightmare.</span>",
+      "game.p3": "The free demo — the prologue through chapter one — is out now on Steam.",
+      "fact.genre.k": "Genre",
+      "fact.genre.v": "Psychological Horror · 2D Platformer",
+      "fact.demo.k": "Demo",
+      "fact.demo.v": "Free · Available now",
+      "fact.lang.k": "Languages",
+      "fact.lang.v": "10 fully supported",
+      "fact.plat.k": "Platforms",
+      "fact.rel.k": "Full release",
+      "btn.demo": "Play the Free Demo",
+      "btn.wish": "Wishlist on Steam",
+      "btn.yt": "Watch on YouTube",
+      "trailer.soon": "Trailer coming soon",
+      "shots.eyebrow": "Screenshots",
+      "creator.eyebrow": "The author",
+      "creator.role": "Director · Writer · Artist · Programmer",
+      "creator.p1": "Jeon Yeon Jun writes, draws, and builds every part of the worlds under the NationwideSoftware name. The characters you meet are drawn <em>pixel by pixel, by hand.</em>",
+      "creator.p2": "Genre is the doorway. What makes you open it is the grammar of horror and thriller; what waits inside is addiction and self-loathing, responsibility and repression, and the quiet cruelty people inflict without meaning to.",
+      "creator.p3": "The dialogue and the characters carry the fingerprints of everything I've passed through. Films and series, stage plays and comics, old console games — more homages are hidden in there than I can count. One day I intend to pull them out, one by one, in a developer commentary.",
+      "phil.eyebrow": "The studio's creed",
+      "phil.p1": "A great story can save a person. I know this from experience. In the years when the world felt hateful and hard to bear, what held me together were the stories — in films, in shows, in games and comics. As long as I was deep inside a story, no worry could find me.",
+      "phil.pull": "Loving myself is still hard. But I can love the stories I made.",
+      "phil.p2": "Just as great storytellers saved my life, I want to save someone's hours with a story that resonates. Games are the most powerful tool a storyteller has ever been given. A novelist labours over every event and every line to stack hundreds of pages before you finally feel for a character. In a game, the moment the player moves one, they already are that character. <strong>Not empathy — identification.</strong> Immersion is the default here, and yet games that stake everything on the story itself are still rare.",
+      "phil.p3": "What I pursue is a story faithful to its genre, meticulously plotted, one that leaves a deep resonance and something to think about when the ending arrives. I build the ending first. I don't take people aboard without knowing where I am taking them.",
+      "phil.p3b": "Stories that satisfy everyone are already being made in abundance on enormous budgets. I face what they leave untouched: the dark interior of human beings. <strong>Lucy's Nightmare</strong>, on self-destruction and addiction, and the next work, <strong>The Love Doll</strong>, on twisted desire and salvation, are where it starts.",
+      "phil.p4": "What saved me were stories other people made. Now I hope a story I made will do that for someone else.",
+      "connect.eyebrow": "The rest of the story",
+      "connect.h": "The ending is <em>already written.</em>",
+      "connect.sub": "Devlogs, trailers, and the road to full release. If you want to arrive first, add it to your Steam wishlist.",
+      "connect.contact": "Contact"
+    },
+    "ko": {
+      "nav.studio": "스튜디오",
+      "nav.creator": "작가",
+      "nav.philosophy": "철학",
+      "nav.connect": "연결",
+      "hero.eyebrow": "Nationwide Software — 독립 스튜디오",
+      "hero.line": "게임을 작가의 작품으로 대하는 1인 스튜디오. 장르의 문법을 빌려, <strong>불편하지만 매력적인 이야기</strong>를 만듭니다.",
+      "scroll": "스크롤",
+      "studio.eyebrow": "작가가 만드는 것",
+      "studio.big": "결말부터 짓고, <em>거기서부터 거꾸로 쌓아 올립니다.</em>",
+      "studio.sub": "여운은 우연히 남지 않습니다. 설계됩니다.",
+      "studio.after": "NationwideSoftware는 한 사람의 작가가 이끄는 스튜디오입니다. 모든 코드 한 줄, 그림 한 장, 대사 하나가 매력적인 이야기라는 하나의 비전을 따릅니다.",
+      "studio.p2": "일본에는 '이야미스'라는 장르가 있습니다. '싫다'와 '미스터리'를 붙인 말로, 읽고 나면 기분이 나빠지는 미스터리를 뜻합니다. 미나토 가나에의 『고백』처럼, 사회의 곪은 자리와 인간 본성의 바닥을 장르의 재미로 감싸 끝까지 읽게 만드는 이야기들입니다. 제가 만드는 것이 그것입니다.",
+      "studio.p3": "작업은 언제나 결말에서 시작합니다. 마지막 한 컷이 정해지기 전에는 첫 장면을 그리지 않습니다. 도입부와 전개에 치밀하게 심어둔 것이 결말에서 회수될 때 오는 쾌감과 여운 — 이야기가 사람에게 줄 수 있는 가장 큰 재미라고 믿기 때문입니다.",
+      "game.tag": "개발 중 — 첫 번째 작품 (2024 – 2028)",
+      "game.subtitle": "뒤틀린 동화. 심리 공포 플랫포머.",
+      "game.p1": "<span class=\"hl\">두 개의 얼굴을 가진 동화.</span> 루시는 자신이 누구인지 잊었습니다. 끝나지 않는 악몽에 갇힌 채, 알록달록한 몬스터들이 가득한 아기자기한 스테이지를 달리고, 뛰어넘고, 싸워 나갑니다 — 표면은 사랑스럽지만, 그 아래는 어딘가 잘못되어 있습니다.",
+      "game.p2": "흩어진 다이아몬드에는 빼앗긴 기억이 담겨 있습니다. 하나를 되찾을 때마다 현실의 조각이 재생됩니다 — 그리고 그 조각들은 전혀 다른 얼굴을 하고 있습니다. 치밀하게 설계된 이야기가 동화를 한 겹씩 벗겨내고, 마침내 <span class=\"hl\">그 아래의 진실은 어떤 악몽보다도 잔혹합니다.</span>",
+      "game.p3": "프롤로그부터 챕터 1까지 담은 무료 데모가 지금 스팀에 공개되어 있습니다.",
+      "fact.genre.k": "장르",
+      "fact.genre.v": "심리 공포 · 2D 플랫포머",
+      "fact.demo.k": "데모",
+      "fact.demo.v": "무료 · 공개 중",
+      "fact.lang.k": "지원 언어",
+      "fact.lang.v": "10개 언어 완전 지원",
+      "fact.plat.k": "플랫폼",
+      "fact.rel.k": "정식 출시",
+      "btn.demo": "무료 데모 플레이",
+      "btn.wish": "스팀 위시리스트 추가",
+      "btn.yt": "유튜브에서 보기",
+      "trailer.soon": "트레일러 공개 예정",
+      "shots.eyebrow": "스크린샷",
+      "creator.eyebrow": "작가",
+      "creator.role": "디렉터 · 작가 · 아티스트 · 프로그래머",
+      "creator.p1": "전연준은 NationwideSoftware라는 이름 아래 세계의 모든 부분을 직접 쓰고, 그리고, 만듭니다. 여러분이 만나는 캐릭터들은 <em>한 픽셀씩, 손으로</em> 그려졌습니다.",
+      "creator.p2": "장르는 입구입니다. 문을 열게 만드는 것은 호러와 스릴러의 문법이지만, 안에서 기다리는 것은 중독과 자기혐오, 책임과 억압, 그리고 사람이 악의 없이 저지르는 조용한 잔인함입니다.",
+      "creator.p3": "대사와 캐릭터에는 제가 통과해 온 것들의 지문이 남아 있습니다. 영화와 드라마, 희곡과 만화, 오래된 콘솔 게임 — 세기 어려울 만큼 많은 오마주가 숨어 있습니다. 언젠가 개발자 코멘터리로 하나씩 꺼내 보일 생각입니다.",
+      "phil.eyebrow": "스튜디오의 신조",
+      "phil.p1": "훌륭한 이야기는 사람을 구한다. 나는 그것을 경험으로 안다. 세상이 밉고 견디기 어려웠던 시절, 나를 붙잡아 준 것은 영화와 드라마, 게임과 만화 속의 매력적인 이야기들이었다. 이야기에 깊이 빠져 있는 동안만큼은, 어떤 근심도 나를 찾아내지 못했다.",
+      "phil.pull": "아직도 나 자신을 사랑하기는 어렵다. 그래도 내가 만든 이야기는 사랑할 수 있다.",
+      "phil.p2": "훌륭한 창작자들이 그렇게 내 삶을 구했듯, 나도 울림이 있는 이야기로 누군가의 시간을 구하고 싶다. 게임은 이야기꾼에게 주어진 가장 강력한 도구다. 소설가는 독자를 인물에 공감시키기 위해 사건 하나, 대사 한 줄을 공들이며 수백 페이지를 쌓아 올린다. 게임에서 플레이어는 캐릭터를 직접 움직이는 순간 이미 그 인물이 된다. <strong>공감이 아니라 동일시다.</strong> 몰입이 기본값인 매체 — 그런데도 이야기 자체로 승부하는 게임은 아직 드물다.",
+      "phil.p3": "내가 추구하는 것은 <strong>장르에 충실하고, 치밀하게 짜였으며, 엔딩에 도달했을 때 깊은 울림과 생각할 거리를 남기는 이야기</strong>다. 나는 결말을 먼저 짓는다. 어디로 데려갈지 모르는 채로 사람을 태우지 않는다.",
+      "phil.p3b": "모두를 만족시키는 훌륭한 이야기는 거대 자본이 이미 충분히 만들고 있다. 나는 그들이 건드리지 않는 것 — 인간의 어두운 내면 — 을 정면으로 마주한다. 자기파괴와 중독을 그린 <strong>『Lucy's Nightmare』</strong>, 그리고 뒤틀린 욕망과 구원을 그릴 차기작 <strong>『사랑인형』</strong>이 그 시작이다.",
+      "phil.p4": "나를 구한 것은 남이 만든 이야기였다. 이제 내가 만든 이야기가 누군가에게 그 일을 해주기를 바란다.",
+      "connect.eyebrow": "남은 이야기",
+      "connect.h": "결말은 <em>이미 정해져 있습니다.</em>",
+      "connect.sub": "개발 기록과 트레일러, 그리고 정식 출시까지. 가장 먼저 도착하고 싶다면, 스팀 찜 목록에 담아두세요.",
+      "connect.contact": "문의"
+    },
+    "ja": {
+      "nav.studio": "スタジオ",
+      "nav.creator": "作家",
+      "nav.philosophy": "理念",
+      "nav.connect": "つながる",
+      "hero.eyebrow": "Nationwide Software — インディペンデントスタジオ",
+      "hero.line": "ゲームを作家の作品として扱うソロスタジオ。ジャンルの文法を借りて、<strong>不快で、しかし魅力的な物語</strong>をつくります。",
+      "scroll": "スクロール",
+      "studio.eyebrow": "作家がつくるもの",
+      "studio.big": "結末から書き、<em>そこから逆に積み上げます。</em>",
+      "studio.sub": "余韻は偶然には残りません。設計されるものです。",
+      "studio.after": "NationwideSoftwareは、一人の作家によるスタジオです。すべてのコード、すべての絵、すべての台詞が、「魅力的な物語」というひとつのビジョンに従います。",
+      "studio.p2": "日本には「イヤミス」というジャンルがあります。読み終えたあとに嫌な気持ちが残るミステリー。湊かなえの『告白』のように、社会の膿んだ場所と人間の本性の底を、ジャンルの面白さで包み、最後まで読ませてしまう物語です。私がつくっているのは、それです。",
+      "studio.p3": "制作はいつも結末から始まります。最後の一カットが決まるまで、最初の場面は描きません。導入と展開に緻密に仕込んだものが結末で回収される瞬間の快感と余韻——物語が人に与えられる最大の面白さだと信じているからです。",
+      "game.tag": "開発中 — 第一作 (2024 – 2028)",
+      "game.subtitle": "歪んだおとぎ話。心理ホラー・プラットフォーマー。",
+      "game.p1": "<span class=\"hl\">二つの顔を持つおとぎ話。</span> ルーシーは自分が誰なのかを忘れてしまった。終わらない悪夢に囚われたまま、色とりどりのモンスターがひしめく愛らしいステージを走り、跳び、戦い抜く——表面は可愛らしく、その下はどこか間違っている。",
+      "game.p2": "散らばったダイヤには奪われた記憶が宿る。ひとつ取り戻すたびに現実の断片が再生される——その断片はまるで違う顔をしている。緻密に組まれた物語がおとぎ話を一枚ずつ剥がしてゆき、やがて<span class=\"hl\">その下の真実は、どんな悪夢よりも残酷だ。</span>",
+      "game.p3": "プロローグから第1章までを収めた無料デモが、Steamで公開中です。",
+      "fact.genre.k": "ジャンル",
+      "fact.genre.v": "心理ホラー · 2Dプラットフォーマー",
+      "fact.demo.k": "デモ",
+      "fact.demo.v": "無料 · 配信中",
+      "fact.lang.k": "対応言語",
+      "fact.lang.v": "10言語に完全対応",
+      "fact.plat.k": "プラットフォーム",
+      "fact.rel.k": "正式リリース",
+      "btn.demo": "無料デモをプレイ",
+      "btn.wish": "Steamでウィッシュリスト",
+      "btn.yt": "YouTubeで見る",
+      "trailer.soon": "トレーラー近日公開",
+      "shots.eyebrow": "スクリーンショット",
+      "creator.eyebrow": "作家",
+      "creator.role": "ディレクター · ライター · アーティスト · プログラマー",
+      "creator.p1": "Jeon Yeon Junは、NationwideSoftwareの名の下にある世界のすべてを自ら書き、描き、組み上げます。出会うキャラクターたちは<em>1ピクセルずつ、手で</em>描かれています。",
+      "creator.p2": "ジャンルは入口です。扉を開けさせるのはホラーとスリラーの文法ですが、その中で待っているのは依存と自己嫌悪、責任と抑圧、そして人が悪意なく与える静かな残酷さです。",
+      "creator.p3": "台詞とキャラクターには、私が通り抜けてきたものの指紋が残っています。映画とドラマ、戯曲と漫画、古いコンソールゲーム——数え切れないほどのオマージュが隠れています。いつか開発者コメンタリーで、ひとつずつ取り出してみせるつもりです。",
+      "phil.eyebrow": "スタジオの信条",
+      "phil.p1": "優れた物語は人を救う。私はそれを経験として知っている。世界が憎く、耐えがたかった時期、私を支えてくれたのは映画やドラマ、ゲームや漫画の中の魅力的な物語だった。物語に深く浸っている間だけは、どんな不安も私を見つけられなかった。",
+      "phil.pull": "今も自分を愛するのは難しい。それでも、自分が作った物語は愛することができる。",
+      "phil.p2": "優れた創作者たちが私の人生を救ってくれたように、私も響く物語で誰かの時間を救いたい。ゲームは物語の作り手に与えられた最も強力な道具だ。小説家は読者を人物に共感させるために、出来事のひとつ、台詞の一行を練り上げて何百ページも積み上げる。ゲームではプレイヤーがキャラクターを動かした瞬間、すでにその人物になっている。<strong>共感ではなく、同一化だ。</strong>没入が初期値の媒体——それでも、物語そのもので勝負するゲームはまだ少ない。",
+      "phil.p3": "私が追い求めるのは、<strong>ジャンルに忠実で、緻密に組み上げられ、エンディングに辿り着いたとき深い余韻と考える種を残す物語</strong>だ。私は結末を先に決める。どこへ連れて行くか分からないまま、人を乗せたりはしない。",
+      "phil.p3b": "誰もを満足させる優れた物語は、巨大資本がすでに十分につくっている。私は彼らが触れないもの——人間の暗い内面——に正面から向き合う。自己破壊と依存を描いた<strong>『Lucy's Nightmare』</strong>、そして歪んだ欲望と救いを描く次回作<strong>『The Love Doll』</strong>が、その始まりだ。",
+      "phil.p4": "私を救ったのは、他人が作った物語だった。今度は、私が作った物語が誰かにとってそれになってほしい。",
+      "connect.eyebrow": "残りの物語",
+      "connect.h": "結末は<em>すでに決まっています。</em>",
+      "connect.sub": "開発記録とトレーラー、そして正式リリースまで。誰よりも早く辿り着きたいなら、Steamのウィッシュリストへ。",
+      "connect.contact": "お問い合わせ"
+    },
+    "zh-CN": {
+      "nav.studio": "工作室",
+      "nav.creator": "作者",
+      "nav.philosophy": "理念",
+      "nav.connect": "联系",
+      "hero.eyebrow": "Nationwide Software — 独立工作室",
+      "hero.line": "一间将游戏视为作者作品的独立工作室。借用类型的语法，讲述<strong>令人不适却引人入胜的故事</strong>。",
+      "scroll": "滚动",
+      "studio.eyebrow": "作者的创作",
+      "studio.big": "先写好结局，<em>再从那里向回搭建。</em>",
+      "studio.sub": "余韵不会偶然留下。它是被设计出来的。",
+      "studio.after": "NationwideSoftware 是一位作者独立运营的工作室。每一行代码、每一张画、每一句台词，都服从于同一个愿景——一个足够动人的故事。",
+      "studio.p2": "日本有一种类型叫「イヤミス」（厌恶系推理）——由「讨厌」与「推理」组合而成，指读完之后让人心情变差的推理。就像凑佳苗的《告白》，它们把社会溃烂的角落与人性的底部包裹在类型的趣味里，让人一路读到最后一页。我做的正是这个。",
+      "studio.p3": "创作永远从结局开始。最后一个镜头未定之前，我不会画第一个场景。开篇与铺陈中缜密埋下的一切在结局被回收时带来的快感与余韵——我相信那是故事能给一个人的最大乐趣。",
+      "game.tag": "开发中 — 第一部作品 (2024 – 2028)",
+      "game.subtitle": "扭曲的童话。心理恐怖平台游戏。",
+      "game.p1": "<span class=\"hl\">拥有两副面孔的童话。</span> 露西忘记了自己是谁。被困在无法醒来的噩梦中，她在挤满彩色怪物的可爱关卡里奔跑、跳跃、战斗——表面迷人，底下却透着不对劲。",
+      "game.p2": "散落的钻石封存着被夺走的记忆。每找回一颗，就会播放一段现实的碎片——而那些碎片有着截然不同的面孔。缜密编织的故事将童话一层层剥开，直到<span class=\"hl\">底下的真相比任何噩梦都更残酷。</span>",
+      "game.p3": "收录序章至第一章的免费试玩版现已登陆 Steam。",
+      "fact.genre.k": "类型",
+      "fact.genre.v": "心理恐怖 · 2D平台",
+      "fact.demo.k": "试玩版",
+      "fact.demo.v": "免费 · 现已推出",
+      "fact.lang.k": "支持语言",
+      "fact.lang.v": "完整支持10种语言",
+      "fact.plat.k": "平台",
+      "fact.rel.k": "正式发售",
+      "btn.demo": "游玩免费试玩版",
+      "btn.wish": "加入 Steam 愿望单",
+      "btn.yt": "在 YouTube 观看",
+      "trailer.soon": "预告片即将公开",
+      "shots.eyebrow": "游戏截图",
+      "creator.eyebrow": "作者",
+      "creator.role": "导演 · 编剧 · 美术 · 程序",
+      "creator.p1": "Jeon Yeon Jun 亲手书写、绘制并构建 NationwideSoftware 名下世界的每一个部分。你遇到的角色，都是<em>逐像素、亲手</em>绘制的。",
+      "creator.p2": "类型只是入口。让你推门而入的是恐怖与惊悚的语法，而门后等待的是成瘾与自我厌恶、责任与压抑，以及人们无意间施加的安静的残忍。",
+      "creator.p3": "台词与角色上留着我走过的一切的指纹。电影与剧集、戏剧与漫画、老旧的主机游戏——藏着多到数不清的致敬。总有一天，我会在开发者评论里把它们一个个取出来。",
+      "phil.eyebrow": "工作室的信条",
+      "phil.p1": "出色的故事能拯救一个人。我对此深有体会。在那些憎恨世界、难以支撑的日子里，是电影、剧集、游戏与漫画中的动人故事支撑着我。只要深深沉浸在故事里，任何忧虑都找不到我。",
+      "phil.pull": "至今我仍难以爱自己。但我能爱我创造的故事。",
+      "phil.p2": "正如伟大的创作者曾拯救了我的人生，我也想用有回响的故事去拯救某个人的时间。游戏是讲故事的人所能拥有的最强大的工具。小说家要在每一个事件、每一句台词上下功夫，堆叠数百页，才能让读者与人物共情；而在游戏中，玩家操纵角色的那一刻，就已经成为了那个角色。<strong>那不是共情，而是同一化。</strong>沉浸是这个媒介的默认值——然而以故事本身取胜的游戏仍然稀少。",
+      "phil.p3": "我所追求的，是<strong>忠于类型、结构缜密、抵达结局时留下深刻回响与思考余地的故事</strong>。我先写好结局。我不会在不知道要把人带往何处时，就让人上车。",
+      "phil.p3b": "能让所有人满意的出色故事，巨额资本已经做得足够多了。我要直面它们不去触碰的东西——人性幽暗的内面。讲述自我毁灭与成瘾的<strong>《Lucy's Nightmare》</strong>，以及探讨扭曲欲望与救赎的下一部作品<strong>《The Love Doll》</strong>，就是这一切的开始。",
+      "phil.p4": "拯救我的，是别人写的故事。如今我希望，我写的故事能为某个人做同样的事。",
+      "connect.eyebrow": "尚未讲完的故事",
+      "connect.h": "结局<em>早已写好。</em>",
+      "connect.sub": "开发日志、预告片，以及通往正式发售的路。若你想最先抵达，请加入 Steam 愿望单。",
+      "connect.contact": "联系"
+    },
+    "zh-TW": {
+      "nav.studio": "工作室",
+      "nav.creator": "作者",
+      "nav.philosophy": "理念",
+      "nav.connect": "聯絡",
+      "hero.eyebrow": "Nationwide Software — 獨立工作室",
+      "hero.line": "一間將遊戲視為作者作品的獨立工作室。借用類型的語法，講述<strong>令人不適卻引人入勝的故事</strong>。",
+      "scroll": "捲動",
+      "studio.eyebrow": "作者的創作",
+      "studio.big": "先寫好結局，<em>再從那裡向回搭建。</em>",
+      "studio.sub": "餘韻不會偶然留下。它是被設計出來的。",
+      "studio.after": "NationwideSoftware 是一位作者獨立經營的工作室。每一行程式碼、每一張畫、每一句台詞，都服從於同一個願景——一個足夠動人的故事。",
+      "studio.p2": "日本有一種類型叫「イヤミス」（厭惡系推理）——由「討厭」與「推理」組合而成，指讀完之後讓人心情變差的推理。就像湊佳苗的《告白》，它們把社會潰爛的角落與人性的底部包裹在類型的趣味裡，讓人一路讀到最後一頁。我做的正是這個。",
+      "studio.p3": "創作永遠從結局開始。最後一個鏡頭未定之前，我不會畫第一個場景。開篇與鋪陳中縝密埋下的一切在結局被回收時帶來的快感與餘韻——我相信那是故事能給一個人的最大樂趣。",
+      "game.tag": "開發中 — 第一部作品 (2024 – 2028)",
+      "game.subtitle": "扭曲的童話。心理恐怖平台遊戲。",
+      "game.p1": "<span class=\"hl\">擁有兩副面孔的童話。</span> 露西忘記了自己是誰。被困在無法醒來的噩夢中，她在擠滿彩色怪物的可愛關卡裡奔跑、跳躍、戰鬥——表面迷人，底下卻透著不對勁。",
+      "game.p2": "散落的鑽石封存著被奪走的記憶。每找回一顆，就會播放一段現實的碎片——而那些碎片有著截然不同的面孔。縝密編織的故事將童話一層層剝開，直到<span class=\"hl\">底下的真相比任何噩夢都更殘酷。</span>",
+      "game.p3": "收錄序章至第一章的免費試玩版現已登陸 Steam。",
+      "fact.genre.k": "類型",
+      "fact.genre.v": "心理恐怖 · 2D平台",
+      "fact.demo.k": "試玩版",
+      "fact.demo.v": "免費 · 現已推出",
+      "fact.lang.k": "支援語言",
+      "fact.lang.v": "完整支援10種語言",
+      "fact.plat.k": "平台",
+      "fact.rel.k": "正式發售",
+      "btn.demo": "遊玩免費試玩版",
+      "btn.wish": "加入 Steam 願望清單",
+      "btn.yt": "在 YouTube 觀看",
+      "trailer.soon": "預告片即將公開",
+      "shots.eyebrow": "遊戲截圖",
+      "creator.eyebrow": "作者",
+      "creator.role": "導演 · 編劇 · 美術 · 程式",
+      "creator.p1": "Jeon Yeon Jun 親手書寫、繪製並構建 NationwideSoftware 名下世界的每一個部分。你遇到的角色，都是<em>逐像素、親手</em>繪製的。",
+      "creator.p2": "類型只是入口。讓你推門而入的是恐怖與驚悚的語法，而門後等待的是成癮與自我厭惡、責任與壓抑，以及人們無意間施加的安靜的殘忍。",
+      "creator.p3": "台詞與角色上留著我走過的一切的指紋。電影與劇集、戲劇與漫畫、老舊的主機遊戲——藏著多到數不清的致敬。總有一天，我會在開發者評論裡把它們一個個取出來。",
+      "phil.eyebrow": "工作室的信條",
+      "phil.p1": "出色的故事能拯救一個人。我對此深有體會。在那些憎恨世界、難以支撐的日子裡，是電影、劇集、遊戲與漫畫中的動人故事支撐著我。只要深深沉浸在故事裡，任何憂慮都找不到我。",
+      "phil.pull": "至今我仍難以愛自己。但我能愛我創造的故事。",
+      "phil.p2": "正如偉大的創作者曾拯救了我的人生，我也想用有迴響的故事去拯救某個人的時間。遊戲是說故事的人所能擁有的最強大的工具。小說家要在每一個事件、每一句台詞上下功夫，堆疊數百頁，才能讓讀者與人物共情；而在遊戲中，玩家操縱角色的那一刻，就已經成為了那個角色。<strong>那不是共情，而是同一化。</strong>沉浸是這個媒介的預設值——然而以故事本身取勝的遊戲仍然稀少。",
+      "phil.p3": "我所追求的，是<strong>忠於類型、結構縝密、抵達結局時留下深刻迴響與思考餘地的故事</strong>。我先寫好結局。我不會在不知道要把人帶往何處時，就讓人上車。",
+      "phil.p3b": "能讓所有人滿意的出色故事，巨額資本已經做得足夠多了。我要直面它們不去觸碰的東西——人性幽暗的內面。講述自我毀滅與成癮的<strong>《Lucy's Nightmare》</strong>，以及探討扭曲慾望與救贖的下一部作品<strong>《The Love Doll》</strong>，就是這一切的開始。",
+      "phil.p4": "拯救我的，是別人寫的故事。如今我希望，我寫的故事能為某個人做同樣的事。",
+      "connect.eyebrow": "尚未講完的故事",
+      "connect.h": "結局<em>早已寫好。</em>",
+      "connect.sub": "開發日誌、預告片，以及通往正式發售的路。若你想最先抵達，請加入 Steam 願望清單。",
+      "connect.contact": "聯絡"
+    },
+    "de": {
+      "nav.studio": "Studio",
+      "nav.creator": "Autor",
+      "nav.philosophy": "Philosophie",
+      "nav.connect": "Kontakt",
+      "hero.eyebrow": "Nationwide Software — Unabhängiges Studio",
+      "hero.line": "Ein Solo-Studio, das Spiele als Autorenwerke begreift. Es leiht sich die Grammatik des Genres, um <strong>Geschichten zu erzählen, die verstören und fesseln</strong>.",
+      "scroll": "Scrollen",
+      "studio.eyebrow": "Was der Autor macht",
+      "studio.big": "Das Ende entsteht zuerst — <em>alles andere wird rückwärts gebaut.</em>",
+      "studio.sub": "Nachhall entsteht nicht zufällig. Er wird entworfen.",
+      "studio.after": "NationwideSoftware ist das Studio eines einzelnen Autors. Jede Zeile Code, jedes gezeichnete Bild, jede Dialogzeile folgt einer einzigen Vision: einer Geschichte, für die es sich zu bleiben lohnt.",
+      "studio.p2": "In Japan gibt es ein Genre namens Iyamisu — aus iya („widerwärtig“) und Mystery: ein Krimi, nach dem man sich schlechter fühlt als vorher. Wie Kanae Minatos Geständnisse hüllen diese Geschichten die entzündeten Stellen der Gesellschaft und den Grund der menschlichen Natur in den Reiz des Genres — und man liest bis zur letzten Seite. Genau das mache ich.",
+      "studio.p3": "Die Arbeit beginnt immer am Ende. Bevor die letzte Einstellung feststeht, zeichne ich die erste Szene nicht. Der Rausch und der Nachhall, wenn alles, was in Anfang und Mittelteil sorgfältig gelegt wurde, im Finale eingelöst wird — das ist für mich das größte Vergnügen, das eine Geschichte einem Menschen geben kann.",
+      "game.tag": "In Entwicklung — Erster Titel (2024 – 2028)",
+      "game.subtitle": "Ein verdrehtes Märchen. Ein Psychohorror-Platformer.",
+      "game.p1": "<span class=\"hl\">Ein Märchen mit zwei Gesichtern.</span> Lucy hat vergessen, wer sie ist. Gefangen in einem Albtraum, der nicht enden will, rennt, springt und kämpft sie durch verspielte Level voller bunter Monster — bezaubernd an der Oberfläche, falsch darunter.",
+      "game.p2": "Verstreute Diamanten bewahren ihre gestohlenen Erinnerungen. Jeder, den du birgst, spielt ein Fragment der wirklichen Welt ab — und diese Fragmente tragen ein ganz anderes Gesicht. Schicht um Schicht schält eine präzise gebaute Geschichte das Märchen ab, bis <span class=\"hl\">die Wahrheit darunter grausamer ist als jeder Albtraum.</span>",
+      "game.p3": "Die kostenlose Demo — vom Prolog bis Kapitel eins — ist jetzt auf Steam verfügbar.",
+      "fact.genre.k": "Genre",
+      "fact.genre.v": "Psychohorror · 2D-Platformer",
+      "fact.demo.k": "Demo",
+      "fact.demo.v": "Kostenlos · Jetzt verfügbar",
+      "fact.lang.k": "Sprachen",
+      "fact.lang.v": "10 vollständig unterstützt",
+      "fact.plat.k": "Plattformen",
+      "fact.rel.k": "Vollversion",
+      "btn.demo": "Demo kostenlos spielen",
+      "btn.wish": "Auf Steam wünschen",
+      "btn.yt": "Auf YouTube ansehen",
+      "trailer.soon": "Trailer folgt in Kürze",
+      "shots.eyebrow": "Screenshots",
+      "creator.eyebrow": "Der Autor",
+      "creator.role": "Regie · Autor · Grafik · Programmierung",
+      "creator.p1": "Jeon Yeon Jun schreibt, zeichnet und baut jeden Teil der Welten unter dem Namen NationwideSoftware. Die Figuren, denen du begegnest, sind <em>Pixel für Pixel von Hand</em> gezeichnet.",
+      "creator.p2": "Das Genre ist die Tür. Was Sie dazu bringt, sie zu öffnen, ist die Grammatik von Horror und Thriller; was dahinter wartet, sind Sucht und Selbstverachtung, Verantwortung und Verdrängung — und die stille Grausamkeit, die Menschen ohne Absicht zufügen.",
+      "creator.p3": "In den Dialogen und Figuren stecken die Fingerabdrücke von allem, was ich durchlaufen habe. Filme und Serien, Theaterstücke und Comics, alte Konsolenspiele — mehr Hommagen, als ich zählen kann. Irgendwann werde ich sie in einem Entwicklerkommentar einzeln hervorholen.",
+      "phil.eyebrow": "Das Credo des Studios",
+      "phil.p1": "Eine große Geschichte kann einen Menschen retten. Ich weiß das aus Erfahrung. In den Jahren, in denen mir die Welt verhasst und kaum zu ertragen schien, hielten mich die Geschichten — in Filmen, Serien, Spielen und Comics. Solange ich tief in einer Geschichte versunken war, fand mich keine Sorge.",
+      "phil.pull": "Mich selbst zu lieben fällt mir noch immer schwer. Die Geschichten, die ich gemacht habe, kann ich lieben.",
+      "phil.p2": "So wie große Erzähler mein Leben gerettet haben, möchte ich mit einer Geschichte, die nachhallt, jemandem seine Stunden retten. Spiele sind das mächtigste Werkzeug, das einem Erzähler je gegeben wurde. Ein Romanautor feilt an jedem Ereignis, an jeder Zeile und stapelt Hunderte Seiten, bis man für eine Figur empfindet. In einem Spiel ist der Spieler in dem Moment, in dem er eine Figur bewegt, bereits diese Figur. <strong>Das ist keine Empathie, das ist Identifikation.</strong> Immersion ist hier der Normalzustand — und doch sind Spiele, die alles auf die Geschichte selbst setzen, noch immer selten.",
+      "phil.p3": "Was ich anstrebe, ist eine Geschichte, <strong>die ihrem Genre treu bleibt, präzise konstruiert ist und am Ende einen tiefen Nachhall und etwas zum Nachdenken hinterlässt</strong>. Ich baue das Ende zuerst. Ich nehme niemanden mit, ohne zu wissen, wohin ich ihn bringe.",
+      "phil.p3b": "Geschichten, die alle zufriedenstellen, werden mit gewaltigen Budgets bereits reichlich gemacht. Ich stelle mich dem, was sie unberührt lassen: dem dunklen Inneren des Menschen. <strong>Lucy's Nightmare</strong> über Selbstzerstörung und Sucht und das nächste Werk, <strong>The Love Doll</strong>, über verdrehtes Begehren und Erlösung sind der Anfang.",
+      "phil.p4": "Gerettet haben mich die Geschichten anderer. Jetzt hoffe ich, dass eine Geschichte von mir das für jemanden tut.",
+      "connect.eyebrow": "Der Rest der Geschichte",
+      "connect.h": "Das Ende steht <em>bereits fest.</em>",
+      "connect.sub": "Devlogs, Trailer und der Weg bis zum Release. Wer als Erster ankommen will, setzt es auf die Steam-Wunschliste.",
+      "connect.contact": "Kontakt"
+    },
+    "fr": {
+      "nav.studio": "Studio",
+      "nav.creator": "Auteur",
+      "nav.philosophy": "Philosophie",
+      "nav.connect": "Contact",
+      "hero.eyebrow": "Nationwide Software — Studio indépendant",
+      "hero.line": "Un studio solo qui traite les jeux comme des œuvres d'auteur. Il emprunte la grammaire du genre pour raconter <strong>des histoires dérangeantes et captivantes</strong>.",
+      "scroll": "Défiler",
+      "studio.eyebrow": "Ce que fabrique l'auteur",
+      "studio.big": "La fin s'écrit d'abord — <em>tout le reste se construit à rebours.</em>",
+      "studio.sub": "La résonance n'arrive pas par hasard. Elle se conçoit.",
+      "studio.after": "NationwideSoftware est le studio d'un seul auteur. Chaque ligne de code, chaque image dessinée, chaque réplique obéit à une seule vision : une histoire pour laquelle il vaut la peine de rester.",
+      "studio.p2": "Il existe au Japon un genre appelé iyamisu — contraction de iya (« déplaisant ») et de mystery : un polar dont on ressort plus mal qu'on y est entré. Comme Confessions de Kanae Minato, ces récits enveloppent les plaies de la société et le fond de la nature humaine dans le plaisir du genre, et se lisent jusqu'à la dernière page. C'est cela que je fabrique.",
+      "studio.p3": "Le travail commence toujours par la fin. Je ne dessine pas la première scène tant que le dernier plan n'est pas arrêté. Le vertige et la résonance du moment où tout ce qui a été semé dans l'ouverture et le développement se paie dans le final — c'est, je crois, le plus grand plaisir qu'une histoire puisse offrir à quelqu'un.",
+      "game.tag": "En développement — Premier titre (2024 – 2028)",
+      "game.subtitle": "Un conte de fées tordu. Un platformer d'horreur psychologique.",
+      "game.p1": "<span class=\"hl\">Un conte à deux visages.</span> Lucy a oublié qui elle est. Prisonnière d'un cauchemar sans fin, elle court, saute et se bat à travers des niveaux fantasques peuplés de monstres colorés — charmants en surface, faux en dessous.",
+      "game.p2": "Les diamants éparpillés renferment ses souvenirs volés. Chacun que vous récupérez rejoue un fragment du monde réel — et ces fragments portent un tout autre visage. Couche après couche, un récit minutieusement tissé dépouille le conte, jusqu'à ce que <span class=\"hl\">la vérité en dessous se révèle plus cruelle que n'importe quel cauchemar.</span>",
+      "game.p3": "La démo gratuite — du prologue au chapitre un — est disponible dès maintenant sur Steam.",
+      "fact.genre.k": "Genre",
+      "fact.genre.v": "Horreur psychologique · Platformer 2D",
+      "fact.demo.k": "Démo",
+      "fact.demo.v": "Gratuite · Disponible",
+      "fact.lang.k": "Langues",
+      "fact.lang.v": "10 langues prises en charge",
+      "fact.plat.k": "Plateformes",
+      "fact.rel.k": "Sortie complète",
+      "btn.demo": "Jouer à la démo gratuite",
+      "btn.wish": "Wishlist sur Steam",
+      "btn.yt": "Voir sur YouTube",
+      "trailer.soon": "Trailer bientôt disponible",
+      "shots.eyebrow": "Captures d'écran",
+      "creator.eyebrow": "L'auteur",
+      "creator.role": "Réalisation · Écriture · Art · Programmation",
+      "creator.p1": "Jeon Yeon Jun écrit, dessine et construit chaque partie des mondes portant le nom NationwideSoftware. Les personnages que vous rencontrez sont dessinés <em>pixel par pixel, à la main.</em>",
+      "creator.p2": "Le genre est la porte. Ce qui vous pousse à l'ouvrir, c'est la grammaire de l'horreur et du thriller ; ce qui attend derrière, c'est l'addiction et le dégoût de soi, la responsabilité et le refoulement, et la cruauté silencieuse que les gens infligent sans le vouloir.",
+      "creator.p3": "Les dialogues et les personnages portent les empreintes de tout ce que j'ai traversé. Films et séries, pièces de théâtre et bandes dessinées, vieux jeux de console — il s'y cache plus d'hommages que je ne saurais compter. Un jour, je les sortirai un à un dans un commentaire de développeur.",
+      "phil.eyebrow": "Le credo du studio",
+      "phil.p1": "Une grande histoire peut sauver quelqu'un. Je le sais d'expérience. Dans les années où le monde me semblait haïssable et difficile à supporter, ce sont les histoires — des films, des séries, des jeux, des bandes dessinées — qui m'ont tenu. Tant que j'étais plongé au fond d'une histoire, aucun tourment ne me trouvait.",
+      "phil.pull": "M'aimer moi-même reste difficile. Mais les histoires que j'ai faites, je peux les aimer.",
+      "phil.p2": "Comme de grands conteurs ont sauvé ma vie, je veux sauver les heures de quelqu'un avec une histoire qui résonne. Le jeu est l'outil le plus puissant jamais confié à un conteur. Le romancier travaille chaque événement, chaque réplique, et empile des centaines de pages avant que vous ressentiez quelque chose pour un personnage. Dans un jeu, à l'instant où le joueur le déplace, il est déjà ce personnage. <strong>Ce n'est pas de l'empathie, c'est de l'identification.</strong> L'immersion y est l'état par défaut — et pourtant, les jeux qui misent tout sur l'histoire elle-même restent rares.",
+      "phil.p3": "Ce que je poursuis, c'est une histoire <strong>fidèle à son genre, construite avec précision, qui laisse à la fin une résonance profonde et de quoi penser</strong>. J'écris la fin d'abord. Je ne fais monter personne sans savoir où je l'emmène.",
+      "phil.p3b": "Les histoires qui satisfont tout le monde, les gros budgets en produisent déjà largement assez. Moi, j'affronte ce qu'ils laissent intact : l'intérieur sombre de l'être humain. <strong>Lucy's Nightmare</strong>, sur l'autodestruction et l'addiction, et l'œuvre suivante, <strong>The Love Doll</strong>, sur le désir tordu et le salut, en sont le début.",
+      "phil.p4": "Ce qui m'a sauvé, ce sont les histoires des autres. J'espère désormais qu'une histoire de moi fera cela pour quelqu'un.",
+      "connect.eyebrow": "La suite de l'histoire",
+      "connect.h": "La fin est <em>déjà écrite.</em>",
+      "connect.sub": "Devlogs, bandes-annonces et la route jusqu'à la sortie. Pour arriver le premier, ajoutez le jeu à votre liste de souhaits Steam.",
+      "connect.contact": "Contact"
+    },
+    "ru": {
+      "nav.studio": "Студия",
+      "nav.creator": "Автор",
+      "nav.philosophy": "Философия",
+      "nav.connect": "Связь",
+      "hero.eyebrow": "Nationwide Software — Независимая студия",
+      "hero.line": "Студия одного автора, для которой игра — авторское произведение. Она заимствует грамматику жанра, чтобы рассказывать <strong>истории, которые тревожат и не отпускают</strong>.",
+      "scroll": "Прокрутка",
+      "studio.eyebrow": "Что создаёт автор",
+      "studio.big": "Сначала пишется финал — <em>всё остальное строится от него назад.</em>",
+      "studio.sub": "Послевкусие не возникает случайно. Его проектируют.",
+      "studio.after": "NationwideSoftware — студия одного автора. Каждая строка кода, каждый нарисованный кадр, каждая реплика подчинены одному замыслу: истории, ради которой стоит остаться.",
+      "studio.p2": "В Японии есть жанр «иямису» — от ия («противно») и мистери: детектив, после которого становится хуже, чем было. Как «Признания» Канаэ Минато, такие истории заворачивают гнойники общества и самое дно человеческой природы в удовольствие жанра — и дочитываются до последней страницы. Именно это я и делаю.",
+      "studio.p3": "Работа всегда начинается с финала. Пока не определён последний кадр, я не рисую первую сцену. Удовольствие и послевкусие от того, как всё тщательно посеянное в завязке и развитии возвращается в финале, — я верю, это самое большое, что история может дать человеку.",
+      "game.tag": "В разработке — Первая игра (2024 – 2028)",
+      "game.subtitle": "Искажённая сказка. Психологический хоррор-платформер.",
+      "game.p1": "<span class=\"hl\">Сказка с двумя лицами.</span> Люси забыла, кто она. Запертая в кошмаре, который не кончается, она бежит, прыгает и сражается в причудливых уровнях, полных пёстрых монстров, — очаровательных снаружи и неправильных внутри.",
+      "game.p2": "В рассыпанных алмазах заключены её украденные воспоминания. Каждый найденный проигрывает фрагмент реального мира — и у этих фрагментов совсем другое лицо. Слой за слоем тщательно выстроенная история снимает со сказки оболочку, пока <span class=\"hl\">правда под ней не окажется страшнее любого кошмара.</span>",
+      "game.p3": "Бесплатная демоверсия — от пролога до первой главы — уже доступна в Steam.",
+      "fact.genre.k": "Жанр",
+      "fact.genre.v": "Психологический хоррор · 2D-платформер",
+      "fact.demo.k": "Демо",
+      "fact.demo.v": "Бесплатно · Уже доступна",
+      "fact.lang.k": "Языки",
+      "fact.lang.v": "Полная поддержка 10 языков",
+      "fact.plat.k": "Платформы",
+      "fact.rel.k": "Полный релиз",
+      "btn.demo": "Играть в бесплатную демо",
+      "btn.wish": "В список желаемого Steam",
+      "btn.yt": "Смотреть на YouTube",
+      "trailer.soon": "Трейлер скоро",
+      "shots.eyebrow": "Скриншоты",
+      "creator.eyebrow": "Автор",
+      "creator.role": "Режиссёр · Сценарист · Художник · Программист",
+      "creator.p1": "Чон Ён Джун сам пишет, рисует и собирает каждую часть миров под именем NationwideSoftware. Персонажи, которых вы встретите, нарисованы <em>пиксель за пикселем, вручную.</em>",
+      "creator.p2": "Жанр — это дверь. Открыть её заставляет грамматика хоррора и триллера; а внутри ждут зависимость и отвращение к себе, ответственность и вытеснение — и тихая жестокость, которую люди причиняют без злого умысла.",
+      "creator.p3": "В репликах и персонажах остались отпечатки всего, через что я прошёл. Фильмы и сериалы, пьесы и комиксы, старые консольные игры — оммажей там больше, чем я могу сосчитать. Когда-нибудь я достану их по одному в авторском комментарии.",
+      "phil.eyebrow": "Кредо студии",
+      "phil.p1": "Великая история способна спасти человека. Я знаю это по себе. В те годы, когда мир казался ненавистным и невыносимым, меня держали истории — из фильмов, сериалов, игр и комиксов. Пока я был глубоко внутри истории, ни одна тревога не могла меня найти.",
+      "phil.pull": "Любить себя мне по-прежнему трудно. Но истории, которые я сделал, я любить могу.",
+      "phil.p2": "Как великие рассказчики спасли мою жизнь, так и я хочу спасти чьи-то часы историей, которая отзывается. Игра — самый мощный инструмент, когда-либо данный рассказчику. Романист вытачивает каждое событие и каждую реплику, нагромождая сотни страниц, прежде чем вы почувствуете что-то к герою. В игре же в тот момент, когда игрок его двигает, он уже и есть этот герой. <strong>Это не сопереживание, это отождествление.</strong> Погружение здесь — состояние по умолчанию, и всё же игры, ставящие всё на саму историю, до сих пор редки.",
+      "phil.p3": "Я стремлюсь к истории, <strong>верной своему жанру, выстроенной до мелочей, оставляющей в финале глубокое послевкусие и повод подумать</strong>. Финал я пишу первым. Я не беру людей с собой, не зная, куда их везу.",
+      "phil.p3b": "Историй, которые устраивают всех, огромные бюджеты делают уже достаточно. Я же иду туда, куда они не заходят: в тёмную внутренность человека. <strong>Lucy's Nightmare</strong> — о саморазрушении и зависимости, а следующая работа, <strong>The Love Doll</strong>, — о искажённом желании и спасении. Это только начало.",
+      "phil.p4": "Меня спасли истории, сделанные другими. Теперь я надеюсь, что история, сделанная мной, сделает это для кого-то ещё.",
+      "connect.eyebrow": "Остаток истории",
+      "connect.h": "Финал <em>уже написан.</em>",
+      "connect.sub": "Девлоги, трейлеры и путь до релиза. Хотите добраться первыми — добавьте игру в список желаемого в Steam.",
+      "connect.contact": "Контакт"
+    },
+    "es": {
+      "nav.studio": "Estudio",
+      "nav.creator": "Autor",
+      "nav.philosophy": "Filosofía",
+      "nav.connect": "Conecta",
+      "hero.eyebrow": "Nationwide Software — Estudio independiente",
+      "hero.line": "Un estudio de una sola persona que trata los juegos como obras de autor. Toma prestada la gramática del género para contar <strong>historias incómodas y fascinantes</strong>.",
+      "scroll": "Desplázate",
+      "studio.eyebrow": "Lo que hace el autor",
+      "studio.big": "El final se escribe primero — <em>todo lo demás se construye hacia atrás.</em>",
+      "studio.sub": "La resonancia no ocurre por azar. Se diseña.",
+      "studio.after": "NationwideSoftware es el estudio de un solo autor. Cada línea de código, cada imagen dibujada, cada línea de diálogo responde a una única visión: una historia por la que valga la pena quedarse.",
+      "studio.p2": "En Japón existe un género llamado iyamisu — de iya («desagradable») y mystery: un misterio que te deja peor de lo que estabas. Como Confesiones, de Kanae Minato, son historias que envuelven las zonas infectadas de la sociedad y el fondo de la naturaleza humana en el placer del género, y se leen hasta la última página. Eso es lo que hago.",
+      "studio.p3": "El trabajo siempre empieza por el final. No dibujo la primera escena hasta que el último plano está decidido. La descarga y el eco de ver cómo todo lo sembrado en el arranque y el desarrollo se cobra en el desenlace: creo que es el mayor placer que una historia puede dar a una persona.",
+      "game.tag": "En desarrollo — Primer título (2024 – 2028)",
+      "game.subtitle": "Un cuento de hadas retorcido. Un plataformas de terror psicológico.",
+      "game.p1": "<span class=\"hl\">Un cuento con dos caras.</span> Lucy ha olvidado quién es. Atrapada en una pesadilla que se niega a terminar, corre, salta y lucha por niveles caprichosos llenos de monstruos coloridos: encantadores en la superficie, con algo que anda mal debajo.",
+      "game.p2": "Los diamantes dispersos guardan sus recuerdos robados. Cada uno que recuperas reproduce un fragmento del mundo real — y esos fragmentos tienen un rostro muy distinto. Capa a capa, una historia tramada con precisión va desnudando el cuento, hasta que <span class=\"hl\">la verdad de debajo resulta más cruel que cualquier pesadilla.</span>",
+      "game.p3": "La demo gratuita — del prólogo al capítulo uno — ya está disponible en Steam.",
+      "fact.genre.k": "Género",
+      "fact.genre.v": "Terror psicológico · Plataformas 2D",
+      "fact.demo.k": "Demo",
+      "fact.demo.v": "Gratis · Ya disponible",
+      "fact.lang.k": "Idiomas",
+      "fact.lang.v": "10 totalmente compatibles",
+      "fact.plat.k": "Plataformas",
+      "fact.rel.k": "Lanzamiento completo",
+      "btn.demo": "Jugar la demo gratis",
+      "btn.wish": "Lista de deseados de Steam",
+      "btn.yt": "Ver en YouTube",
+      "trailer.soon": "Tráiler próximamente",
+      "shots.eyebrow": "Capturas",
+      "creator.eyebrow": "El autor",
+      "creator.role": "Dirección · Guion · Arte · Programación",
+      "creator.p1": "Jeon Yeon Jun escribe, dibuja y construye cada parte de los mundos bajo el nombre NationwideSoftware. Los personajes que encuentras están dibujados <em>píxel a píxel, a mano.</em>",
+      "creator.p2": "El género es la puerta. Lo que te hace abrirla es la gramática del horror y del thriller; lo que espera dentro es la adicción y el autodesprecio, la responsabilidad y la represión, y la crueldad silenciosa que la gente inflige sin querer.",
+      "creator.p3": "Los diálogos y los personajes llevan las huellas de todo lo que he atravesado. Películas y series, obras de teatro y cómics, viejos juegos de consola: hay más homenajes escondidos de los que puedo contar. Algún día pienso sacarlos uno a uno en un comentario del desarrollador.",
+      "phil.eyebrow": "El credo del estudio",
+      "phil.p1": "Una gran historia puede salvar a una persona. Lo sé por experiencia. En los años en que el mundo me resultaba odioso y difícil de soportar, me sostuvieron las historias: las del cine, las series, los juegos y los cómics. Mientras estaba inmerso en una historia, ninguna angustia podía encontrarme.",
+      "phil.pull": "Todavía me cuesta quererme. Pero puedo querer las historias que he hecho.",
+      "phil.p2": "Así como los grandes narradores salvaron mi vida, quiero salvar las horas de alguien con una historia que resuene. El juego es la herramienta más poderosa que jamás se le ha dado a un narrador. El novelista trabaja cada suceso y cada línea, y apila cientos de páginas antes de que sientas algo por un personaje. En un juego, en el instante en que el jugador lo mueve, ya es ese personaje. <strong>No es empatía: es identificación.</strong> La inmersión es aquí el estado por defecto — y aún así, los juegos que lo apuestan todo a la historia siguen siendo raros.",
+      "phil.p3": "Lo que persigo es una historia <strong>fiel a su género, tramada con precisión, que al llegar al final deje una resonancia profunda y algo en que pensar</strong>. Escribo el final primero. No subo a nadie a bordo sin saber adónde lo llevo.",
+      "phil.p3b": "Las historias que satisfacen a todo el mundo ya se hacen de sobra con presupuestos enormes. Yo encaro lo que ellas no tocan: el interior oscuro del ser humano. <strong>Lucy's Nightmare</strong>, sobre la autodestrucción y la adicción, y la siguiente obra, <strong>The Love Doll</strong>, sobre el deseo torcido y la salvación, son el comienzo.",
+      "phil.p4": "Lo que me salvó fueron historias hechas por otros. Ahora espero que una historia hecha por mí haga eso por alguien.",
+      "connect.eyebrow": "El resto de la historia",
+      "connect.h": "El final <em>ya está escrito.</em>",
+      "connect.sub": "Devlogs, tráileres y el camino hasta el lanzamiento. Si quieres llegar el primero, añádelo a tu lista de deseados en Steam.",
+      "connect.contact": "Contacto"
+    },
+    "pt": {
+      "nav.studio": "Estúdio",
+      "nav.creator": "Autor",
+      "nav.philosophy": "Filosofia",
+      "nav.connect": "Conecte",
+      "hero.eyebrow": "Nationwide Software — Estúdio independente",
+      "hero.line": "Um estúdio solo que trata jogos como obras de autor. Toma emprestada a gramática do gênero para contar <strong>histórias incômodas e fascinantes</strong>.",
+      "scroll": "Role",
+      "studio.eyebrow": "O que o autor faz",
+      "studio.big": "O final vem primeiro — <em>todo o resto é construído de trás para frente.</em>",
+      "studio.sub": "A ressonância não acontece por acaso. Ela é projetada.",
+      "studio.after": "NationwideSoftware é o estúdio de um único autor. Cada linha de código, cada imagem desenhada, cada fala responde a uma única visão: uma história pela qual vale a pena ficar.",
+      "studio.p2": "No Japão existe um gênero chamado iyamisu — de iya (“desagradável”) e mystery: um mistério que deixa você pior do que estava. Como Confissões, de Kanae Minato, são histórias que embrulham as zonas infeccionadas da sociedade e o fundo da natureza humana no prazer do gênero, e se leem até a última página. É isso que eu faço.",
+      "studio.p3": "O trabalho sempre começa pelo fim. Não desenho a primeira cena até que o último quadro esteja decidido. A descarga e o eco de ver tudo o que foi plantado na abertura e no desenvolvimento ser cobrado no desfecho: acredito que seja o maior prazer que uma história pode dar a uma pessoa.",
+      "game.tag": "Em desenvolvimento — Primeiro título (2024 – 2028)",
+      "game.subtitle": "Um conto de fadas distorcido. Um jogo de plataforma de terror psicológico.",
+      "game.p1": "<span class=\"hl\">Um conto de fadas com duas faces.</span> Lucy esqueceu quem é. Presa num pesadelo que se recusa a acabar, ela corre, salta e luta por fases lúdicas repletas de monstros coloridos — encantadoras na superfície, erradas por baixo.",
+      "game.p2": "Os diamantes espalhados guardam suas memórias roubadas. Cada um que você recupera reproduz um fragmento do mundo real — e esses fragmentos têm um rosto muito diferente. Camada por camada, uma história meticulosamente tramada vai despindo o conto de fadas, até que <span class=\"hl\">a verdade por baixo se mostre mais cruel que qualquer pesadelo.</span>",
+      "game.p3": "A demo gratuita — do prólogo ao capítulo um — já está disponível na Steam.",
+      "fact.genre.k": "Gênero",
+      "fact.genre.v": "Terror psicológico · Plataforma 2D",
+      "fact.demo.k": "Demo",
+      "fact.demo.v": "Grátis · Já disponível",
+      "fact.lang.k": "Idiomas",
+      "fact.lang.v": "10 totalmente suportados",
+      "fact.plat.k": "Plataformas",
+      "fact.rel.k": "Lançamento completo",
+      "btn.demo": "Jogar a demo grátis",
+      "btn.wish": "Lista de desejos na Steam",
+      "btn.yt": "Assistir no YouTube",
+      "trailer.soon": "Trailer em breve",
+      "shots.eyebrow": "Capturas de tela",
+      "creator.eyebrow": "O autor",
+      "creator.role": "Direção · Roteiro · Arte · Programação",
+      "creator.p1": "Jeon Yeon Jun escreve, desenha e constrói cada parte dos mundos sob o nome NationwideSoftware. Os personagens que você encontra são desenhados <em>pixel por pixel, à mão.</em>",
+      "creator.p2": "O gênero é a porta. O que faz você abri-la é a gramática do horror e do thriller; o que espera lá dentro é o vício e o ódio de si, a responsabilidade e a repressão, e a crueldade silenciosa que as pessoas infligem sem querer.",
+      "creator.p3": "Os diálogos e os personagens carregam as impressões digitais de tudo por que passei. Filmes e séries, peças de teatro e quadrinhos, jogos antigos de console — há mais homenagens escondidas do que consigo contar. Um dia pretendo tirá-las uma a uma num comentário do desenvolvedor.",
+      "phil.eyebrow": "O credo do estúdio",
+      "phil.p1": "Uma grande história pode salvar uma pessoa. Eu sei disso por experiência. Nos anos em que o mundo me parecia odioso e difícil de suportar, foram as histórias — dos filmes, das séries, dos jogos e dos quadrinhos — que me seguraram. Enquanto eu estava mergulhado numa história, nenhuma angústia conseguia me encontrar.",
+      "phil.pull": "Ainda é difícil me amar. Mas consigo amar as histórias que criei.",
+      "phil.p2": "Assim como grandes contadores de histórias salvaram a minha vida, quero salvar as horas de alguém com uma história que ressoe. O jogo é a ferramenta mais poderosa já dada a um contador de histórias. O romancista trabalha cada acontecimento e cada fala, e empilha centenas de páginas antes que você sinta algo por um personagem. Num jogo, no instante em que o jogador o move, ele já é aquele personagem. <strong>Não é empatia, é identificação.</strong> A imersão aqui é o estado padrão — e ainda assim, jogos que apostam tudo na própria história continuam raros.",
+      "phil.p3": "O que persigo é uma história <strong>fiel ao seu gênero, tramada com precisão, que ao chegar ao fim deixe uma ressonância profunda e algo em que pensar</strong>. Construo o final primeiro. Não levo ninguém a bordo sem saber para onde o estou levando.",
+      "phil.p3b": "Histórias que agradam a todos já são feitas em abundância com orçamentos enormes. Eu encaro o que elas não tocam: o interior sombrio do ser humano. <strong>Lucy's Nightmare</strong>, sobre autodestruição e vício, e a próxima obra, <strong>The Love Doll</strong>, sobre o desejo distorcido e a salvação, são o começo.",
+      "phil.p4": "O que me salvou foram histórias feitas por outros. Agora espero que uma história feita por mim faça isso por alguém.",
+      "connect.eyebrow": "O resto da história",
+      "connect.h": "O final <em>já está escrito.</em>",
+      "connect.sub": "Devlogs, trailers e o caminho até o lançamento. Se quer chegar primeiro, adicione à sua lista de desejos na Steam.",
+      "connect.contact": "Contato"
+    }
   };
 
   const langSel = document.getElementById('langSel');
