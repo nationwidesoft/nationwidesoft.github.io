@@ -324,6 +324,23 @@
   }
   footer .sig{ font-family:var(--f-display); font-style:italic; color:var(--paper); opacity:.7; }
 
+  /* ---------- GAME RATING NOTICE (KR statutory display) ---------- */
+  .rating-notice{ padding:0 0 40px; position:relative; z-index:2; }
+  .rating-notice .wrap{ display:flex; justify-content:center; }
+  .rating-notice table{
+    border-collapse:collapse; background:#a01c1c; color:#fff;
+    font-family:var(--f-body); font-size:.72rem; line-height:1.5;
+    max-width:640px; width:100%;
+  }
+  .rating-notice th, .rating-notice td{
+    border:1px solid rgba(255,255,255,0.55); padding:7px 12px; text-align:left;
+  }
+  .rating-notice th{ font-weight:600; white-space:nowrap; background:rgba(0,0,0,0.14); }
+  @media(max-width:560px){
+    .rating-notice table{ font-size:.66rem; }
+    .rating-notice th, .rating-notice td{ padding:6px 8px; }
+  }
+
   /* ---------- animations ---------- */
   @keyframes rise{ to{ opacity:1; transform:translateY(0); } }
   @keyframes fade{ to{ opacity:.8; } }
@@ -408,8 +425,7 @@
 
         <div class="cta-row">
           <a class="btn primary" href="https://store.steampowered.com/app/4901470/Lucys_Nightmare/" target="_blank" rel="noopener"><span data-i18n="btn.wish">Wishlist on Steam</span></a>
-          <!-- Demo: drop data-soon and swap the href for the Steam demo URL once the demo app is released -->
-          <a class="btn ghost" data-soon href="#" aria-disabled="true"><span data-i18n="btn.demo">Play the Free Demo</span>&nbsp;</a>
+          <a class="btn ghost" href="https://store.steampowered.com/app/4901630/Lucys_Nightmare_Demo/?utm_source=website&amp;utm_campaign=demo_launch" target="_blank" rel="noopener"><span data-i18n="btn.demo">Play the Free Demo</span></a>
           <a class="btn ghost" href="https://www.youtube.com/@nationwidesoftware" target="_blank" rel="noopener"><span data-i18n="btn.yt">Watch on YouTube</span></a>
           <a class="btn ghost" href="/press/"><span data-i18n="btn.press">Press Kit</span></a>
         </div>
@@ -487,6 +503,7 @@
     <h4 class="reveal-on-scroll" data-i18n="connect.h">The ending is <em>already written.</em></h4>
     <p class="sub reveal-on-scroll" data-i18n="connect.sub">Devlogs, trailers, and the road to full release. If you want to arrive first, add it to your Steam wishlist.</p>
     <div class="links reveal-on-scroll">
+      <a href="https://store.steampowered.com/app/4901630/Lucys_Nightmare_Demo/?utm_source=website&amp;utm_campaign=demo_launch" target="_blank" rel="noopener" data-i18n="connect.demo">Free Demo</a>
       <a href="https://store.steampowered.com/app/4901470/Lucys_Nightmare/" target="_blank" rel="noopener">Steam</a>
       <a href="https://www.youtube.com/@nationwidesoftware" target="_blank" rel="noopener">YouTube</a>
       <a href="https://x.com/NationwideSoft" target="_blank" rel="noopener">X / Twitter</a>
@@ -494,6 +511,28 @@
       <a href="/press/" data-i18n="connect.press">Press Kit</a>
       <a href="mailto:nationwidesoft.com@nationwidesoft.com" data-i18n="connect.contact">Contact</a>
     </div>
+  </div>
+</section>
+
+<!-- 게임산업진흥에 관한 법률 제33조 표시의무 — 상표 및 제작정보 표시 (온라인게임물: 웹사이트 표시) -->
+<section class="rating-notice" aria-label="게임물 등급 및 제작정보 표시">
+  <div class="wrap">
+    <table>
+      <tbody>
+        <tr>
+          <th scope="row">제명</th><td>Lucy's Nightmare Demo</td>
+          <th scope="row">상호</th><td>네이션와이드소프트웨어</td>
+        </tr>
+        <tr>
+          <th scope="row">이용등급</th><td>청소년이용불가</td>
+          <th scope="row">등급분류번호</th><td>GC-CC-NP-260807-004</td>
+        </tr>
+        <tr>
+          <th scope="row">등급분류 일자</th><td>2026. 8. 7.</td>
+          <th scope="row">제작·배급업신고번호</th><td>2026-000013</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
@@ -608,6 +647,7 @@
       "connect.eyebrow": "The rest of the story",
       "connect.h": "The ending is <em>already written.</em>",
       "connect.sub": "Devlogs, trailers, and the road to full release. If you want to arrive first, add it to your Steam wishlist.",
+      "connect.demo": "Free Demo",
       "connect.press": "Press Kit",
       "connect.contact": "Contact"
     },
@@ -659,6 +699,7 @@
       "connect.eyebrow": "남은 이야기",
       "connect.h": "결말은 <em>이미 정해져 있습니다.</em>",
       "connect.sub": "개발 기록과 트레일러, 그리고 정식 출시까지. 가장 먼저 도착하고 싶다면, 스팀 찜 목록에 담아두세요.",
+      "connect.demo": "무료 데모",
       "connect.press": "프레스킷",
       "connect.contact": "문의"
     },
@@ -710,6 +751,7 @@
       "connect.eyebrow": "残りの物語",
       "connect.h": "結末は<em>すでに決まっています。</em>",
       "connect.sub": "開発記録とトレーラー、そして正式リリースまで。誰よりも早く辿り着きたいなら、Steamのウィッシュリストへ。",
+      "connect.demo": "無料デモ",
       "connect.press": "プレスキット",
       "connect.contact": "お問い合わせ"
     },
@@ -761,6 +803,7 @@
       "connect.eyebrow": "尚未讲完的故事",
       "connect.h": "结局<em>早已写好。</em>",
       "connect.sub": "开发日志、预告片，以及通往正式发售的路。若你想最先抵达，请加入 Steam 愿望单。",
+      "connect.demo": "免费试玩版",
       "connect.press": "媒体资料",
       "connect.contact": "联系"
     },
@@ -812,6 +855,7 @@
       "connect.eyebrow": "尚未講完的故事",
       "connect.h": "結局<em>早已寫好。</em>",
       "connect.sub": "開發日誌、預告片，以及通往正式發售的路。若你想最先抵達，請加入 Steam 願望清單。",
+      "connect.demo": "免費試玩版",
       "connect.press": "媒體資料",
       "connect.contact": "聯絡"
     },
@@ -863,6 +907,7 @@
       "connect.eyebrow": "Der Rest der Geschichte",
       "connect.h": "Das Ende steht <em>bereits fest.</em>",
       "connect.sub": "Devlogs, Trailer und der Weg bis zum Release. Wer als Erster ankommen will, setzt es auf die Steam-Wunschliste.",
+      "connect.demo": "Kostenlose Demo",
       "connect.press": "Pressekit",
       "connect.contact": "Kontakt"
     },
@@ -914,6 +959,7 @@
       "connect.eyebrow": "La suite de l'histoire",
       "connect.h": "La fin est <em>déjà écrite.</em>",
       "connect.sub": "Devlogs, bandes-annonces et la route jusqu'à la sortie. Pour arriver le premier, ajoutez le jeu à votre liste de souhaits Steam.",
+      "connect.demo": "Démo gratuite",
       "connect.press": "Kit presse",
       "connect.contact": "Contact"
     },
@@ -965,6 +1011,7 @@
       "connect.eyebrow": "Остаток истории",
       "connect.h": "Финал <em>уже написан.</em>",
       "connect.sub": "Девлоги, трейлеры и путь до релиза. Хотите добраться первыми — добавьте игру в список желаемого в Steam.",
+      "connect.demo": "Бесплатная демо",
       "connect.press": "Пресс-кит",
       "connect.contact": "Контакт"
     },
@@ -1016,6 +1063,7 @@
       "connect.eyebrow": "El resto de la historia",
       "connect.h": "El final <em>ya está escrito.</em>",
       "connect.sub": "Devlogs, tráileres y el camino hasta el lanzamiento. Si quieres llegar el primero, añádelo a tu lista de deseados en Steam.",
+      "connect.demo": "Demo gratis",
       "connect.press": "Kit de prensa",
       "connect.contact": "Contacto"
     },
@@ -1067,6 +1115,7 @@
       "connect.eyebrow": "O resto da história",
       "connect.h": "O final <em>já está escrito.</em>",
       "connect.sub": "Devlogs, trailers e o caminho até o lançamento. Se quer chegar primeiro, adicione à sua lista de desejos na Steam.",
+      "connect.demo": "Demo grátis",
       "connect.press": "Kit de imprensa",
       "connect.contact": "Contato"
     }
